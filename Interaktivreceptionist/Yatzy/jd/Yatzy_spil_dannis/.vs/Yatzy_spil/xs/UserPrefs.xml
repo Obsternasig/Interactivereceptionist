@@ -1,18 +1,17 @@
 ﻿<Properties StartupConfiguration="{1999EBC9-8017-4CCE-B2E9-35AC31EEE262}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Yatzy_spil/Spilleklasse.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Yatzy_spil/Program.cs">
     <Files>
-      <File FileName="Yatzy_spil/Program.cs" Line="16" Column="13" />
-      <File FileName="Yatzy_spil/Dice.cs" Line="2" Column="1" />
-      <File FileName="Yatzy_spil/Biaseddice.cs" Line="22" Column="2" />
-      <File FileName="Yatzy_spil/Spilleklasse.cs" Line="7" Column="6" />
-      <File FileName="Yatzy_spil/Spiller.cs" Line="1" Column="1" />
+      <File FileName="Yatzy_spil/Program.cs" Line="19" Column="13" />
+      <File FileName="Yatzy_spil/Dice.cs" Line="26" Column="10" />
+      <File FileName="Yatzy_spil/Biaseddice.cs" Line="11" Column="39" />
+      <File FileName="Yatzy_spil/yatzygameclass.cs" Line="17" Column="27" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Yatzy_spil" expanded="True">
             <Node name="Yatzy_spil" expanded="True">
-              <Node name="Spilleklasse.cs" selected="True" />
+              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
