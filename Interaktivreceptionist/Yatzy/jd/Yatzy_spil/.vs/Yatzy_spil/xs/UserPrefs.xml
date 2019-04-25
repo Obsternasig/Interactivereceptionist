@@ -3,8 +3,9 @@
     <Files>
       <File FileName="Yatzy_spil/Program.cs" Line="16" Column="13" />
       <File FileName="Yatzy_spil/Dice.cs" Line="2" Column="1" />
-      <File FileName="Yatzy_spil/Biaseddice.cs" Line="32" Column="2" />
-      <File FileName="Yatzy_spil/Spilleklasse.cs" Line="7" Column="9" />
+      <File FileName="Yatzy_spil/Biaseddice.cs" Line="22" Column="2" />
+      <File FileName="Yatzy_spil/Spilleklasse.cs" Line="7" Column="6" />
+      <File FileName="Yatzy_spil/Spiller.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
