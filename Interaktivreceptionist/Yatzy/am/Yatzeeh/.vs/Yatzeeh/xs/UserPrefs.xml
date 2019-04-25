@@ -1,0 +1,29 @@
+﻿<Properties StartupConfiguration="{8AAE68E5-5717-4231-993A-990D25919BC7}|Default">
+  <MonoDevelop.Ide.ItemProperties.Yatzeeh PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Yatzeeh/Class1.cs">
+    <Files>
+      <File FileName="Yatzeeh/App.config" Line="1" Column="1" />
+      <File FileName="Yatzeeh/Class1.cs" Line="1" Column="1" />
+      <File FileName="Yatzeeh/dice.cs" Line="1" Column="1" />
+      <File FileName="Yatzeeh/NegBiasedDice.cs" Line="1" Column="1" />
+      <File FileName="Yatzeeh/Program.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Yatzeeh" expanded="True">
+            <Node name="Yatzeeh" expanded="True">
+              <Node name="Class1.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
