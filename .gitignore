@@ -1,0 +1,9 @@
+
+Interaktivreceptionist/Interaktivreceptionist/bin/Debug/netcoreapp2.1/Interaktivreceptionist.runtimeconfig.dev.json
+*.json
+*.txt
+*.cache
+*.json
+*.targets
+*.props
+*.cache
