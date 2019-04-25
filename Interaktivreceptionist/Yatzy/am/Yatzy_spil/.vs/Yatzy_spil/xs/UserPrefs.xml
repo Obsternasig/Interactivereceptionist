@@ -1,0 +1,28 @@
+﻿<Properties StartupConfiguration="{1999EBC9-8017-4CCE-B2E9-35AC31EEE262}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Yatzy_spil/Spilleklasse.cs">
+    <Files>
+      <File FileName="Yatzy_spil/Program.cs" Line="16" Column="13" />
+      <File FileName="Yatzy_spil/Dice.cs" Line="2" Column="1" />
+      <File FileName="Yatzy_spil/Biaseddice.cs" Line="32" Column="2" />
+      <File FileName="Yatzy_spil/Spilleklasse.cs" Line="7" Column="9" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Yatzy_spil" expanded="True">
+            <Node name="Yatzy_spil" expanded="True">
+              <Node name="Spilleklasse.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Yatzy__spil PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
