@@ -13,12 +13,12 @@ namespace Yatzy_spil
         {
             activeDices = new List<Dice>();
             this.diceThrows = diceThrows;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 6; i++) //Vi kaster med 6 terninger
             {
-                if (i < 3)
+                if (i < 3) //Så længe vi kaster under 3 terninger (0 - 2) vil vi kaste med normale terninger. Over 3 kaster vi med biased dice
                     activeDices.Add(new Dice());
                 else
-                    activeDices.Add(new BiasedDice(false));
+                    activeDices.Add(new BiasedDice(false)); //BiasedDice er falsk, så vi bruger kun den normale terning lige nu.
             }
             Console.WriteLine("Der er lige nu " + activeDices.Count + " aktive terninger");
         }
@@ -27,24 +27,22 @@ namespace Yatzy_spil
         public void playRound()
         {
             //For loop lige her på alle spillere
-            for (int i = 0; i < diceThrows; i++)
+            for (int i = 0; i < diceThrows; i++) //I = 0, og så længe den er mindre end det antal dice throws some spiller laver, vil den loop
 
             {
-                for (int j = 0; j < activeDices.Count; j++)
+                for (int j = 0; j < activeDices.Count; j++) //Her vil vi lave et for loop, som er lig vores antive terninger.
                 {
                     activeDices[j].Roll();
-                    Console.WriteLine("Terning: " + (j + 1) + " slår " + activeDices[j].getValue());
+                    Console.WriteLine("Terning: " + (j + 1) + " slår " + activeDices[j].getValue()); //Her udskriver vi terning nummer (starter fra 1 da vi lægger 1 til.
+                                                                                                     //og viser hvad de har slået via activeDices[j].getValue
                 }
 
                 // check er alle 1'ere
                 // check alle muligheder
                 // 
-
-
+                
                 Console.ReadLine();
-
-
-
+                
             }
         }
 
