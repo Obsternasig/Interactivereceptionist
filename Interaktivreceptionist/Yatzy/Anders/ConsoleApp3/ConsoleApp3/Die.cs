@@ -11,7 +11,7 @@ namespace ConsoleApp3
         public int Value { get; set; }
         public bool Locked { get; set; }
         
-        public void Roll(Random random)
+        public virtual void Roll(Random random)
         {
             Value = random.Next(1, 7);
         }

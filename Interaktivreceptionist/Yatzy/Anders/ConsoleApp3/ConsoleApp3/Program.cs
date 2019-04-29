@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 namespace ConsoleApp3
 {
     class Program
     {
-        private static readonly String[] UPPER_SECTION_SCORES = {"ones", "twos", "threes", "fours", "fives", "sixes"};
-        private static readonly String[] LOWER_SECTION_SCORES = {"pair1", "pair2", "threealike", "fouralike", "smallstraight", "largestraight", "fullhouse", "chance", "yatzy"};
+        private static readonly int[] POSSIBLE_DICE_VALUES = {1, 2, 3, 4, 5, 6};
+
+        private static readonly string[] UPPER_SECTION_SCORES = {"ones", "twos", "threes", "fours", "fives", "sixes"};
+        private static readonly string[] LOWER_SECTION_SCORES = {"pair1", "pair2", "threealike", "fouralike", "smallstraight", "largestraight", "fullhouse", "chance", "yatzy"};
         
         private static readonly int[] SMALL_STRAIGHT = {1, 2, 3, 4, 5};
         private static readonly int[] LARGE_STRAIGHT = {2, 3, 4, 5, 6};
@@ -17,29 +20,70 @@ namespace ConsoleApp3
             // Set console output encoding to UTF8 to support UTF8 characters.
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            int rolls = 0;
+            // Config variables
+            int rolls = 3;
+            int biasedDice = 0;
+            
+            // Game state variables
+            int currentRoll = 0;
             Random random = new Random();
-            List<IDie> dice = new List<IDie>();
+            Roll roll;
             int totalScore = 0;
-            Dictionary<String, Func<List<IDie>, int>> functionDictionary = new Dictionary<string, Func<List<IDie>, int>>
+            Dictionary<string, Func<Dictionary<string, int>, List<IDie>, bool>> possibleAllDiceDictionary = new Dictionary<string, Func<Dictionary<string, int>, List<IDie>, bool>>
             {
-                { "ones", Ones },
-                { "twos", Twos },
-                { "threes", Threes },
-                { "fours", Fours },
-                { "fives", Fives },
-                { "sixes", Sixes },
-                { "pair1", Pair1 },
-                { "pair2", Pair2 },
-                { "threealike", ThreeAlike },
-                { "fouralike", FourAlike },
-                { "smallstraight", SmallStraight },
-                { "largestraight", LargeStraight },
-                { "fullhouse", FullHouse },
-                { "chance", Chance },
-                { "yatzy", Yatzy }
+                { "ones", OnesPossibleAllDice },
+                { "twos", TwosPossibleAllDice },
+                { "threes", ThreesPossibleAllDice },
+                { "fours", FoursPossibleAllDice },
+                { "fives", FivesPossibleAllDice },
+                { "sixes", SixesPossibleAllDice },
+                { "pair1", Pair1PossibleAllDice },
+                { "pair2", Pair2PossibleAllDice },
+                { "threealike", ThreeAlikePossibleAllDice },
+                { "fouralike", FourAlikePossibleAllDice },
+                { "smallstraight", SmallStraightPossibleAllDice },
+                { "largestraight", LargeStraightPossibleAllDice },
+                { "fullhouse", FullHousePossibleAllDice },
+                { "chance", ChancePossibleAllDice },
+                { "yatzy", YatzyPossibleAllDice }
             };
-            Dictionary<String, int> scoreDictionary = new Dictionary<string, int>
+            Dictionary<string, Func<List<IDie>, string>> possibleLockedDiceDictionary = new Dictionary<string, Func<List<IDie>, string>>
+            {
+                { "ones", OnesPossibleLockedDice },
+                { "twos", TwosPossibleLockedDice },
+                { "threes", ThreesPossibleLockedDice },
+                { "fours", FoursPossibleLockedDice },
+                { "fives", FivesPossibleLockedDice },
+                { "sixes", SixesPossibleLockedDice },
+                { "pair1", Pair1PossibleLockedDice },
+                { "pair2", Pair2PossibleLockedDice },
+                { "threealike", ThreeAlikePossibleLockedDice },
+                { "fouralike", FourAlikePossibleLockedDice },
+                { "smallstraight", SmallStraightPossibleLockedDice },
+                { "largestraight", LargeStraightPossibleLockedDice },
+                { "fullhouse", FullHousePossibleLockedDice },
+                { "chance", ChancePossibleLockedDice },
+                { "yatzy", YatzyPossibleLockedDice }
+            };
+            Dictionary<string, Func<List<IDie>, int>> scoreFunctionsDictionary = new Dictionary<string, Func<List<IDie>, int>>
+            {
+                { "ones", SumScore },
+                { "twos", SumScore },
+                { "threes", SumScore },
+                { "fours", SumScore },
+                { "fives", SumScore },
+                { "sixes", SumScore },
+                { "pair1", SumScore },
+                { "pair2", SumScore },
+                { "threealike", SumScore },
+                { "fouralike", SumScore },
+                { "smallstraight", SumScore },
+                { "largestraight", SumScore },
+                { "fullhouse", SumScore },
+                { "chance", SumScore },
+                { "yatzy", YatzyScore }
+            };
+            Dictionary<string, int> scoreDictionary = new Dictionary<string, int>
             {
                 { "ones", -1 },
                 { "twos", -1 },
@@ -59,11 +103,37 @@ namespace ConsoleApp3
                 { "yatzy", -1 }
             };
 
-            // Instantiate 5 dice
-            for (int i = 0; i < 10; i++)
+            Console.WriteLine("How many rolls between 2 and 10 per turn would you like?");
+            string rollsLine = Console.ReadLine();
+            int rollsLineParsed = int.Parse(rollsLine);
+
+            while (rollsLineParsed < 2 || rollsLineParsed > 10)
             {
-                dice.Add(new Die());
+                Console.WriteLine("How many rolls between 2 and 10 per turn would you like?");
+                rollsLine = Console.ReadLine();
+                rollsLineParsed = int.Parse(rollsLine);
             }
+
+            rolls = rollsLineParsed;
+
+            Console.WriteLine("How many biased dice between 1 and 6 would you like?");
+            string biasedDiceLine = Console.ReadLine();
+            int biasedDiceLineParsed = int.Parse(biasedDiceLine);
+
+            while (biasedDiceLineParsed < 1 || biasedDiceLineParsed > 6)
+            {
+                Console.WriteLine("How many biased dice between 1 and 6 would you like?");
+                biasedDiceLine = Console.ReadLine();
+                biasedDiceLineParsed = int.Parse(biasedDiceLine);
+            }
+
+            biasedDice = biasedDiceLineParsed;
+
+            int normalDice = 6 - biasedDice;
+
+            roll = new Roll(normalDice, biasedDice);
+
+            Console.Clear();
 
             // This loop goes on until a score has been set for every score there is
             while (scoreDictionary.ContainsValue(-1))
@@ -72,91 +142,97 @@ namespace ConsoleApp3
                 DrawScores(scoreDictionary, totalScore);
                 Console.WriteLine();
 
-                // This loop goes on until 3 rolls have been made
-                while (rolls < 3)
+                // This loop goes on until all rolls have been made
+                while (currentRoll < rolls)
                 {
-                    foreach (IDie die in dice)
+                    roll.RollDice(random);
+
+                    roll.Dice.Sort();
+                    currentRoll++;
+
+                    Console.WriteLine($"Roll {currentRoll}:");
+                    DrawDice(roll.Dice);
+
+                    if (currentRoll == 3)
                     {
-                        if (!die.Locked)
-                            die.Roll(random);
-                        die.Unlock();
+                        DrawPossibleScores(roll.Dice, possibleAllDiceDictionary, scoreDictionary);
                     }
 
-                    dice.Sort();
-                    rolls++;
+                    Console.WriteLine("Lock die 1 to 6 using die numbers and space as separator.");
+                    string lockedDiceLine = Console.ReadLine();
+                    Console.WriteLine();
+                    string[] lockedDice = lockedDiceLine.Split(' ');
 
-                    Console.WriteLine($"Roll {rolls}:");
-                    DrawDice(dice);
+                    // Check if locked dice are either 1, 2, 3, 4, 5 or 6
+                    while (lockedDice[0] != "" &&
+                           lockedDice.Any((lockedDie) => !POSSIBLE_DICE_VALUES.Contains(int.Parse(lockedDie))))
+                    {
+                        Console.WriteLine("Lock die 1 to 6 using die numbers and space as separator.");
+                        lockedDiceLine = Console.ReadLine();
+                        lockedDice = lockedDiceLine.Split(' ');
+                    }
 
-                    String lockedDiceLine = Console.ReadLine();
-                    String[] lockedDice = lockedDiceLine.Split(' ');
-
-                    // Check if locked dice are either 1, 2, 3, 4, or 5
                     if (lockedDice[0] != "")
                     {
-                        foreach (String lockedDie in lockedDice)
+                        foreach (string lockedDie in lockedDice)
                         {
                             int lockedDieIndex = int.Parse(lockedDie) - 1;
-                            dice[lockedDieIndex].Lock();
+                            roll.Dice[lockedDieIndex].Lock();
                         }
                     }
                 }
 
-                String[] scoreLine = Console.ReadLine().Split(' ');
+                Console.WriteLine("Choose your score.");
+                string[] scoreLine = Console.ReadLine().Split(' ');
 
                 bool notValidInput = true;
 
                 while (notValidInput)
                 {
+                    // User wants to get a score
                     if (scoreLine.Length == 1)
                     {
-                        if (!functionDictionary.ContainsKey(scoreLine[0]))
-                        {
-                            Console.WriteLine("The entered score does not exist. Try again.");
-                            scoreLine = Console.ReadLine().Split(' ');
-                        }
-                        else
-                        {
-                            String scoreKey = scoreLine[0];
+                        List<string> possibleScores = CalculatePossibleScores(roll.Dice, possibleAllDiceDictionary, scoreDictionary);
 
-                            if (LOWER_SECTION_SCORES.Contains(scoreKey) && !CheckUpperSectionFinished(scoreDictionary))
+                        string scoreKey = scoreLine[0];
+
+                        if (!possibleScores.Contains(scoreKey))
+                        {
+                            Console.WriteLine("The entered score is not possible. Try again.");
+                            scoreLine = Console.ReadLine().Split(' ');
+                        } else
+                        {
+                            List<IDie> lockedDice = roll.Dice.Where((die) => die.Locked).ToList();
+
+                            string possibleLockedDice = possibleLockedDiceDictionary[scoreKey](lockedDice);
+
+                            if (possibleLockedDice != "")
                             {
-                                Console.WriteLine("Upper section not finished. Try again.");
+                                Console.WriteLine(possibleLockedDice);
                                 scoreLine = Console.ReadLine().Split(' ');
                             }
                             else
                             {
-
-                                try
-                                {
-                                    int score = functionDictionary[scoreKey](dice.Where((die) => die.Locked).ToList());
-                                }
-                                catch (Exception e)
-                                {
-                                    Console.WriteLine($"{e.Message} Try again.");
-                                    scoreLine = Console.ReadLine().Split(' ');
-                                }
-
+                                int score = scoreFunctionsDictionary[scoreKey](lockedDice);
                                 scoreDictionary[scoreKey] = score;
-
                                 totalScore = scoreDictionary.Values.Where((s) => s >= 0).Sum();
-
                                 scoreDictionary = CalculateBonus(scoreDictionary);
-
                                 notValidInput = false;
                             }
                         }
 
-                    } else if (scoreLine.Length == 2)
+                    }
+                    // User wants to delete a score
+                    else if (scoreLine.Length == 2)
                     {
-                        if (scoreLine[0] != "d" || !functionDictionary.ContainsKey(scoreLine[1]))
+                        if (scoreLine[0] != "d" || !scoreFunctionsDictionary.ContainsKey(scoreLine[1]))
                         {
                             Console.WriteLine("Write 'd' followed by the score you wish to delete. Try again.");
                             scoreLine = Console.ReadLine().Split(' ');
                         }
                         else
                         {
-                            String scoreKey = scoreLine[1];
+                            string scoreKey = scoreLine[1];
                             scoreDictionary[scoreKey] = 0;
                             notValidInput = false;
                         }
@@ -168,12 +244,31 @@ namespace ConsoleApp3
                     }
                 }
 
+                Console.WriteLine("If you wish to change bias write 'high' or 'low'. Press enter to continue.");
+                string biasLine = Console.ReadLine();
+
+                if (biasLine != "")
+                {
+                    bool biasHigh = true;
+
+                    if (biasLine == "high")
+                        biasHigh = true;
+                    else if (biasLine == "low")
+                        biasHigh = false;
+
+                    foreach (IDie die in roll.Dice)
+                    {
+                        if (die is BiasedDie biasedDie)
+                            biasedDie.BiasHigh = biasHigh;
+                    }
+                }
+
                 Console.Clear();
                 
-                foreach (IDie die in dice)
+                foreach (IDie die in roll.Dice)
                     die.Unlock();
 
-                rolls = 0;
+                currentRoll = 0;
             }
 
             DrawScores(scoreDictionary, totalScore);
@@ -184,11 +279,11 @@ namespace ConsoleApp3
             Console.ReadKey();
         }
 
-        private static void DrawScores(Dictionary<String, int> dictionary, int totalScore)
+        private static void DrawScores(Dictionary<string, int> dictionary, int totalScore)
         {
-            foreach (KeyValuePair<String, int> pair in dictionary)
+            foreach (KeyValuePair<string, int> pair in dictionary)
             {
-                String value = pair.Value.ToString();
+                string value = pair.Value.ToString();
 
                 if (pair.Value == -1)
                     value = "";
@@ -232,13 +327,42 @@ namespace ConsoleApp3
             Console.WriteLine();
         }
 
-        private static bool CheckUpperSectionFinished(Dictionary<String, int> dictionary)
+        private static void DrawPossibleScores(List<IDie> dice, Dictionary<string, Func<Dictionary<string, int>, List<IDie>, bool>> possibleAllDiceDictionary, Dictionary<string, int> scoreDictionary)
+        {
+            List<string> possibleScores = CalculatePossibleScores(dice, possibleAllDiceDictionary, scoreDictionary);
+
+            Console.WriteLine("Possible scores:");
+
+            foreach (string score in possibleScores)
+            {
+                Console.WriteLine(score);
+            }
+
+            Console.WriteLine();
+        }
+
+        private static List<string> CalculatePossibleScores(List<IDie> dice, Dictionary<string, Func<Dictionary<string, int>, List<IDie>, bool>> possibleAllDiceDictionary, Dictionary<string, int> scoreDictionary)
+        {
+            Dictionary<string, bool> possibleDictionary = new Dictionary<string, bool>();
+
+            foreach (KeyValuePair<string, Func<Dictionary<string, int>, List<IDie>, bool>> pair in possibleAllDiceDictionary)
+            {
+                bool possible = pair.Value(scoreDictionary, dice);
+                possibleDictionary.Add(pair.Key, possible);
+            }
+
+            List<string> possibleScores = possibleDictionary.Where((pair) => pair.Value).Select((pair) => pair.Key).ToList();
+
+            return possibleScores;
+        }
+
+        private static bool CheckUpperSectionFinished(Dictionary<string, int> dictionary)
         {
             return !dictionary.Where((pair) => UPPER_SECTION_SCORES.Contains(pair.Key)).Select((pair) => pair.Value)
                 .Contains(-1);
         }
 
-        private static Dictionary<String, int> CalculateBonus(Dictionary<String, int> dictionary)
+        private static Dictionary<string, int> CalculateBonus(Dictionary<string, int> dictionary)
         {
             if (dictionary["bonus"] == -1 && CheckUpperSectionFinished(dictionary))
             {
@@ -256,40 +380,110 @@ namespace ConsoleApp3
 
         // PossibleAllDice functions
         
-        private static bool OnesPossibleAllDice(List<IDie> dice)
+        private static bool OnesPossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
         {
             return dice.Any((die) => die.Value == 1);
         }
 
-        private static bool TwosPossibleAllDice(List<IDie> dice)
+        private static bool TwosPossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
         {
             return dice.Any((die) => die.Value == 2);
         }
 
-        private static bool ThreesPossibleAllDice(List<IDie> dice)
+        private static bool ThreesPossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
         {
             return dice.Any((die) => die.Value == 3);
         }
 
-        private static bool FoursPossibleAllDice(List<IDie> dice)
+        private static bool FoursPossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
         {
             return dice.Any((die) => die.Value == 4);
         }
 
-        private static bool FivesPossibleAllDice(List<IDie> dice)
+        private static bool FivesPossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
         {
             return dice.Any((die) => die.Value == 5);
         }
 
-        private static bool SixesPossibleAllDice(List<IDie> dice)
+        private static bool SixesPossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
         {
             return dice.Any((die) => die.Value == 6);
         }
 
-        private static bool Pair1PossibleAllDice(List<IDie> dice)
+        private static bool Pair1PossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
         {
+            if (!CheckUpperSectionFinished(dictionary) || dictionary["pair1"] != -1)
+                return false;
+
             List<List<IDie>> sublists = GenerateDiceSublists(dice, 2);
             return sublists.Any((sublist) => AllDiceEqual(sublist));
+        }
+
+        // Does not work
+        private static bool Pair2PossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
+        {
+            if (!CheckUpperSectionFinished(dictionary) || dictionary["pair2"] != -1)
+                return false;
+
+            List<List<IDie>> sublistsDistinct = GenerateDiceSublists(dice, 2)
+                .Where((sublist) => AllDiceEqual(sublist))
+                .Distinct()
+                .ToList();
+            return sublistsDistinct.Count >= 2;
+        }
+
+        private static bool ThreeAlikePossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
+        {
+            if (!CheckUpperSectionFinished(dictionary) || dictionary["threealike"] != -1)
+                return false;
+
+            List<List<IDie>> sublists = GenerateDiceSublists(dice, 3);
+            return sublists.Any((sublist) => AllDiceEqual(sublist));
+        }
+
+        private static bool FourAlikePossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
+        {
+            if (!CheckUpperSectionFinished(dictionary) || dictionary["fouralike"] != -1)
+                return false;
+
+            List<List<IDie>> sublists = GenerateDiceSublists(dice, 4);
+            return sublists.Any((sublist) => AllDiceEqual(sublist));
+        }
+
+        private static bool SmallStraightPossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
+        {
+            if (!CheckUpperSectionFinished(dictionary) || dictionary["smallstraight"] != -1)
+                return false;
+
+            List<List<IDie>> sublists = GenerateDiceSublists(dice, 5);
+            return sublists.Any((sublist) => sublist.Select((die) => die.Value) == SMALL_STRAIGHT);
+        }
+
+        private static bool LargeStraightPossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
+        {
+            if (!CheckUpperSectionFinished(dictionary) || dictionary["largestraight"] != -1)
+                return false;
+
+            List<List<IDie>> sublists = GenerateDiceSublists(dice, 5);
+            return sublists.Any((sublist) => sublist.Select((die) => die.Value) == LARGE_STRAIGHT);
+        }
+
+        // TO BE FIXED
+        private static bool FullHousePossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
+        {
+            List<List<IDie>> sublists2 = GenerateDiceSublists(dice, 2);
+            List<List<IDie>> sublists3 = GenerateDiceSublists(dice, 3);
+            return true;
+        }
+
+        private static bool ChancePossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
+        {
+            return CheckUpperSectionFinished(dictionary) && dictionary["chance"] == -1;
+        }
+
+        private static bool YatzyPossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
+        {
+            return CheckUpperSectionFinished(dictionary) && dictionary["yatzy"] == -1 && AllDiceEqual(dice);
         }
 
         // Generates sublists of {dice} of length {sublistLength}.
@@ -299,7 +493,7 @@ namespace ConsoleApp3
 
             for (int i = 0; i < dice.Count - sublistLength + 1; i++)
             {
-                sublists.Add(dice.GetRange(i, (sublistLength - 1) + i));
+                sublists.Add(dice.GetRange(i, sublistLength));
             }
 
             return sublists;
@@ -312,9 +506,9 @@ namespace ConsoleApp3
 
         // PossibleLockedDice functions
 
-        private static String OnesPossibleLockedDice(List<IDie> dice)
+        private static string OnesPossibleLockedDice(List<IDie> dice)
         {
-            String error = "";
+            string error = "";
 
             if (dice.Any(die => die.Value != 1))
                 error = "All dice must be ones.";
@@ -322,9 +516,9 @@ namespace ConsoleApp3
             return error;
         }
 
-        private static String TwosPossibleLockedDice(List<IDie> dice)
+        private static string TwosPossibleLockedDice(List<IDie> dice)
         {
-            String error = "";
+            string error = "";
 
             if (dice.Any(die => die.Value != 2))
                 error = "All dice must be twos.";
@@ -332,9 +526,9 @@ namespace ConsoleApp3
             return error;
         }
 
-        private static String ThreesPossibleLockedDice(List<IDie> dice)
+        private static string ThreesPossibleLockedDice(List<IDie> dice)
         {
-            String error = "";
+            string error = "";
 
             if (dice.Any(die => die.Value != 3))
                 error = "All dice must be threes.";
@@ -342,9 +536,9 @@ namespace ConsoleApp3
             return error;
         }
 
-        private static String FoursPossibleLockedDice(List<IDie> dice)
+        private static string FoursPossibleLockedDice(List<IDie> dice)
         {
-            String error = "";
+            string error = "";
 
             if (dice.Any(die => die.Value != 4))
                 error = "All dice must be fours.";
@@ -352,9 +546,9 @@ namespace ConsoleApp3
             return error;
         }
 
-        private static String FivesPossibleLockedDice(List<IDie> dice)
+        private static string FivesPossibleLockedDice(List<IDie> dice)
         {
-            String error = "";
+            string error = "";
 
             if (dice.Any(die => die.Value != 5))
                 error = "All dice must be fives.";
@@ -362,9 +556,9 @@ namespace ConsoleApp3
             return error;
         }
 
-        private static String SixesPossibleLockedDice(List<IDie> dice)
+        private static string SixesPossibleLockedDice(List<IDie> dice)
         {
-            String error = "";
+            string error = "";
 
             if (dice.Any(die => die.Value != 6))
                 error = "All dice must be sixes.";
@@ -372,62 +566,59 @@ namespace ConsoleApp3
             return error;
         }
 
-        private static String Pair1PossibleLockedDice(List<IDie> dice)
+        private static string Pair1PossibleLockedDice(List<IDie> dice)
         {
-            String error = "";
+            string error = "";
 
             if (dice.Count != 2)
                 error = "1 pair requires 2 dice.";
-            if (dice[0].Value != dice[1].Value)
+            if (!AllDiceEqual(dice))
                 error = "Dice must be equal.";
 
             return error;
         }
 
-        private static String Pair2PossibleLockedDice(List<IDie> dice)
+        private static string Pair2PossibleLockedDice(List<IDie> dice)
         {
-            String error = "";
+            string error = "";
 
             if (dice.Count != 4)
                 error = "2 pair requires 4 dice.";
-            if (dice[0].Value != dice[1].Value ||
-                dice[2].Value != dice[3].Value ||
-                dice[0].Value == dice[3].Value)
+            if (!AllDiceEqual(dice.GetRange(0, 2)) ||
+                !AllDiceEqual(dice.GetRange(2, 2)) ||
+                dice[0] == dice[3])
                 error = "Both pairs must be equal and not the same.";
 
             return error;
         }
 
-        private static String ThreeAlikePossibleLockedDice(List<IDie> dice)
+        private static string ThreeAlikePossibleLockedDice(List<IDie> dice)
         {
-            String error = "";
+            string error = "";
 
             if (dice.Count != 3)
                 error = "Three alike requires 3 dice.";
-            if (dice[0].Value != dice[1].Value ||
-                dice[1].Value != dice[2].Value)
+            if (!AllDiceEqual(dice))
                 error = "Dice must be equal.";
 
             return error;
         }
 
-        private static String FourAlikePossibleLockedDice(List<IDie> dice)
+        private static string FourAlikePossibleLockedDice(List<IDie> dice)
         {
-            String error = "";
+            string error = "";
 
             if (dice.Count != 4)
                 error = "Four alike requires 4 dice.";
-            if (dice[0].Value != dice[1].Value ||
-                dice[1].Value != dice[2].Value ||
-                dice[2].Value != dice[3].Value)
+            if (!AllDiceEqual(dice))
                 error = "Dice must be equal.";
 
             return error;
         }
 
-        private static String SmallStraightPossibleLockedDice(List<IDie> dice)
+        private static string SmallStraightPossibleLockedDice(List<IDie> dice)
         {
-            String error = "";
+            string error = "";
 
             if (dice.Count != 5)
                 error = "Small straight requires 5 dice.";
@@ -437,9 +628,9 @@ namespace ConsoleApp3
             return error;
         }
 
-        private static String LargeStraightPossibleLockedDice(List<IDie> dice)
+        private static string LargeStraightPossibleLockedDice(List<IDie> dice)
         {
-            String error = "";
+            string error = "";
 
             if (dice.Count != 5)
                 error = "Large straight requires 5 dice.";
@@ -448,16 +639,36 @@ namespace ConsoleApp3
 
             return error;
         }
-        private static String FullHousePossibleLockedDice(List<IDie> dice)
+
+        private static string FullHousePossibleLockedDice(List<IDie> dice)
         {
-            String error = "";
+            string error = "";
 
             if (dice.Count != 5)
                 error = "Full house requires 5 dice.";
-            if ((dice[0].Value != dice[1].Value || dice[2].Value != dice[3].Value || dice[3].Value != dice[4].Value) ||
-                (dice[0].Value != dice[1].Value || dice[1].Value != dice[2].Value || dice[3].Value != dice[4].Value) ||
-                (dice[0].Value) == dice[4].Value)
+            if ((!AllDiceEqual(dice.GetRange(0, 2)) || !AllDiceEqual(dice.GetRange(2, 3))) ||
+                (!AllDiceEqual(dice.GetRange(0, 3)) || !AllDiceEqual(dice.GetRange(3, 2))) ||
+                dice[0].Value == dice[4].Value)
                 error = "Dice do not match a full house.";
+
+            return error;
+        }
+
+        private static string ChancePossibleLockedDice(List<IDie> dice)
+        {
+            string error = "";
+
+            return error;
+        }
+
+        private static string YatzyPossibleLockedDice(List<IDie> dice)
+        {
+            string error = "";
+
+            if (dice.Count != 6)
+                error = "Yatzy requires 6 dice.";
+            if (!AllDiceEqual(dice))
+                error = "Dice do not match a yatzy.";
 
             return error;
         }
@@ -469,33 +680,8 @@ namespace ConsoleApp3
             return dice.Select((die) => die.Value).Sum();
         }
 
-        private static int FullHouse(List<IDie> dice)
+        private static int YatzyScore(List<IDie> dice)
         {
-            if (dice.Count != 5)
-                throw new Exception("Full house requires 5 dice.");
-
-            // Checks whether 2 first are equal and 3 last are equal, or that 3 first are equal and 2 last are equal, and that first and last are not equal
-            if ((dice[0].Value != dice[1].Value || dice[2].Value != dice[3].Value || dice[3].Value != dice[4].Value) ||
-                (dice[0].Value != dice[1].Value || dice[1].Value != dice[2].Value || dice[3].Value != dice[4].Value) ||
-                (dice[0].Value) == dice[4].Value)
-                throw new Exception("Dice do not match a full house.");
-
-            return dice.Select((die) => die.Value).Sum();
-        }
-
-        private static int Chance(List<IDie> dice)
-        {
-            return dice.Select((die) => die.Value).Sum();
-        }
-
-        private static int Yatzy(List<IDie> dice)
-        {
-            if (dice.Count != 5)
-                throw new Exception("Yatzy requires 5 dice.");
-
-            if (dice[0].Value != dice[1].Value || dice[1].Value != dice[2].Value || dice[2].Value != dice[3].Value || dice[3].Value != dice[4].Value)
-                throw new Exception("All dice must be equal.");
-
             return 50;
         }
     }
