@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{1999EBC9-8017-4CCE-B2E9-35AC31EEE262}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="Yatzy_spil/Program.cs">
     <Files>
-      <File FileName="Yatzy_spil/Program.cs" Line="19" Column="13" />
-      <File FileName="Yatzy_spil/Dice.cs" Line="26" Column="10" />
+      <File FileName="Yatzy_spil/Program.cs" Line="23" Column="38" />
+      <File FileName="Yatzy_spil/Dice.cs" Line="21" Column="42" />
       <File FileName="Yatzy_spil/Biaseddice.cs" Line="11" Column="39" />
       <File FileName="Yatzy_spil/yatzygameclass.cs" Line="17" Column="27" />
     </Files>
