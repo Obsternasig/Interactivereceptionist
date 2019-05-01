@@ -105,6 +105,7 @@ namespace ConsoleApp3
 
             Console.WriteLine("How many rolls between 2 and 10 per turn would you like?");
             string rollsLine = Console.ReadLine();
+
             int rollsLineParsed = int.Parse(rollsLine);
 
             while (rollsLineParsed < 2 || rollsLineParsed > 10)

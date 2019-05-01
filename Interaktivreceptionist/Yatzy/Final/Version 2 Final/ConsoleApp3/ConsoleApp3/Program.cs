@@ -264,6 +264,8 @@ namespace ConsoleApp3
 
             DrawScores(scoreDictionary, totalScore);
 
+            //
+
             Console.WriteLine("\nGame finished. Press any key to exit...");
 
             // Draw the score dictionary and prompt user with game finished
@@ -439,7 +441,7 @@ namespace ConsoleApp3
                 return (sublists.Any((sublist) => AllDiceEqual(sublist)), "");
             }
         }
-
+   
         private static (bool, string) Pair2PossibleAllDice(Dictionary<string, int> scoreDictionary, List<IDie> dice, bool possibleLockedDice)
         {
             if (!CheckUpperSectionFinished(scoreDictionary) || scoreDictionary["pair2"] != -1)
