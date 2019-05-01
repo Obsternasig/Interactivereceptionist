@@ -85,12 +85,12 @@ namespace ConsoleApp3
             };
             Dictionary<string, int> scoreDictionary = new Dictionary<string, int>
             {
-                { "ones", -1 },
-                { "twos", -1 },
-                { "threes", -1 },
-                { "fours", -1 },
-                { "fives", -1 },
-                { "sixes", -1 },
+                { "ones", 0 },
+                { "twos", 0 },
+                { "threes", 0 },
+                { "fours", 0 },
+                { "fives", 0 },
+                { "sixes", 63 },
                 { "bonus", -1 },
                 { "pair1", -1 },
                 { "pair2", -1 },
@@ -383,6 +383,7 @@ namespace ConsoleApp3
         
         private static bool OnesPossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
         {
+
             return dice.Any((die) => die.Value == 1);
         }
 
@@ -641,6 +642,7 @@ namespace ConsoleApp3
             return error;
         }
 
+        //broken
         private static string FullHousePossibleLockedDice(List<IDie> dice)
         {
             string error = "";

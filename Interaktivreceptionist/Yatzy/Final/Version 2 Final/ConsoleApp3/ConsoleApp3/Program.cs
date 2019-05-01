@@ -29,14 +29,14 @@ namespace ConsoleApp3
             var random = new Random();
             Roll roll;
             var totalScore = 0;
-            var possibleAllDiceDictionary = new Dictionary<string, Func<Dictionary<string, int>, List<IDie>, bool>>
+            var possibleAllDiceDictionary = new Dictionary<string, Func<Dictionary<string, int>, List<IDie>, bool, (bool _isPoosible, string _errorText)>>
             {
-                { "ones", OnesPossibleAllDice },
-                { "twos", TwosPossibleAllDice },
-                { "threes", ThreesPossibleAllDice },
-                { "fours", FoursPossibleAllDice },
-                { "fives", FivesPossibleAllDice },
-                { "sixes", SixesPossibleAllDice },
+                { "ones", OnesPossibleDice },
+                { "twos", TwosPossibleDice },
+                { "threes", ThreesPossibleDice },
+                { "fours", FoursPossibleDice },
+                { "fives", FivesPossibleDice },
+                { "sixes", SixesPossibleDice },
                 { "pair1", Pair1PossibleAllDice },
                 { "pair2", Pair2PossibleAllDice },
                 { "threealike", ThreeAlikePossibleAllDice },
@@ -46,24 +46,6 @@ namespace ConsoleApp3
                 { "fullhouse", FullHousePossibleAllDice },
                 { "chance", ChancePossibleAllDice },
                 { "yatzy", YatzyPossibleAllDice }
-            };
-            var possibleLockedDiceDictionary = new Dictionary<string, Func<List<IDie>, string>>
-            {
-                { "ones", OnesPossibleLockedDice },
-                { "twos", TwosPossibleLockedDice },
-                { "threes", ThreesPossibleLockedDice },
-                { "fours", FoursPossibleLockedDice },
-                { "fives", FivesPossibleLockedDice },
-                { "sixes", SixesPossibleLockedDice },
-                { "pair1", Pair1PossibleLockedDice },
-                { "pair2", Pair2PossibleLockedDice },
-                { "threealike", ThreeAlikePossibleLockedDice },
-                { "fouralike", FourAlikePossibleLockedDice },
-                { "smallstraight", SmallStraightPossibleLockedDice },
-                { "largestraight", LargeStraightPossibleLockedDice },
-                { "fullhouse", FullHousePossibleLockedDice },
-                { "chance", ChancePossibleLockedDice },
-                { "yatzy", YatzyPossibleLockedDice }
             };
             var scoreFunctionsDictionary = new Dictionary<string, Func<List<IDie>, int>>
             {
@@ -85,12 +67,12 @@ namespace ConsoleApp3
             };
             var scoreDictionary = new Dictionary<string, int>
             {
-                { "ones", 0 },
-                { "twos", 0 },
-                { "threes", 0 },
-                { "fours", -0 },
-                { "fives", -0 },
-                { "sixes", 63 },
+                { "ones", -1 },
+                { "twos", -1 },
+                { "threes", -1 },
+                { "fours", -1 },
+                { "fives", -1 },
+                { "sixes", -1 },
                 { "bonus", -1 },
                 { "pair1", -1 },
                 { "pair2", -1 },
@@ -153,7 +135,7 @@ namespace ConsoleApp3
                     Console.WriteLine($"Roll {currentRoll}:");
                     DrawDice(roll.Dice);
 
-                    if (currentRoll == 3)
+                    if (currentRoll == rolls)
                     {
                         DrawPossibleScores(roll.Dice, possibleAllDiceDictionary, scoreDictionary);
                     }
@@ -186,14 +168,13 @@ namespace ConsoleApp3
                 var scoreLine = Console.ReadLine().Split(' ');
 
                 var notValidInput = true;
+                var possibleScores = CalculatePossibleScores(roll.Dice, possibleAllDiceDictionary, scoreDictionary);
 
                 while (notValidInput)
                 {
                     // User wants to get a score
                     if (scoreLine.Length == 1)
                     {
-                        var possibleScores = CalculatePossibleScores(roll.Dice, possibleAllDiceDictionary, scoreDictionary);
-
                         var scoreKey = scoreLine[0];
 
                         if (!possibleScores.Contains(scoreKey))
@@ -203,22 +184,23 @@ namespace ConsoleApp3
                         }
                         else
                         {
+
                             var lockedDice = roll.Dice.Where((die) => die.Locked).ToList();
 
-                            var possibleLockedDice = possibleLockedDiceDictionary[scoreKey](lockedDice);
+                            var possibleLockedDice = possibleAllDiceDictionary[scoreKey](scoreDictionary, lockedDice, true);
 
-                            if (possibleLockedDice != "")
+                            if (!possibleLockedDice._isPoosible)
                             {
-                                Console.WriteLine(possibleLockedDice);
+                                Console.WriteLine(possibleLockedDice._errorText);
                                 scoreLine = Console.ReadLine().Split(' ');
                             }
                             else
                             {
+                                notValidInput = false;
                                 var score = scoreFunctionsDictionary[scoreKey](lockedDice);
                                 scoreDictionary[scoreKey] = score;
                                 totalScore = scoreDictionary.Values.Where((s) => s >= 0).Sum();
                                 scoreDictionary = CalculateBonus(scoreDictionary);
-                                notValidInput = false;
                             }
                         }
 
@@ -341,7 +323,7 @@ namespace ConsoleApp3
             Console.WriteLine();
         }
 
-        private static void DrawPossibleScores(List<IDie> dice, Dictionary<string, Func<Dictionary<string, int>, List<IDie>, bool>> possibleAllDiceDictionary, Dictionary<string, int> scoreDictionary)
+        private static void DrawPossibleScores(List<IDie> dice, Dictionary<string, Func<Dictionary<string, int>, List<IDie>, bool, (bool _isPoosible, string _errorText)>> possibleAllDiceDictionary, Dictionary<string, int> scoreDictionary)
         {
             var possibleScores = CalculatePossibleScores(dice, possibleAllDiceDictionary, scoreDictionary);
 
@@ -355,14 +337,14 @@ namespace ConsoleApp3
             Console.WriteLine();
         }
 
-        private static List<string> CalculatePossibleScores(List<IDie> dice, Dictionary<string, Func<Dictionary<string, int>, List<IDie>, bool>> possibleAllDiceDictionary, Dictionary<string, int> scoreDictionary)
+        private static List<string> CalculatePossibleScores(List<IDie> dice, Dictionary<string, Func<Dictionary<string, int>, List<IDie>, bool, (bool _isPoosible, string _errorText)>> possibleAllDiceDictionary, Dictionary<string, int> scoreDictionary)
         {
             var possibleDictionary = new Dictionary<string, bool>();
 
             foreach (var pair in possibleAllDiceDictionary)
             {
-                var possible = pair.Value(scoreDictionary, dice);
-                possibleDictionary.Add(pair.Key, possible);
+                var possible = pair.Value(scoreDictionary, dice, false);
+                possibleDictionary.Add(pair.Key, possible._isPoosible);
             }
 
             var possibleScores = possibleDictionary.Where((pair) => pair.Value).Select((pair) => pair.Key).ToList();
@@ -394,127 +376,297 @@ namespace ConsoleApp3
             return dictionary;
         }
 
-        // PossibleAllDice functions
+        // NEW
 
-        private static bool OnesPossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
+        private static (bool, string) PossibleFromDiceUpperSection(Dictionary<string, int> scoreDictionary, List<IDie> dice, int value, bool possibleLockedDice)
         {
-            return dice.Any((die) => die.Value == 1);
-        }
-
-        private static bool TwosPossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
-        {
-            return dice.Any((die) => die.Value == 2);
-        }
-
-        private static bool ThreesPossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
-        {
-            return dice.Any((die) => die.Value == 3);
-        }
-
-        private static bool FoursPossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
-        {
-            return dice.Any((die) => die.Value == 4);
-        }
-
-        private static bool FivesPossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
-        {
-            return dice.Any((die) => die.Value == 5);
-        }
-
-        private static bool SixesPossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
-        {
-            return dice.Any((die) => die.Value == 6);
-        }
-
-        private static bool Pair1PossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
-        {
-            if (!CheckUpperSectionFinished(dictionary) || dictionary["pair1"] != -1)
+            // Check if value is already present on upper_section element
+            if (scoreDictionary[UPPER_SECTION_SCORES[value - 1]] != -1)
             {
-                return false;
+                return (false, "Value already present.");
+            }
+            if (possibleLockedDice)
+            {
+                return dice.Any(die => die.Value != value) ? (false, "All dice must be " + UPPER_SECTION_SCORES[value - 1]) : (true, "");
+            }
+            else
+            {
+                return (dice.Any((die) => die.Value == value), "");
+            }
+        }
+
+        private static (bool, string) OnesPossibleDice(Dictionary<string, int> scoreDictionary, List<IDie> dice, bool possibleLockedDice) =>
+            PossibleFromDiceUpperSection(scoreDictionary, dice, 1, possibleLockedDice);
+
+        private static (bool, string) TwosPossibleDice(Dictionary<string, int> scoreDictionary, List<IDie> dice, bool possibleLockedDice) =>
+            PossibleFromDiceUpperSection(scoreDictionary, dice, 2, possibleLockedDice);
+
+        private static (bool, string) ThreesPossibleDice(Dictionary<string, int> scoreDictionary, List<IDie> dice, bool possibleLockedDice) =>
+            PossibleFromDiceUpperSection(scoreDictionary, dice, 3, possibleLockedDice);
+
+        private static (bool, string) FoursPossibleDice(Dictionary<string, int> scoreDictionary, List<IDie> dice, bool possibleLockedDice) =>
+            PossibleFromDiceUpperSection(scoreDictionary, dice, 4, possibleLockedDice);
+
+        private static (bool, string) FivesPossibleDice(Dictionary<string, int> scoreDictionary, List<IDie> dice, bool possibleLockedDice) =>
+            PossibleFromDiceUpperSection(scoreDictionary, dice, 5, possibleLockedDice);
+
+        private static (bool, string) SixesPossibleDice(Dictionary<string, int> scoreDictionary, List<IDie> dice, bool possibleLockedDice) =>
+            PossibleFromDiceUpperSection(scoreDictionary, dice, 6, possibleLockedDice);
+
+
+        private static (bool, string) Pair1PossibleAllDice(Dictionary<string, int> scoreDictionary, List<IDie> dice, bool possibleLockedDice)
+        {
+            if (!CheckUpperSectionFinished(scoreDictionary) || scoreDictionary["pair1"] != -1)
+            {
+                return (false, "Value already present.");
             }
 
-            var sublists = GenerateDiceSublists(dice, 2);
-            return sublists.Any((sublist) => AllDiceEqual(sublist));
+            if (possibleLockedDice)
+            {
+                if (dice.Count != 2)
+                {
+                    return (false, "1 pair requires 2 dice.");
+                }
+                if (!AllDiceEqual(dice))
+                {
+                    return (false, "Dice must be equal.");
+                }
+                return (true, "");
+            }
+            else
+            {
+                var sublists = GenerateDiceSublists(dice, 2);
+                return (sublists.Any((sublist) => AllDiceEqual(sublist)), "");
+            }
         }
 
-        // Does not work
-        private static bool Pair2PossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
+        private static (bool, string) Pair2PossibleAllDice(Dictionary<string, int> scoreDictionary, List<IDie> dice, bool possibleLockedDice)
         {
-            if (!CheckUpperSectionFinished(dictionary) || dictionary["pair2"] != -1)
+            if (!CheckUpperSectionFinished(scoreDictionary) || scoreDictionary["pair2"] != -1)
             {
-                return false;
+                return (false, "Value already present.");
             }
 
-            var sublistsDistinct = GenerateDiceSublists(dice, 2)
+            if (possibleLockedDice)
+            {
+                var error = "";
+
+                if (dice.Count != 4)
+                {
+                    return (false, "2 pair requires 4 dice.");
+                }
+
+                if (!AllDiceEqual(dice.GetRange(0, 2)) ||
+                    !AllDiceEqual(dice.GetRange(2, 2)) ||
+                    dice[0] == dice[3])
+                {
+                    error = "Both pairs must be equal and not the same.";
+                }
+
+                return (true, "");
+            }
+            else
+            {
+                var sublistsDistinct = GenerateDiceSublists(dice, 2)
                 .Where((sublist) => AllDiceEqual(sublist))
                 .Distinct()
                 .ToList();
-            return sublistsDistinct.Count >= 2;
+                return (sublistsDistinct.Count >= 2, "");
+            }
         }
 
-        private static bool ThreeAlikePossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
+        private static (bool, string) ThreeAlikePossibleAllDice(Dictionary<string, int> scoreDictionary, List<IDie> dice, bool possibleLockedDice)
         {
-            if (!CheckUpperSectionFinished(dictionary) || dictionary["threealike"] != -1)
+            if (!CheckUpperSectionFinished(scoreDictionary) || scoreDictionary["threealike"] != -1)
             {
-                return false;
+                return (false, "Value already present.");
             }
 
-            var sublists = GenerateDiceSublists(dice, 3);
-            return sublists.Any((sublist) => AllDiceEqual(sublist));
+            if (possibleLockedDice)
+            {
+                if (dice.Count != 3)
+                {
+                    return (false, "Three alike requires 3 dice.");
+                }
+
+                if (!AllDiceEqual(dice))
+                {
+                    return (false, "Dice must be equal.");
+                }
+                return (true, "");
+            }
+            else
+            {
+                var sublists = GenerateDiceSublists(dice, 3);
+                return (sublists.Any((sublist) => AllDiceEqual(sublist)), "");
+            }
         }
 
-        private static bool FourAlikePossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
+        private static (bool, string) FourAlikePossibleAllDice(Dictionary<string, int> scoreDictionary, List<IDie> dice, bool possibleLockedDice)
         {
-            if (!CheckUpperSectionFinished(dictionary) || dictionary["fouralike"] != -1)
+            if (!CheckUpperSectionFinished(scoreDictionary) || scoreDictionary["fouralike"] != -1)
             {
-                return false;
+                return (false, "Value already present.");
             }
 
-            var sublists = GenerateDiceSublists(dice, 4);
-            return sublists.Any((sublist) => AllDiceEqual(sublist));
+            if (possibleLockedDice)
+            {
+                if (dice.Count != 4)
+                {
+                    return (false, "Four alike requires 4 dice.");
+                }
+
+                if (!AllDiceEqual(dice))
+                {
+                    return (false, "Dice must be equal.");
+                }
+                return (true, "");
+            }
+            else
+            {
+                var sublists = GenerateDiceSublists(dice, 4);
+                return (sublists.Any((sublist) => AllDiceEqual(sublist)), "");
+            }
         }
 
-        private static bool SmallStraightPossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
+        private static (bool, string) SmallStraightPossibleAllDice(Dictionary<string, int> scoreDictionary, List<IDie> dice, bool possibleLockedDice)
         {
-            if (!CheckUpperSectionFinished(dictionary) || dictionary["smallstraight"] != -1)
+            if (!CheckUpperSectionFinished(scoreDictionary) || scoreDictionary["smallstraight"] != -1)
             {
-                return false;
+                return (false, "Value already present.");
             }
 
-            var sublists = GenerateDiceSublists(dice, 5);
-            return sublists.Any((sublist) => sublist.Select((die) => die.Value) == SMALL_STRAIGHT);
+            if (possibleLockedDice)
+            {
+                if (dice.Count != 5)
+                {
+                    return (false, "Small straight requires 5 dice.");
+                }
+
+                if (dice.Select((die) => die.Value) != SMALL_STRAIGHT)
+                {
+                    return (false, "Dice do not match a small straight.");
+                }
+                return (true, "");
+            }
+            else
+            {
+                var sublists = GenerateDiceSublists(dice, 5);
+                return (sublists.Any((sublist) => sublist.Select((die) => die.Value) == SMALL_STRAIGHT), "");
+            }
         }
 
-        private static bool LargeStraightPossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
+        private static (bool, string) LargeStraightPossibleAllDice(Dictionary<string, int> scoreDictionary, List<IDie> dice, bool possibleLockedDice)
         {
-            if (!CheckUpperSectionFinished(dictionary) || dictionary["largestraight"] != -1)
+            if (!CheckUpperSectionFinished(scoreDictionary) || scoreDictionary["largestraight"] != -1)
             {
-                return false;
+                return (false, "Value already present.");
             }
 
-            var sublists = GenerateDiceSublists(dice, 5);
-            return sublists.Any((sublist) => sublist.Select((die) => die.Value) == LARGE_STRAIGHT);
+            if (possibleLockedDice)
+            {
+                if (dice.Count != 5)
+                {
+                    return (false, "Large straight requires 5 dice.");
+                }
+
+                if (dice.Select((die) => die.Value) != LARGE_STRAIGHT)
+                {
+                    return (false, "Dice do not match a large straight.");
+                }
+                return (true, "");
+            }
+            else
+            {
+                var sublists = GenerateDiceSublists(dice, 5);
+                return (sublists.Any((sublist) => sublist.Select((die) => die.Value) == LARGE_STRAIGHT), "");
+            }
         }
 
         // TO BE FIXED
-        private static bool FullHousePossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
+        private static (bool, string) FullHousePossibleAllDice(Dictionary<string, int> scoreDictionary, List<IDie> dice, bool possibleLockedDice)
         {
-            var sublists2 = GenerateDiceSublists(dice, 2);
-            var sublists3 = GenerateDiceSublists(dice, 3);
-            return true;
+            if (!CheckUpperSectionFinished(scoreDictionary) || scoreDictionary["fullhouse"] != -1)
+            {
+                return (false, "Value already present.");
+            }
+            if (possibleLockedDice)
+            {
+                if (dice.Count != 5)
+                {
+                    return (false, "Full house straight requires 5 dice.");
+                }
+                if (
+                    (
+                        (AllDiceEqual(dice.GetRange(0, 2)) && AllDiceEqual(dice.GetRange(2, 3)))
+                        ||
+                        (AllDiceEqual(dice.GetRange(0, 3)) && AllDiceEqual(dice.GetRange(3, 2)))
+                    )
+                    &&
+                    dice[0].Value != dice[4].Value
+                    )
+                {
+                    return (true, "");
+                }
+                else
+                {
+                    return (false, "Dice do not match a full house.");
+                }
+            }
+            else
+            {
+                var sublists2 = GenerateDiceSublists(dice, 2);
+                var pairList2 = sublists2.Where(e => AllDiceEqual(e));
+                if (!pairList2.Any())
+                {
+                    return (false, "No 2 dice are equal");
+                }
+
+                var sublists3 = GenerateDiceSublists(dice, 3);
+                var pairList3 = sublists3.Where(e => AllDiceEqual(e));
+                if (!pairList3.Any())
+                {
+                    return (false, "No 3 dice are equal");
+                }
+
+                if (pairList3.Any(e => pairList2.Any(c => e[0].Value != c[0].Value)))
+                {
+                    return (true, "");
+                }
+                else
+                {
+                    return (false, "No full house");
+                }
+            }
         }
 
-        private static bool ChancePossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
+        private static (bool, string) ChancePossibleAllDice(Dictionary<string, int> scoreDictionary, List<IDie> dice, bool possibleLockedDice)
         {
-            return CheckUpperSectionFinished(dictionary) && dictionary["chance"] == -1;
+            return (CheckUpperSectionFinished(scoreDictionary) && scoreDictionary["chance"] == -1, "");
         }
 
-        private static bool YatzyPossibleAllDice(Dictionary<string, int> dictionary, List<IDie> dice)
+        private static (bool, string) YatzyPossibleAllDice(Dictionary<string, int> scoreDictionary, List<IDie> dice, bool possibleLockedDice)
         {
-            return CheckUpperSectionFinished(dictionary) && dictionary["yatzy"] == -1 && AllDiceEqual(dice);
+            if (possibleLockedDice)
+            {
+                if (dice.Count != 6)
+                {
+                    return (false, "Yatzy requires 6 dice.");
+                }
+
+                if (!AllDiceEqual(dice))
+                {
+                    return (false, "Dice do not match a yatzy.");
+                }
+                return (true, "");
+            }
+            else
+            {
+                return (CheckUpperSectionFinished(scoreDictionary) && scoreDictionary["yatzy"] == -1 && AllDiceEqual(dice), "");
+            }
         }
 
-        // Generates sublists of {dice} of length {sublistLength}.
+
         private static List<List<IDie>> GenerateDiceSublists(List<IDie> dice, int sublistLength)
         {
             var sublists = new List<List<IDie>>();
@@ -532,174 +684,6 @@ namespace ConsoleApp3
             return dice.All((die) => die.Value == dice.First().Value);
         }
 
-        // PossibleLockedDice functions
-
-        private static string PossibleLockedDice(List<IDie> dice, int value) =>
-            dice.Any(die => die.Value != value) ? "All dice must be " + _unitMap[value] : "";
-
-        private static string[] _unitMap = new[]
-        {
-            "Ones", "Twos", "Threes", "Fours", "Fives", "Sixes"
-        };
-
-        private static string OnesPossibleLockedDice(List<IDie> dice) => PossibleLockedDice(dice, 1);
-
-        private static string TwosPossibleLockedDice(List<IDie> dice) => PossibleLockedDice(dice, 2);
-
-        private static string ThreesPossibleLockedDice(List<IDie> dice) => PossibleLockedDice(dice, 3);
-
-        private static string FoursPossibleLockedDice(List<IDie> dice) => PossibleLockedDice(dice, 4);
-
-        private static string FivesPossibleLockedDice(List<IDie> dice) => PossibleLockedDice(dice, 5);
-
-        private static string SixesPossibleLockedDice(List<IDie> dice) => PossibleLockedDice(dice, 6);
-
-        private static string Pair1PossibleLockedDice(List<IDie> dice)
-        {
-            var error = "";
-
-            if (dice.Count != 2)
-            {
-                error = "1 pair requires 2 dice.";
-            }
-
-            if (!AllDiceEqual(dice))
-            {
-                error = "Dice must be equal.";
-            }
-
-            return error;
-        }
-
-        private static string Pair2PossibleLockedDice(List<IDie> dice)
-        {
-            var error = "";
-
-            if (dice.Count != 4)
-            {
-                error = "2 pair requires 4 dice.";
-            }
-
-            if (!AllDiceEqual(dice.GetRange(0, 2)) ||
-                !AllDiceEqual(dice.GetRange(2, 2)) ||
-                dice[0] == dice[3])
-            {
-                error = "Both pairs must be equal and not the same.";
-            }
-
-            return error;
-        }
-
-        private static string ThreeAlikePossibleLockedDice(List<IDie> dice)
-        {
-            var error = "";
-
-            if (dice.Count != 3)
-            {
-                error = "Three alike requires 3 dice.";
-            }
-
-            if (!AllDiceEqual(dice))
-            {
-                error = "Dice must be equal.";
-            }
-
-            return error;
-        }
-
-        private static string FourAlikePossibleLockedDice(List<IDie> dice)
-        {
-            var error = "";
-
-            if (dice.Count != 4)
-            {
-                error = "Four alike requires 4 dice.";
-            }
-
-            if (!AllDiceEqual(dice))
-            {
-                error = "Dice must be equal.";
-            }
-
-            return error;
-        }
-
-        private static string SmallStraightPossibleLockedDice(List<IDie> dice)
-        {
-            var error = "";
-
-            if (dice.Count != 5)
-            {
-                error = "Small straight requires 5 dice.";
-            }
-
-            if (dice.Select((die) => die.Value) != SMALL_STRAIGHT)
-            {
-                error = "Dice do not match a small straight.";
-            }
-
-            return error;
-        }
-
-        private static string LargeStraightPossibleLockedDice(List<IDie> dice)
-        {
-            var error = "";
-
-            if (dice.Count != 5)
-            {
-                error = "Large straight requires 5 dice.";
-            }
-
-            if (dice.Select((die) => die.Value) != LARGE_STRAIGHT)
-            {
-                error = "Dice do not match a large straight.";
-            }
-
-            return error;
-        }
-
-        private static string FullHousePossibleLockedDice(List<IDie> dice)
-        {
-            var error = "";
-
-            if (dice.Count != 5)
-            {
-                error = "Full house requires 5 dice.";
-            }
-
-            if ((!AllDiceEqual(dice.GetRange(0, 2)) || !AllDiceEqual(dice.GetRange(2, 3))) ||
-                (!AllDiceEqual(dice.GetRange(0, 3)) || !AllDiceEqual(dice.GetRange(3, 2))) ||
-                dice[0].Value == dice[4].Value)
-            {
-                error = "Dice do not match a full house.";
-            }
-
-            return error;
-        }
-
-        private static string ChancePossibleLockedDice(List<IDie> dice)
-        {
-            // NOTE What is this?
-            var error = "";
-
-            return error;
-        }
-
-        private static string YatzyPossibleLockedDice(List<IDie> dice)
-        {
-            var error = "";
-
-            if (dice.Count != 6)
-            {
-                error = "Yatzy requires 6 dice.";
-            }
-
-            if (!AllDiceEqual(dice))
-            {
-                error = "Dice do not match a yatzy.";
-            }
-            return error;
-        }
 
         // Score functions
 
