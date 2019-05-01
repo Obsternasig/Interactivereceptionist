@@ -1,12 +1,17 @@
 ﻿<Properties StartupConfiguration="{FDCD8791-776C-4AB1-9A29-C1028F81642A}|Default">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Interaktivreceptionist/Pages/About.cshtml.cs">
+    <Files>
+      <File FileName="Interaktivreceptionist/Pages/About.cshtml.cs" Line="15" Column="5" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Interaktivreceptionist" expanded="True">
             <Node name="Interaktivreceptionist" expanded="True">
               <Node name="Dependencies" expanded="True" />
-              <Node name="Pages" expanded="True" selected="True" />
+              <Node name="Pages" expanded="True">
+                <Node name="About.cshtml.cs" selected="True" />
+              </Node>
               <Node name="Properties" expanded="True" />
             </Node>
           </Node>
