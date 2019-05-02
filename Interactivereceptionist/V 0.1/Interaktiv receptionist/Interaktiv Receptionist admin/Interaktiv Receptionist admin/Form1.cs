@@ -35,8 +35,8 @@ namespace Interaktiv_Receptionist_admin
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection("server=localhost;user id=root;database=interaktivreceptionist");
-            SqlDataAdapter sda = new SqlDataAdapter("'Select Count(*) From adminlogin where admin_username ='" + textBox1.Text + "' and admin_password ='" + textBox2.Text + "'", con);
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\jonad\Documents\Adminlogin.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlDataAdapter sda = new SqlDataAdapter("Select cound(*) from Login where Username ='"+textBox1.Text +"'and Password ='" + textBox2.Text+"'",con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             if (dt.Rows[0][0].ToString() == "1")
@@ -47,8 +47,8 @@ namespace Interaktiv_Receptionist_admin
             }
             else
             {
-                MessageBox.Show("Incorrect Username or Password");
-            }
+                MessageBox.Show("Incorrect Username or Password", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }   
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
