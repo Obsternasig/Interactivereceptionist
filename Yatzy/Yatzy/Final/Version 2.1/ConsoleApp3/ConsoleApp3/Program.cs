@@ -67,12 +67,12 @@ namespace ConsoleApp3
             };
             var scoreDictionary = new Dictionary<string, int>
             {
-                { "ones", 1 },
-                { "twos", 1 },
-                { "threes", 1 },
-                { "fours", 1 },
-                { "fives", 1 },
-                { "sixes", 1 },
+                { "ones", -1 },
+                { "twos", -1 },
+                { "threes", -1 },
+                { "fours", -1 },
+                { "fives", -1 },
+                { "sixes", -1 },
                 { "bonus", -1 },
                 { "pair1", -1 },
                 { "pair2", -1 },
@@ -98,13 +98,13 @@ namespace ConsoleApp3
 
             rolls = rollsLineParsed;
 
-            Console.WriteLine("How many biased dice between 0 and 6 would you like?");
+            Console.WriteLine("How many biased dice between 1 and 6 would you like?");
             var biasedDiceLine = Console.ReadLine();
             var biasedDiceLineParsed = int.Parse(biasedDiceLine);
 
-            while (biasedDiceLineParsed < 0 || biasedDiceLineParsed > 6)
+            while (biasedDiceLineParsed < 1 || biasedDiceLineParsed > 6)
             {
-                Console.WriteLine("How many biased dice between 0 and 6 would you like?");
+                Console.WriteLine("How many biased dice between 1 and 6 would you like?");
                 biasedDiceLine = Console.ReadLine();
                 biasedDiceLineParsed = int.Parse(biasedDiceLine);
             }
@@ -264,18 +264,12 @@ namespace ConsoleApp3
 
             DrawScores(scoreDictionary, totalScore);
 
-            //
-
             Console.WriteLine("\nGame finished. Press any key to exit...");
 
             // Draw the score dictionary and prompt user with game finished
             Console.ReadKey();
-
-            while (!scoreDictionary.ContainsValue(-1))
-                throw new Exception("Game over");
         }
 
-        // Draw the scores based on values from scoredictionary.
         private static void DrawScores(Dictionary<string, int> dictionary, int totalScore)
         {
             foreach (var pair in dictionary)
@@ -445,7 +439,7 @@ namespace ConsoleApp3
                 return (sublists.Any((sublist) => AllDiceEqual(sublist)), "");
             }
         }
-   
+
         private static (bool, string) Pair2PossibleAllDice(Dictionary<string, int> scoreDictionary, List<IDie> dice, bool possibleLockedDice)
         {
             if (!CheckUpperSectionFinished(scoreDictionary) || scoreDictionary["pair2"] != -1)
@@ -466,7 +460,7 @@ namespace ConsoleApp3
                     !AllDiceEqual(dice.GetRange(2, 2)) ||
                     dice[0] == dice[3])
                 {
-                    return (false, "Both pairs must be equal and not the same.");
+                    error = "Both pairs must be equal and not the same.";
                 }
 
                 return (true, "");
@@ -557,8 +551,8 @@ namespace ConsoleApp3
             }
             else
             {
-                //var sublists = GenerateDiceSublists(dice, 5);
-                //return (sublists.Any((sublist) => sublist.Select((die) => die.Value) == SMALL_STRAIGHT);
+                var sublists = GenerateDiceSublists(dice, 5);
+                return (sublists.Any((sublist) => sublist.Select((die) => die.Value) == SMALL_STRAIGHT), "");
             }
         }
 
@@ -584,14 +578,12 @@ namespace ConsoleApp3
             }
             else
             {
-                //var sublists = GenerateDiceSublists(dice, 5);
-                //return (sublists.Any((sublist) => sublist.Select((die) => die.Value) == LARGE_STRAIGHT), "");
-
                 var sublists = GenerateDiceSublists(dice, 5);
-                return (sublists.Any((sublist) => !AllDiceEqual(sublist)), "");
+                return (sublists.Any((sublist) => sublist.Select((die) => die.Value) == LARGE_STRAIGHT), "");
             }
         }
 
+        // TO BE FIXED
         private static (bool, string) FullHousePossibleAllDice(Dictionary<string, int> scoreDictionary, List<IDie> dice, bool possibleLockedDice)
         {
             if (!CheckUpperSectionFinished(scoreDictionary) || scoreDictionary["fullhouse"] != -1)
