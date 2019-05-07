@@ -36,29 +36,29 @@ namespace Interaktiv_Receptionist_admin
         private void button1_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\jonad\Documents\Adminlogin.mdf;Integrated Security=True;Connect Timeout=30");
-            SqlDataAdapter sda = new SqlDataAdapter("Select cound(*) from Login where Username ='"+textBox1.Text +"'and Password ='" + textBox2.Text+"'",con);
+            SqlDataAdapter sda = new SqlDataAdapter("Select count(*) from Login where Username ='" + textBox1.Text + "'and Password ='" + textBox2.Text + "'", con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             if (dt.Rows[0][0].ToString() == "1")
             {
                 this.Hide();
-                Main ss = new Main();
-                ss.Show();
+                Main Adminpage = new Main();
+                Adminpage.Show();
             }
             else
             {
-                MessageBox.Show("Incorrect Username or Password", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }   
+                MessageBox.Show("Incorrect Username or Password","Alert", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+           
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-
+            
         }
     }
 }
