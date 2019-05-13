@@ -1,0 +1,49 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<head>
+    <title>Velkommen til</title>
+    <style>
+        .Sidebox {
+            background-color: #F3BB1B;
+            color: white;
+            display: block;
+            width: 9%;
+            height: 15%;
+            border-radius: 10%;
+            left: 1%; 
+            margin: 10px;
+            box-shadow: 7px 7px 5px grey;
+        }
+        .Sidetext{
+            font-family: oswald;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="position: fixed; left: 40%; top: 10%; font-family: oswald;">Hvad vil du gerne finde?</h1>
+    <hr style="position: fixed; border-top: 5px solid #F3BB1B; padding: 50%; margin: 7px; left: 0%; top: 30%;" />
+    <div class="Sidebox" style="position: fixed; top: 33%; padding: 14px;">
+        <p class="Sidetext">
+            Søg efter <br /> virksomhed
+        </p>
+    </div>
+    <div class="Sidebox" style="position: fixed; top: 52%; padding: 16px;">
+        <p class="Sidetext">
+            Søg efter <br /> lokale
+        </p>
+    </div>
+    <div class="Sidebox" style="position: fixed; top: 71%; padding: 30px; ">
+        <p class="Sidetext">
+            FAQ
+        </p>
+    </div>
+</body>
+
+
