@@ -35,11 +35,15 @@ namespace Interaktiv_Receptionist_admin
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\jonad\Documents\Adminlogin.mdf;Integrated Security=True;Connect Timeout=30");
+<<<<<<< HEAD
+            SqlConnection con = new SqlConnection("Server = tcp:4ndy.database.windows.net,1433; Initial Catalog = Novi8; Persist Security Info = False; User ID = { Anders }; Password ={ 40%60SUr }; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;");
+=======
+            SqlConnection con = new SqlConnection(@"Server = tcp:novi8.database.windows.net,1433; Initial Catalog = IRNovi8; Persist Security Info = False; User ID =Novi8admin; Password =password; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;");
+>>>>>>> 03e91f2059ac1f99840e7f7819b731c47a59e81d
             SqlDataAdapter sda = new SqlDataAdapter("Select count(*) from Login where Username ='" + textBox1.Text + "'and Password ='" + textBox2.Text + "'", con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
-            if (dt.Rows[0][0].ToString() == "1")
+            if (dt.Rows[0][0].ToString() == "1" || dt.Rows[0][0] != null)
             {
                 this.Hide();
                 Main Adminpage = new Main();
