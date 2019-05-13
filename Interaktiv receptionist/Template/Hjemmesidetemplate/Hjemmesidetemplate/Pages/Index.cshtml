@@ -7,43 +7,55 @@
 <head>
     <title>Velkommen til</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #E6E9ED;
+        }
         .Sidebox {
             background-color: #F3BB1B;
             color: white;
             display: block;
             width: 9%;
-            height: 15%;
+            height: 10%;
             border-radius: 10%;
             left: 1%; 
-            margin: 10px;
+            margin: 13px;
             box-shadow: 7px 7px 5px grey;
+            font-family: oswald;
+            font-size: 100%;
+            text-align: center;
         }
         .Sidetext{
             font-family: oswald;
-            font-size: 20px;
-            text-align: center;
+            font-size: 100%;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
         }
     </style>
 </head>
 
 <body>
-    <h1 style="position: fixed; left: 40%; top: 10%; font-family: oswald;">Hvad vil du gerne finde?</h1>
-    <hr style="position: fixed; border-top: 5px solid #F3BB1B; padding: 50%; margin: 7px; left: 0%; top: 30%;" />
-    <div class="Sidebox" style="position: fixed; top: 33%; padding: 14px;">
-        <p class="Sidetext">
-            Søg efter <br /> virksomhed
-        </p>
-    </div>
-    <div class="Sidebox" style="position: fixed; top: 52%; padding: 16px;">
-        <p class="Sidetext">
-            Søg efter <br /> lokale
-        </p>
-    </div>
-    <div class="Sidebox" style="position: fixed; top: 71%; padding: 30px; ">
-        <p class="Sidetext">
-            FAQ
-        </p>
-    </div>
+<h1 style="position: fixed; left: 40%; top: 10%; font-family: oswald;">Hvad vil du gerne finde?</h1>
+<hr style="position: fixed; border-top: 5px solid #F3BB1B; padding: 50%; left: 0%; top: 18%;" />
+<div class="Sidebox" style="position: fixed; top: 20%; padding: 14px;">
+    <p class="Sidetext">
+        Søg efter <br /> virksomhed
+    </p>
+</div>
+<div class="Sidebox" style="position: fixed; top: 33%; padding: 16px;">
+    <p class="Sidetext">
+        Søg efter <br /> lokale
+    </p>
+</div>
+    
+<div class="Sidebox" style="position: fixed; top: 46%; padding: 30px; ">
+    <p class="Sidetext">
+        FAQ
+    </p>
+</div>
 </body>
 
 
