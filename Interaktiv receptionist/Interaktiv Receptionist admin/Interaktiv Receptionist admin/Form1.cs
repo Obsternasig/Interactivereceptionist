@@ -35,7 +35,7 @@ namespace Interaktiv_Receptionist_admin
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\jonad\Documents\Adminlogin.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlConnection con = new SqlConnection(@"Server = tcp:novi8.database.windows.net,1433; Initial Catalog = IRNovi8; Persist Security Info = False; User ID =Novi8admin; Password =password; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;");
             SqlDataAdapter sda = new SqlDataAdapter("Select count(*) from Login where Username ='" + textBox1.Text + "'and Password ='" + textBox2.Text + "'", con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
