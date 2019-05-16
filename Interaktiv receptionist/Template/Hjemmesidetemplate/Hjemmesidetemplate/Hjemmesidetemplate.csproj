@@ -5,6 +5,13 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\Pictures\hus.png" />
+    <None Include="wwwroot\Pictures\højre.png.png" />
+    <None Include="wwwroot\Pictures\novi.png.png" />
+    <None Include="wwwroot\Pictures\venstre.png.png" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
