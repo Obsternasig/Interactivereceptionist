@@ -1,18 +1,11 @@
 ﻿@page
-@model Hjemmesidetemplate.Pages.faqModel
+@model FaqModel;
 @{
     ViewData["Title"] = "Ofte stillede spørgsmål";
 }
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="\css/core.css" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="css/core.css" />
 
-    <title>@ViewData["title"]</title>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-</head>
 
 <body>
     <!-- This div contains the site-->
@@ -43,18 +36,38 @@
         </div>
 
         <!-- This div contains the buttons on left hand side-->
-        <div class="row align-items-center h-100">
+        <div class="row">
             <button type="button" class="col-2 mb-5 Sidebox text-center " onclick="window.location.href = '/privacy'">Oversigtskort</button>
+            <div class="col-9 offset-1">
+                <div class="col1">
+                    <p class="faqspørgsmål">Hvad er telefonnummeret til Falck?</p>
+                </div>
+            </div>
         </div>
 
-        <div class="row align-items-center h-100">
+        <div class="row">
             <button type="button" class="col-2 mb-5 Sidebox text-center " onclick="window.location.href = '/privacy'">Parkering</button>
+            <div class="col-9 offset-1">
+                <div class="col2"></div>
+            </div>
         </div>
 
-        <div class="row align-items-center h-100">
-            <button type="button" class="col-2 mb-5 Sidebox text-center " onclick="window.location.href = '/privacy'">Ofte Stillede Spørgsmål</button>
+        <div class="row">
+            <button type="button" class="col-2 mb-5 Sidebox text-center " onclick="window.location.href = '/privacy'">Ofte stillede spørgsmål</button>
+            <div class="col-9 offset-1">
+                <div class="col3">
+                    <p>Hvad er telefonnummeret til Falck?</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-2 mb-5 "></div>
+            <div class="col-9 offset-1">
+                <div class="col4"></div>
+            </div>
         </div>
     </div>
+
+
 </body>
-
-

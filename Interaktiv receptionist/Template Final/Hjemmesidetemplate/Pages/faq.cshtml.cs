@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Hjemmesidetemplate.Pages
 {
-    public class faqModel : PageModel
+    public class FaqModel : PageModel
     {
         public void OnGet()
         {
