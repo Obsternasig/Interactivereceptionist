@@ -137,3 +137,34 @@ button:hover {
 .faqsvar {
     margin-left: 5%
 }
+
+.Parkering_skrift {
+    font-family: oswald;
+    font-size: 17px;
+    text-align: center;
+    margin-top: 7%
+}
+
+.Parkerings_input {
+    width: 80%;
+    text-align: center;
+    font-family: oswald;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #8d9092;
+    background-color: #8d9092;
+    height: 50px;
+    color: white;
+    margin-left: 33%;
+}
+
+.parkerings_knap {
+    box-shadow: 7px 7px 5px grey;
+    background-color: #f3bb1b;
+    border-radius: 20px;
+    width: 20vh;
+    display: block;
+    height: 8vh;
+    color: white;
+    font-family: oswald;
+}
