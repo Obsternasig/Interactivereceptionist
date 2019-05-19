@@ -168,3 +168,7 @@ button:hover {
     color: white;
     font-family: oswald;
 }
+.Oversigtskort {
+    width: 80%;
+    height: 50%
+}
