@@ -172,3 +172,54 @@ button:hover {
     width: 80%;
     height: 50%
 }
+.novi {
+    height: 70px;
+    width: 70px;
+    padding: 4%;
+}
+
+.noviperson {
+    height: 5vh;
+    width: 5vh;
+}
+
+.startknap {
+    background-color: #F3BB1B;
+    color: white;
+    display: block;
+    border-radius: 25%;
+    box-shadow: 7px 7px 5px grey;
+    font-family: oswald;
+    font-size: 300%;
+    padding: 5vh;
+    height: 100%;
+    align-content: center;
+}
+
+.SpaceBetween {
+    margin-top: 10vh;
+}
+
+.personboxnavn {
+    display: block;
+    height: 100%;
+    border-color: orange;
+}
+
+.personboxfind {
+    border-color: orange;
+    display: block;
+    border-style: solid;
+}
+
+.normaltext {
+    font-family: oswald;
+    font-size: 140%;
+    margin-right: 20px;
+}
+
+.hovedtext {
+    font-size: 400%;
+    font-family: oswald;
+    color: grey;
+}

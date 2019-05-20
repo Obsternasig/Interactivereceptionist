@@ -1,15 +1,13 @@
 ﻿@page
-@model FirmainfoModel
+@model PersoninfoModel
 @{
-    ViewData["Title"] = "Firmainfo";
+    ViewData["Title"] = "Person information";
 }
-
-<
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="\css/core.css" />
 
-    <title>Firmainformation</title>
+    <title>@ViewData["title"]</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +18,7 @@
     <!-- This div contains the site-->
     <div class="container-fluid h-100">
         <div>
-            <h1 class="col-8 offset-3 headline">Hvad vil du gerne vide?</h1>
+            <h1 class="col-8 offset-3 headline">@ViewData["Title"]</h1>
         </div>
 
         <!-- This div contains the icons and search field-->
@@ -46,34 +44,37 @@
 
         <!-- This div contains the buttons on left hand side-->
         <div class="row">
-            <button type="button" class="col-2 mb-5 Sidebox text-center " onclick="window.location.href = '/privacy'">Oversigtskort</button>
-            <div class="col-9 offset-1">
-                <div class="col1">
-                    <!-- fix style -->
-                    <img src="Pictures/bell.png" class="homeicon rounded float-right" style="margin-right: 10%"/>
-                </div>
+            <button type="button" class="col-2 mb-5 Sidebox text-center" onclick="window.location.href = '/privacy'">Oversigtskort</button>
+
+            <div class="col-5 offset-1">
+                <p class="normaltext">
+                    Lokale: Kantine<br />
+                    Nummer: 0.0.1<br />
+                </p>
+            </div>
+            <div class="col">
+                <img src="\Pictures/novi.png" width="75%" height="100%">
             </div>
         </div>
-
         <div class="row">
             <button type="button" class="col-2 mb-5 Sidebox text-center " onclick="window.location.href = '/privacy'">Parkering</button>
-            <div class="col-9 offset-1">
-                <div class="col2"></div>
-            </div>
         </div>
+        <div class="row align-items align-self-start-center h-100">
+            <button type="button" class="col-2 mb-5 Sidebox text-center " onclick="window.location.href = '/privacy'">FAQ</button>
 
-        <div class="row">
-            <button type="button" class="col-2 mb-5 Sidebox text-center " onclick="window.location.href = '/privacy'">Ofte stillede spørgsmål</button>
-            <div class="col-9 offset-1">
-                <div class="col3">
+            <!--This div contains info on how to find the person-->
+            <div class="col-8 offset-1 personboxfind">
+
+                <div class="col-7 offset-1 normaltext mb-5">
+                    <p style="font-size: 140%; color: grey;">Sådan finder du Kantinen</p>
+                    <br />
+                    1. Fortsæt ligeud <br />
+                    2. Kantinen vil være lige fremme
                 </div>
-            </div>
-        </div>
+                <div class="row mb-5 justify-content-center">
+                    <img class="personboxnavn" src="\Pictures/novi.png" width="675vh" height="130vh">
+                </div>
 
-        <div class="row">
-            <div class="col-2 mb-5 "></div>
-            <div class="col-9 offset-1">
-                <div class="col4"></div>
             </div>
         </div>
     </div>
