@@ -1,0 +1,144 @@
+﻿::placeholder { /* Firefox, Chrome, Opera */
+    color: white;       
+}
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #E6E9ED;
+}
+
+.Sidebox {
+    background-color: #F3BB1B;
+    color: white;
+    display: block;                
+    border-radius: 20%;
+    box-shadow: 7px 7px 5px grey;
+    font-family: oswald;
+    font-size: 100%;
+    padding: 3vh;    
+    height: 10vh;
+}
+
+.SideboxFirma {
+    background-color: grey;
+    color: white;
+    display: block;                
+    border-radius: 20%;
+    box-shadow: 7px 7px 5px grey;
+    font-family: oswald;
+    font-size: 100%;
+    padding: 3vh;
+    text-align: center;
+}
+
+.Sidetext {
+    font-family: oswald;
+    font-size: 100%;
+    text-align:center;                
+}
+
+.search_box {
+    font-family: oswald;
+    border-style: solid;
+    border-radius: 10px;
+    background-color: #8D9092;
+    border-color: #8D9092;
+    width: 100%;
+    height: 5%;
+    color: white;                
+}
+
+.søgeknap {
+    border-style: none;
+    background: none;
+    outline: none;
+    color: white;
+    width: 100%;
+    margin: 0% 0% 0% 2%;
+}
+button:hover {
+    color: white;
+    background-color: hotpink;
+}
+
+.headline{
+    font-family: oswald;
+    font-size: 380%;
+    color: #8d9092;
+}
+
+.homeicon {
+    width: 50px;
+    height: 50px;
+    margin: 9% 0% 0% 40%;
+}
+
+.backbutton {
+    width: 50px; 
+    height: 50px; 
+    margin: 9% 0% 1% 2%
+}
+
+.forwardbutton {
+    width: 50px; 
+    height: 50px; 
+    margin: 9% 0% 1% -45%
+}
+
+.orangeline {
+    border-top: 5px solid #F3BB1B; margin: 2% 0% 0% -1.2%;
+}
+
+.novi {
+    height: 70px;
+    width: 70px;
+    padding: 4%;
+}
+
+.noviperson {
+    height: 5vh;
+    width: 5vh;
+}
+
+.startknap {
+    background-color: #F3BB1B;
+    color: white;
+    display: block;
+    border-radius: 25%;
+    box-shadow: 7px 7px 5px grey;
+    font-family: oswald;
+    font-size: 300%;
+    padding: 5vh;
+    height: 100%;
+    align-content:center;
+}
+
+.SpaceBetween{
+    margin-top:10vh;
+}
+
+.personboxnavn{
+    display:block;
+    height:100%;
+    border-color: orange;
+}
+
+.personboxfind {
+    border-color: orange;
+    display: block;
+    border-style: solid;
+}
+
+.normaltext{
+    font-family: oswald;
+    font-size: 140%;
+    margin-right: 20px;
+}
+
+.hovedtext {
+    font-size: 400%;
+    font-family: oswald;
+    color: grey;
+}
