@@ -1,0 +1,56 @@
+﻿@page "{id:int}"
+@model NOVIRP.Pages.Firmaer.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>NOVI</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="NOVI.ID" />
+            <div class="form-group">
+                <label asp-for="NOVI.Navn" class="control-label"></label>
+                <input asp-for="NOVI.Navn" class="form-control" />
+                <span asp-validation-for="NOVI.Navn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NOVI.CVR" class="control-label"></label>
+                <input asp-for="NOVI.CVR" class="form-control" />
+                <span asp-validation-for="NOVI.CVR" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NOVI.Medarbejdere" class="control-label"></label>
+                <input asp-for="NOVI.Medarbejdere" class="form-control" />
+                <span asp-validation-for="NOVI.Medarbejdere" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NOVI.Lokale" class="control-label"></label>
+                <input asp-for="NOVI.Lokale" class="form-control" />
+                <span asp-validation-for="NOVI.Lokale" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NOVI.Findvej" class="control-label"></label>
+                <input asp-for="NOVI.Findvej" class="form-control" />
+                <span asp-validation-for="NOVI.Findvej" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
