@@ -1,6 +1,7 @@
 ﻿::placeholder { /* Firefox, Chrome, Opera */
     color: white;
 }
+    
 
 * {
     box-sizing: border-box;
@@ -10,13 +11,18 @@ body {
     background-color: #E6E9ED;
 }
 
+.novifont {
+    font-family: arial;
+}
+
+
+
 .Sidebox {
     background-color: #F3BB1B;
     color: white;
     display: block;
     border-radius: 20%;
     box-shadow: 7px 7px 5px grey;
-    font-family: oswald;
     font-size: 100%;
     padding: 3vh;
     height: 10vh;
@@ -28,20 +34,17 @@ body {
     display: block;
     border-radius: 20%;
     box-shadow: 7px 7px 5px grey;
-    font-family: oswald;
     font-size: 100%;
     padding: 3vh;
     text-align: center;
 }
 
 .Sidetext {
-    font-family: oswald;
     font-size: 100%;
     text-align: center;
 }
 
 .search_box {
-    font-family: oswald;
     border-style: solid;
     border-radius: 10px;
     background-color: #8D9092;
@@ -66,7 +69,6 @@ button:hover {
 }
 
 .headline {
-    font-family: oswald;
     font-size: 380%;
     color: #8d9092;
 }
@@ -130,7 +132,6 @@ button:hover {
 
 .faqspørgsmål {
     margin-left: 5%;
-    font-family: oswald;
     font-size: 17px;
 }
 
@@ -139,7 +140,6 @@ button:hover {
 }
 
 .Parkering_skrift {
-    font-family: oswald;
     font-size: 17px;
     text-align: center;
     margin-top: 7%
@@ -148,7 +148,6 @@ button:hover {
 .Parkerings_input {
     width: 80%;
     text-align: center;
-    font-family: oswald;
     border-style: solid;
     border-radius: 10px;
     border-color: #8d9092;
@@ -166,15 +165,14 @@ button:hover {
     display: block;
     height: 8vh;
     color: white;
-    font-family: oswald;
-}
+    }
 .Oversigtskort {
     width: 80%;
     height: 50%
 }
 .novi {
-    height: 70px;
-    width: 70px;
+    height: 10%;
+    width: 10%;
     padding: 4%;
 }
 
@@ -189,7 +187,6 @@ button:hover {
     display: block;
     border-radius: 25%;
     box-shadow: 7px 7px 5px grey;
-    font-family: oswald;
     font-size: 300%;
     padding: 5vh;
     height: 100%;
@@ -213,13 +210,11 @@ button:hover {
 }
 
 .normaltext {
-    font-family: oswald;
     font-size: 140%;
     margin-right: 20px;
 }
 
 .hovedtext {
     font-size: 400%;
-    font-family: oswald;
     color: grey;
 }
