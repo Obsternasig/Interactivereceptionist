@@ -1,0 +1,90 @@
+﻿@page "{id:int}"
+@model NOVIRP.Pages.Firmaer.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="\css/core.css" />
+    </head>
+
+<body>
+    <div>
+        <h1 class="col-8 offset-3 headline">Hvad vil du gerne finde?</h1>
+    </div>
+    <div class="row">
+        <div class="col-1 align-self-start">
+            <img src="\Pictures/hus.png" class="homeicon" ;>
+        </div>
+        <div class="col-1 align-self-center">
+            <img src="\Pictures/venstre.png" onclick="javascript:history.go(-1)" class="backbutton" />
+        </div>
+        <div class="col-1 align-self-center center">
+            <img src="\Pictures/højre.png" onclick="javascript:history.go(+1)" class="forwardbutton" />
+        </div>
+        <div class="col-8 mb-2 search_box align-self-center mt-2">
+            <input type="text" placeholder="Søg efter virksomheder eller lokaler.." class="søgeknap">
+        </div>
+    </div>
+
+    <div class="row">
+        <hr class="col-11 mb-5 orangeline" />
+    </div>
+
+    <div>
+        <button type="button" class="col-2 mb-5 Sidebox text-center" onclick="window.location.href = '/privacy'">Oversigtskort</button>
+        <button type="button" class="col-2 mb-5 Sidebox text-center" onclick="window.location.href = '/privacy'">Oversigtskort</button>
+        <button type="button" class="col-2 mb-5 Sidebox text-center" onclick="window.location.href = '/privacy'">Oversigtskort</button>
+        <div class="container col-11">
+            <div class="personboxfind offset-2 mb-5" style="margin-top: -50vh">
+                <dl class="row offset-1 ">
+                    <dt class="col-sm-2" style="margin-top: 2vh">
+                        @Html.DisplayNameFor(model => model.NOVI.Navn)
+                    </dt>
+                    <dd class="col-sm-10" style="margin-top: 2vh">
+                        @Html.DisplayFor(model => model.NOVI.Navn)
+                    </dd>
+                    <dt class="col-sm-12 offset-7" style="margin-top:-4vh">
+                        <img class="col-4" src="\Pictures/novi.png" />
+                    </dt>
+                    <dt class="col-sm-2" style="margin-top:-6vh">
+                        @Html.DisplayNameFor(model => model.NOVI.CVR)
+                    </dt>
+                    <dd class="col-sm-10" style="margin-top:-6vh">
+                        @Html.DisplayFor(model => model.NOVI.CVR)
+                    </dd>
+                    <dt class="col-sm-2" style="margin-top:-4vh">
+                        @Html.DisplayNameFor(model => model.NOVI.Medarbejdere)
+                    </dt>
+                    <dd class="col-sm-10" style="margin-top:-4vh">
+                        @Html.DisplayFor(model => model.NOVI.Medarbejdere)
+                    </dd>
+                    <dt class="col-sm-2" style="margin-top:-2vh">
+                        @Html.DisplayNameFor(model => model.NOVI.Lokale)
+                    </dt>
+                    <dd class="col-sm-10" style="margin-top:-2vh">
+                        @Html.DisplayFor(model => model.NOVI.Lokale)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="container col-11">
+            <div class="personboxfind offset-2">
+                <dl class="row offset-2 mb-5 mt-4">
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.NOVI.Findvej)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.NOVI.Findvej)
+                    </dd>
+                </dl>
+                <img class="row offset-1 mb-4" src="\Pictures/oversigt.jpg" width="70%" height="90%" />
+            </div>
+        </div>
+    </div>
+    <div>
+        <a asp-page="./Edit" asp-route-id="@Model.NOVI.ID">Edit</a> |
+        <a asp-page="./Index">Back to List</a>
+    </div>
+</body>
