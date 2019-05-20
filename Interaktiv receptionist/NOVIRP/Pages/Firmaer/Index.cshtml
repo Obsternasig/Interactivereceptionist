@@ -1,0 +1,72 @@
+﻿@page "{searchString?}"
+@model NOVIRP.Pages.Firmaer.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<form>
+    <p>
+        <select asp-for="NOVICVR" asp-items="Model.CVR">
+        <option value="">All</option>
+        </select>
+        Navn: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NOVI[0].Navn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NOVI[0].CVR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NOVI[0].Medarbejdere)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NOVI[0].Lokale)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NOVI[0].Findvej)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.NOVI)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Navn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CVR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medarbejdere)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lokale)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Findvej)
+            </td>
+
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
