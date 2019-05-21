@@ -17,69 +17,81 @@
 
 <body>
     <!-- This div contains the site-->
-    <div class="container-fluid h-100">
-        <div>
-            <h1 class="col-8 offset-3 headline">@ViewData["Title"]</h1>
-        </div>
+<div class="container-fluid h-100">
+    <div>
+        <h1 class="col-8 offset-3 headline">@ViewData["Title"]</h1>
+    </div>
 
-        <!-- This div contains the icons and search field-->
-        <div class="row">
-            <div class="col-1 align-self-start">
-                <img src="\Pictures/hus.png" class="homeicon" ;>
-            </div>
-            <div class="col-1 align-self-center">
-                <img src="\Pictures/venstre.png" onclick="javascript:history.go(-1)" class="backbutton" />
-            </div>
-            <div class="col-1 align-self-center center">
-                <img src="\Pictures/højre.png" onclick="javascript:history.go(+1)" class="forwardbutton" />
-            </div>
-            <div class="col-8 mb-2 search_box align-self-center mt-2">
-                <input type="text" placeholder="Søg efter virksomheder eller lokaler.." class="søgeknap">
-            </div>
+    <!-- This div contains the icons and search field-->
+    <div class="row">
+        <div class="col-1 align-self-start">
+            <img src="\Pictures/hus.png" class="homeicon" ;>
         </div>
-
-        <!-- This div contains the orange through and through line-->
-        <!-- This div contains the orange through and through line-->
-        <div class="row">
-            <hr class="col-11 mb-4 orangeline" />
+        <div class="col-1 align-self-center">
+            <img src="\Pictures/venstre.png" onclick="javascript:history.go(-1)" class="backbutton" />
         </div>
-
-        <!-- This div contains the buttons on left hand side-->
-        <div class="row">
-            <button type="button" class="col-2 mb-5 Sidebox text-center " onclick="window.location.href = '/privacy'">Oversigtskort</button>
-            <div class="col-9 offset-1">
-                <div class="col1">
-                    <p class="Parkering_skrift">Hvis du ønsker at parkere hos Novi 8, så indtast venligst din nummerplade, for at begynde:</p>
-                </div>
-            </div>
+        <div class="col-1 align-self-center center">
+            <img src="\Pictures/højre.png" onclick="javascript:history.go(+1)" class="forwardbutton" />
         </div>
-
-        <div class="row">
-            <button type="button" class="col-2 mb-5 Sidebox text-center " onclick="window.location.href = '/privacy'">Parkering</button>
-            <div class="col-9 offset-1">
-                <div class="col2">
-                    <div class="col-8 mb-2 align-self-center">
-                        <input type="text" placeholder="XN XX XXX" class="Parkerings_input">
-                    </div>
-                </div>
-            </div>
+        <div class="col-8 mb-2 search_box align-self-center mt-2">
+            <input type="text" placeholder="Søg efter virksomheder eller lokaler.." class="søgeknap">
         </div>
+    </div>
 
-        <div class="row">
-            <button type="button" class="col-2 mb-5 Sidebox text-center " onclick="window.location.href = '/privacy'">Ofte stillede spørgsmål</button>
-            <div class="col-9 offset-1">
-                <div class="col3">
-                    <button type="button" class="col-4 mb-5 offset-4 text-center parkerings_knap " onclick="window.location.href = '/privacy'">Registrer</button>
-                </div>
-            </div>
-        </div>
+    <!-- This div contains the orange through and through line-->
+    <!-- This div contains the orange through and through line-->
+    <div class="row">
+        <hr class="col-11 mb-4 orangeline" />
+    </div>
 
-        <div class="row">
-            <div class="col-2 mb-5 "></div>
-            <div class="col-9 offset-1">
-                <div class="col4"></div>
+    <!-- This div contains the buttons on left hand side-->
+    <div class="row">
+        <button type="button" class="col-2 mb-5 sidebox text-center novifont " onclick="window.location.href = '/privacy'">Oversigtskort</button>
+        <div class="col-9 offset-1">
+            <div class="col1">
+                <p class="Parkering_skrift">Hvis du ønsker at parkere hos Novi 8, så indtast venligst din nummerplade, for at begynde:</p>
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <button type="button" class="col-2 mb-5 sidebox text-center novifont " onclick="window.location.href = '/privacy'">Parkering</button>
+        <div class="col-9 offset-1">
+            <div class="col2">
+                <div class="col-8 mb-2 align-self-center">
+                    <input type="text" placeholder="XN XX XXX" class="Parkerings_input">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <button type="button" class="col-2 mb-5 sidebox text-center novifont" onclick="window.location.href = '/privacy'">Ofte stillede spørgsmål</button>
+        <div class="col-9 offset-1">
+            <div class="col3">
+                <button type="button" class="col-4 mb-5 offset-4 text-center parkerings_knap novifont" onclick="myFunction()">Registrer</button>
+                <p id="demo"></p>
+
+                <script>
+                    function myFunction() {
+                        var txt;
+                        if (confirm("Din parkering er nu registreret. Din 5 timers parkering er nu påbegyndt")) {
+                            txt = "You pressed OK!";
+                        } else {
+                            txt = "You pressed Cancel!";
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2 mb-5 "></div>
+        <div class="col-9 offset-1">
+            <div class="col4"></div>
+        </div>
+    </div>
+</div>
 </body>
 
