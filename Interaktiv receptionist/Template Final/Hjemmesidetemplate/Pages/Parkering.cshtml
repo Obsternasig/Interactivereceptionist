@@ -4,22 +4,23 @@
     ViewData["Title"] = "Parkering";
 }
 
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="\css/core.css" />
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="\css/core.css" />
+        <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 
-    <title>Oversigtskort</title>
+        <title>Oversigtskort</title>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-</head>
+    </head>
 
 <body>
     <!-- This div contains the site-->
     <div class="container-fluid h-100">
         <div>
-            <h1 class="col-8 offset-3 headline">@ViewData["Title"]</h1>
+            <h1 class="col-8 offset-3 headline novifont">@ViewData["Title"]</h1>
         </div>
 
         <!-- This div contains the icons and search field-->
@@ -34,11 +35,10 @@
                 <img src="\Pictures/højre.png" onclick="javascript:history.go(+1)" class="forwardbutton" />
             </div>
             <div class="col-8 mb-2 search_box align-self-center mt-2">
-                <input type="text" placeholder="Søg efter virksomheder eller lokaler.." class="søgeknap">
+                <input type="text" placeholder="Søg efter virksomhed eller lokale.." class="searchbar novifont">
             </div>
         </div>
 
-        <!-- This div contains the orange through and through line-->
         <!-- This div contains the orange through and through line-->
         <div class="row">
             <hr class="col-11 mb-4 orangeline" />
@@ -46,30 +46,30 @@
 
         <!-- This div contains the buttons on left hand side-->
         <div class="row">
-            <button type="button" class="col-2 mb-5 Sidebox text-center " onclick="window.location.href = '/privacy'">Oversigtskort</button>
+            <button type="button" class="col-2 mb-5 sidebox text-center novifont" onclick="window.location.href = '/privacy'">Oversigtskort</button>
             <div class="col-9 offset-1">
                 <div class="col1">
-                    <p class="Parkering_skrift">Hvis du ønsker at parkere hos Novi 8, så indtast venligst din nummerplade, for at begynde:</p>
+                    <p class="parkingfont novifont">Hvis du ønsker at parkere hos Novi 8, så indtast venligst din nummerplade, for at begynde:</p>
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <button type="button" class="col-2 mb-5 Sidebox text-center " onclick="window.location.href = '/privacy'">Parkering</button>
+            <button type="button" class="col-2 mb-5 sidebox text-center novifont" onclick="window.location.href = '/privacy'">Parkering</button>
             <div class="col-9 offset-1">
                 <div class="col2">
                     <div class="col-8 mb-2 align-self-center">
-                        <input type="text" placeholder="XN XX XXX" class="Parkerings_input">
+                        <input type="text" placeholder="XN XX XXX" class="parkinginput">
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <button type="button" class="col-2 mb-5 Sidebox text-center " onclick="window.location.href = '/privacy'">Ofte stillede spørgsmål</button>
+            <button type="button" class="col-2 mb-5 sidebox text-center novifont" onclick="window.location.href = '/privacy'">Ofte stillede spørgsmål</button>
             <div class="col-9 offset-1">
                 <div class="col3">
-                    <button type="button" class="col-4 mb-5 offset-4 text-center parkerings_knap " onclick="window.location.href = '/privacy'">Registrer</button>
+                    <button type="button" class="col-4 mb-5 offset-4 text-center parkingbutton novifont" onclick="window.location.href = '/privacy'">Registrer</button>
                 </div>
             </div>
         </div>

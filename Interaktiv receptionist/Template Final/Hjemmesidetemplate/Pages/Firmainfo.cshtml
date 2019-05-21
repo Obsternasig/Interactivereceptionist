@@ -1,7 +1,7 @@
 ﻿@page
 @model PersoninfoModel
 @{
-    ViewData["Title"] = "Person information";
+    ViewData["Title"] = "Firma information";
 }
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -53,8 +53,8 @@
                     Nummer: 0.0.1<br />
                 </p>
             </div>
-            <div class="col logo1">
-                <img src="\Pictures/novi.png" width="60%" height="40%">
+            <div class="col">
+                <img class="logo1" src="\Pictures/novi.png" />
             </div>
         </div>
         <div class="row">
@@ -63,17 +63,17 @@
         <div class="row align-items align-self-start-center h-100">
             <button type="button" class="col-2 mb-5 sidebox text-center novifont" onclick="window.location.href = '/privacy'">FAQ</button>
 
-            <!--This div contains info on how to find the person-->
-            <div class="col-8 offset-1 findpersonbox">
+            <!--This div contains info on how to find the location-->
+            <div class="col-8 offset-1 findsomethingbox">
 
-                <div class="col-7 offset-1 mb-5 novifont">
-                    <p>Sådan finder du Kantinen</p>
-                    <br />
-                    1. Fortsæt ligeud <br />
+                <div class="col-7 mb-5 novifont">
+                    <p class="findsomethingboxheader">Sådan finder du kantinen:</p>
+                    1. Fortsæt ligeud
+                    <br>
                     2. Kantinen vil være lige fremme
                 </div>
                 <div class="row mb-5 justify-content-center">
-                    <img class="personboxnavn" src="\Pictures/novi.png" width="15%">
+                    <img class="logo2" src="\Pictures/novi.png" />
                 </div>
 
             </div>

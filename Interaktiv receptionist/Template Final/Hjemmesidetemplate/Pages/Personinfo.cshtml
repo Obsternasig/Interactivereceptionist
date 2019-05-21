@@ -3,22 +3,23 @@
 @{
     ViewData["Title"] = "Person information";
 }
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="\css/core.css" />
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="\css/core.css" />
+        <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 
-    <title>@ViewData["title"]</title>
+        <title>@ViewData["title"]</title>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-</head>
+    </head>
 
 <body>
     <!-- This div contains the site-->
     <div class="container-fluid h-100">
         <div>
-            <h1 class="col-8 offset-3 headline">@ViewData["Title"]</h1>
+            <h1 class="col-8 offset-3 headline novifont">@ViewData["Title"]</h1>
         </div>
 
         <!-- This div contains the icons and search field-->
@@ -33,7 +34,7 @@
                 <img src="\Pictures/højre.png" onclick="javascript:history.go(+1)" class="forwardbutton" />
             </div>
             <div class="col-8 mb-2 search_box align-self-center mt-2">
-                <input type="text" placeholder="Søg efter virksomheder eller lokaler.." class="søgeknap">
+                <input type="text" placeholder="Søg efter virksomhed eller lokale.." class="searchbar novifont">
             </div>
         </div>
 
@@ -44,9 +45,9 @@
 
         <!-- This div contains the buttons on left hand side-->
         <div class="row">
-            <button type="button" class="col-2 mb-5 Sidebox text-center" onclick="window.location.href = '/privacy'">Oversigtskort</button>
+            <button type="button" class="col-2 mb-5 sidebox text-center novifont" onclick="window.location.href = '/privacy'">Oversigtskort</button>
 
-            <div class="col-5 offset-1">
+            <div class="col-5 offset-1 novifont">
                 <p class="normaltext">
                     Navn: Jen Jenssen<br />
                     Lokale: 0.1.95<br />
@@ -54,27 +55,27 @@
                 </p>
             </div>
             <div class="col">
-                <img src="\Pictures/novi.png" width="75%" height="100%">
+                <img src="\Pictures/novi.png" class="logo1">
             </div>
         </div>
         <div class="row">
-            <button type="button" class="col-2 mb-5 Sidebox text-center " onclick="window.location.href = '/privacy'">Parkering</button>
+            <button type="button" class="col-2 mb-5 sidebox text-center novifont" onclick="window.location.href = '/privacy'">Parkering</button>
         </div>
 
         <div class="row align-items align-self-start-center h-100">
-            <button type="button" class="col-2 mb-5 Sidebox text-center " onclick="window.location.href = '/privacy'">FAQ</button>
+            <button type="button" class="col-2 mb-5 sidebox text-center novifont" onclick="window.location.href = '/privacy'">FAQ</button>
 
             <!--This div contains info on how to find the person-->
-            <div class="col-8 offset-1 personboxfind">
+            <div class="col-8 offset-1 findsomethingbox novifont">
 
-                <div class="col-7 offset-1 normaltext mb-5">
-                    <p class="normaltext">Sådan finder du Jens Jensen</p>
-                    <br />
-                    1. Gå til venstre ved kantinen <br />
+                <div class="col-8 mb-5">
+                    <p class="findsomethingboxheader">Sådan finder du Jens Jensen</p>
+                    1. Gå til venstre ved kantinen
+                    <br>
                     2. Følg trappen op til anden sal
                 </div>
                 <div class="row mb-5 justify-content-center">
-                    <img class="personboxnavn" src="\Pictures/novi.png" width="675vh" height="130vh">
+                    <img class="logo2" src="\Pictures/novi.png">
                 </div>
 
             </div>
