@@ -2,39 +2,44 @@
 @model Hjemmesidetemplate.Pages.IndexModel
 @{
 }
-    <head>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="~/css/core.css" />
-        <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-        <title>Startside</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/core.css" />
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <title>Startside</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 
 <body>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-3 mb-5 novi" style="margin-top: 10%; margin-left: -10%" >
-            <img src="\Pictures/novi.png" height="200%" width="200%"/>
+    <div class="container">
+        <div class="row float-left">
+            <div class="col novi" style="margin-top: 30%; margin-left: -5%">
+                <img src="\Pictures/novi.png" />
+            </div>
         </div>
-    </div>
-    
-    <div class="row">
-        <div class="col-7 offset-3 mb-5 SpaceBetween">
-            <p class="headline novifont">
-                Velkommen til Novi 8
-            </p>
-        </div>
-    </div>
 
-    <div class="col-9 offset-2 mb-5">
-        <p class="headline novifont">
-            Mangler du hjælp til noget?
-        </p>
+        <div class="row">
+            <div class="col">
+                <p class="headline novifont" style="margin-top: 40%; text-align: center">
+                    Velkommen til Novi 8
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p class="headline novifont" style="text-align: center">
+                    Mangler du hjælp til noget?
+                </p>
+            </div>
+        </div>
+
+        <div class="row align-items-center">
+            <button type="button" class="col-4 offset-4 startknap novifont"
+                    onclick="window.location.href='/personinfo'">
+                Tryk her
+            </button>
+        </div>
     </div>
-    <div class="row align-items-center h-100">
-        <button type="button" class="col-4 offset-4 startknap mb-5 novifont" 
-                onclick="window.location.href='/personinfo'">Tryk her</button>
-    </div>
-</div>
 </body>
