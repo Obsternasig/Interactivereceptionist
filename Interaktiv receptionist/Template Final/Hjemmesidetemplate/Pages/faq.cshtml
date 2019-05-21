@@ -5,13 +5,14 @@
 }
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="css/core.css" />
+<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 
 
 <body>
     <!-- This div contains the site-->
     <div class="container-fluid h-100">
         <div>
-            <h1 class="col-8 offset-3 headline">@ViewData["Title"]</h1>
+            <h1 class="col-8 offset-3 headline novifont">@ViewData["Title"]</h1>
         </div>
 
         <!-- This div contains the icons and search field-->
@@ -26,7 +27,7 @@
                 <img src="\Pictures/højre.png" onclick="javascript:history.go(+1)" class="forwardbutton" />
             </div>
             <div class="col-8 mb-2 search_box align-self-center mt-2">
-                <input type="text" placeholder="Søg efter virksomheder eller lokaler.." class="søgeknap">
+                <input type="text" placeholder="Søg efter virksomhed eller lokale.." class="searchbar novifont">
             </div>
         </div>
 
@@ -37,26 +38,26 @@
 
         <!-- This div contains the buttons on left hand side-->
         <div class="row">
-            <button type="button" class="col-2 mb-5 Sidebox text-center " onclick="window.location.href = '/privacy'">Oversigtskort</button>
+            <button type="button" class="col-2 mb-5 sidebox text-center novifont" onclick="window.location.href = '/privacy'">Oversigtskort</button>
             <div class="col-9 offset-1">
                 <div class="col1">
-                    <p class="faqspørgsmål">Hvad er telefonnummeret til Falck?</p>
+                    <p class="faqquestions novifont">Hvad er telefonnummeret til Falck?</p>
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <button type="button" class="col-2 mb-5 Sidebox text-center " onclick="window.location.href = '/privacy'">Parkering</button>
+            <button type="button" class="col-2 mb-5 sidebox text-center novifont" onclick="window.location.href = '/privacy'">Parkering</button>
             <div class="col-9 offset-1">
                 <div class="col2"></div>
             </div>
         </div>
 
         <div class="row">
-            <button type="button" class="col-2 mb-5 Sidebox text-center " onclick="window.location.href = '/privacy'">Ofte stillede spørgsmål</button>
+            <button type="button" class="col-2 mb-5 sidebox text-center novifont" onclick="window.location.href = '/privacy'">Ofte stillede spørgsmål</button>
             <div class="col-9 offset-1">
-                <div class="col3">
-                    <p>Hvad er telefonnummeret til Falck?</p>
+                <div class="col3 novifont">
+                  
                 </div>
             </div>
         </div>
