@@ -16,57 +16,68 @@ body {
 }
 
 
+.indextext {
+    margin-top: 15%;
+    margin-left: 3%;
+}
+
+.novigreen {
+    background-color: rgb(162,215,100);
+    color: white;
+}
+
+.novilgrey {
+    background-color: rgb(141,144,146);
+    color: white;
+}
+
+.novidgrey {
+    background-color: rgb(102,109,119);
+    border-color: rgb(102,109,119);
+    color: white;
+}
+
+.noviyellow {
+    background-color: rgb(243,180,27);
+    color: white;
+}
 
 .sidebox {
-    background-color: #F3BB1B;
-    color: white;
     display: block;
     border-radius: 15%;
     box-shadow: 7px 7px 5px grey;
     font-size: 100%;
     padding: 3vh;
     height: 95px;
+    border-style: none;
 }
 
 .companybox {
-    background-color: grey;
-    color: white;
     display: block;
     border-radius: 20%;
     box-shadow: 7px 7px 5px grey;
     font-size: 100%;
     padding: 3vh;
     text-align: center;
+    border-style: none;
 }
 
-.Sidetext {
-    font-size: 100%;
-    text-align: center;
-}
 
-.search_box {
+.searchbar {
+    background: none;
+    outline: none;
+    width: 100%;
+    margin: 0% 0% 0% 0.5%;
     border-style: solid;
     border-radius: 10px;
     background-color: #8D9092;
     border-color: #8D9092;
-    width: 100%;
-    height: 5%;
     color: white;
-}
-
-.searchbar {
-    border-style: none;
-    background: none;
-    outline: none;
-    color: white;
-    width: 100%;
-    margin: 0% 0% 0% 0.5%;
-    
 }
 
 button:hover {
     color: white;
-    background-color: grey;
+    background-color: rgb(141,144,146);
 }
 
 .headline {
@@ -137,10 +148,6 @@ button:hover {
     font-size: 120%;
 }
 
-.faqsvar {
-    margin-left: 5%
-}
-
 .parkingfont {
     font-size: 17px;
     text-align: center;
@@ -151,29 +158,20 @@ button:hover {
     width: 80%;
     text-align: center;
     border-style: solid;
-    border-radius: 5%;
-    border-color: #8d9092;
-    background-color: #8d9092;
-    color: white;
     margin-left: 33%;
     padding: 1% 1% 1% 1%;
 }
 
 .parkingbutton {
     box-shadow: 7px 7px 5px grey;
-    background-color: #f3bb1b;
-    border-radius: 30%;
+    border-radius: 15%;
     width: 18%;
     height: 35%;
-    color: white;
     margin-left: 39%;
     margin-top: -10%;
+    border-style: none;
     }
 
-.Oversigtskort {
-    width: 80%;
-    height: 50%
-}
 .novi {
     height: 10%;
     width: 10%;
@@ -185,9 +183,7 @@ button:hover {
     width: 5vh;
 }
 
-.startknap {
-    background-color: #F3BB1B;
-    color: white;
+.startbutton {
     display: block;
     border-radius: 25%;
     box-shadow: 7px 7px 5px grey;
@@ -195,10 +191,8 @@ button:hover {
     padding: 5vh;
     height: 100%;
     align-content: center;
-}
+    border-style: none;
 
-.SpaceBetween {
-    margin-top: 10vh;
 }
 
 .findsomethingbox {
@@ -219,11 +213,6 @@ button:hover {
     margin-right: 20px;
 }
 
-.hovedtext {
-    font-size: 400%;
-    color: grey;
-}
-
 .logo1 {
     margin-top: 8%;
     padding-left: 40%;
@@ -237,6 +226,12 @@ button:hover {
     border-color: orange;
     width: 15%;
     margin-top: 5%;
+}
+
+.logo3 {
+    margin-top: 5%;
+    margin-left: -3%;
+    position: fixed;
 }
 
 .map {
