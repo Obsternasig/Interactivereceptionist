@@ -13,6 +13,7 @@ body {
 
 .novifont {
     font-family: Oswald;
+    color: #8d9092;
 }
 
 
@@ -192,6 +193,7 @@ button:hover {
     height: 100%;
     align-content: center;
     border-style: none;
+    
 
 }
 
@@ -237,4 +239,8 @@ button:hover {
 .map {
     margin-top: 15%;
     margin-left: 38%;
+}
+
+.top-buffer {
+    margin-top: 2vh;
 }
