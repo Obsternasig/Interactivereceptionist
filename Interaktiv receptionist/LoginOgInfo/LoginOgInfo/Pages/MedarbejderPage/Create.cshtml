@@ -1,0 +1,54 @@
+﻿@page
+@model LoginOgInfo.Pages.MedarbejderPage.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>MedarbejderInfo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MedarbejderInfo.Navn" class="control-label"></label>
+                <input asp-for="MedarbejderInfo.Navn" class="form-control" />
+                <span asp-validation-for="MedarbejderInfo.Navn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MedarbejderInfo.Virksomhed" class="control-label"></label>
+                <input asp-for="MedarbejderInfo.Virksomhed" class="form-control" />
+                <span asp-validation-for="MedarbejderInfo.Virksomhed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MedarbejderInfo.Lokale" class="control-label"></label>
+                <input asp-for="MedarbejderInfo.Lokale" class="form-control" />
+                <span asp-validation-for="MedarbejderInfo.Lokale" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MedarbejderInfo.Email" class="control-label"></label>
+                <input asp-for="MedarbejderInfo.Email" class="form-control" />
+                <span asp-validation-for="MedarbejderInfo.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MedarbejderInfo.Stilling" class="control-label"></label>
+                <input asp-for="MedarbejderInfo.Stilling" class="form-control" />
+                <span asp-validation-for="MedarbejderInfo.Stilling" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
