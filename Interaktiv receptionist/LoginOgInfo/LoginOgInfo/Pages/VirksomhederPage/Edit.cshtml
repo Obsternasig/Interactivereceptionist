@@ -40,6 +40,11 @@
                 <span asp-validation-for="VirksomhederInfo.Findvej" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="VirksomhederInfo.ID" class="control-label"></label>
+                <input asp-for="VirksomhederInfo.ID" class="form-control" />
+                <span asp-validation-for="VirksomhederInfo.ID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>

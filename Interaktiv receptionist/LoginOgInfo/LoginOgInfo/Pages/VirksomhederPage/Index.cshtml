@@ -28,6 +28,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.VirksomhederInfo[0].Findvej)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VirksomhederInfo[0].ID)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -48,6 +51,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Findvej)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
