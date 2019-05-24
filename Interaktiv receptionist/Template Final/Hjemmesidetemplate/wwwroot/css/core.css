@@ -176,8 +176,8 @@ button:hover {
     border-color: orange;
     display: block;
     border-style: solid;
-    margin-top: -150px;
     font-size: 120%;
+    padding-bottom: 100%;
 }
 
 .findsomethingboxheader {
