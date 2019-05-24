@@ -18,17 +18,35 @@ namespace LoginOgInfo.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("LoginOgInfo.BrugerParkering.ParkeringsInfo", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Nummerplade");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("ParkeringsInfo");
+                });
+
             modelBuilder.Entity("LoginOgInfo.Lokaler.LokalerInfo", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Lejer");
+                    b.Property<string>("Lejer")
+                        .IsRequired()
+                        .HasMaxLength(60);
 
-                    b.Property<string>("Lokalenummer");
+                    b.Property<string>("Lokalenummer")
+                        .IsRequired()
+                        .HasMaxLength(6);
 
-                    b.Property<string>("Medarbejderantal");
+                    b.Property<string>("Medarbejderantal")
+                        .IsRequired();
 
                     b.HasKey("ID");
 
@@ -43,13 +61,21 @@ namespace LoginOgInfo.Migrations
 
                     b.Property<string>("Email");
 
-                    b.Property<string>("Lokale");
+                    b.Property<string>("Lokale")
+                        .IsRequired()
+                        .HasMaxLength(6);
 
-                    b.Property<string>("Navn");
+                    b.Property<string>("Navn")
+                        .IsRequired()
+                        .HasMaxLength(50);
 
-                    b.Property<string>("Stilling");
+                    b.Property<string>("Stilling")
+                        .IsRequired()
+                        .HasMaxLength(30);
 
-                    b.Property<string>("Virksomhed");
+                    b.Property<string>("Virksomhed")
+                        .IsRequired()
+                        .HasMaxLength(60);
 
                     b.HasKey("ID");
 
@@ -62,15 +88,25 @@ namespace LoginOgInfo.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CVR");
+                    b.Property<string>("CVR")
+                        .IsRequired()
+                        .HasMaxLength(8);
 
-                    b.Property<string>("Findvej");
+                    b.Property<string>("Findvej")
+                        .IsRequired()
+                        .HasMaxLength(1000);
 
-                    b.Property<string>("Lokale");
+                    b.Property<string>("Lokale")
+                        .IsRequired()
+                        .HasMaxLength(6);
 
-                    b.Property<string>("Medarbejdere");
+                    b.Property<string>("Medarbejdere")
+                        .IsRequired()
+                        .HasMaxLength(999);
 
-                    b.Property<string>("Navn");
+                    b.Property<string>("Navn")
+                        .IsRequired()
+                        .HasMaxLength(30);
 
                     b.HasKey("ID");
 
