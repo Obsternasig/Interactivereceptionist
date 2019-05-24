@@ -16,13 +16,14 @@
 </head>
 
 <body>
-    <!-- This div contains the site-->
+    
+        <!-- This div contains the site
     <div class="container-fluid h-100">
         <div>
             <h1 class="col-8 offset-3 headline novifont">@ViewData["Title"]</h1>
         </div>
 
-        <!-- This div contains the icons and search field-->
+        <!-- This div contains the icons and search field
         <div class="row">
             <div class="col-1 align-self-start">
                 <img src="\Pictures/hus.png" class="homeicon" ;>
@@ -38,20 +39,17 @@
             </div>
         </div>
 
-        <!-- This div contains the orange through and through line-->
+        <!-- This div contains the orange through and through line
         <div class="row">
             <hr class="col-11 mb-4 orangeline" />
         </div>
 
-        <!-- This div contains the buttons on left hand side-->
+        <!-- This div contains the buttons on left hand side
         <div class="row">
             <button type="button" class="col-2 mb-5 sidebox text-center novifont noviyellow" onclick="window.location.href = '/privacy'">Oversigtskort</button>
 
             <div class="col-5 offset-1 novifont">
-                <p class="normaltext">
-                    Navn: Jen Jenssen<br />
-                    Lokale: 0.1.95<br />
-                    tlf: 99887766
+                <p class=
                 </p>
             </div>
             <div class="col">
@@ -65,7 +63,7 @@
         <div class="row align-items align-self-start-center h-100">
             <button type="button" class="col-2 mb-5 sidebox text-center novifont noviyellow" onclick="window.location.href = '/privacy'">FAQ</button>
 
-            <!--This div contains info on how to find the person-->
+            <!--This div contains info on how to find the person
             <div class="col-8 offset-1 findsomethingbox novifont">
 
                 <div class="col-8 mb-5">
@@ -81,76 +79,77 @@
             </div>
         </div>
     </div>
-</body>
+    -->
 
-<!--
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col">
+                <p class="headline novifont text-center">
+                    @ViewData["Title"]
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3">
+                <img src="\Pictures/hus.png" onclick="window.location.href = '/personinfo'" class="icons img-fluid mr-1" ;>
+                <img src="\Pictures/venstre.png" onclick="javascript:history.go(-1)" class="icons img-fluid mr-1" />
+                <img src="\Pictures/højre.png" onclick="javascript:history.go(+1)" class="icons img-fluid" />
+            </div>
+            <div class="col-9">
+                <input type="text" placeholder="Søg efter virksomhed eller lokale.." class="searchbar novifont novidgrey" ;>
+            </div>
         </div>
     </div>
+
     <div class="row">
-        <div class="col-md-2">
-        </div>
-        <div class="col-md-10">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
+        <div class="col-12 ">
+            <hr class="col-11 mb-4 orangeline" />
         </div>
     </div>
+
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-2 text-center">
+            <button type="button" class="btn btn-primary btn-lg novifont noviyellow startbutton mb-5 sidebox btn-block" onclick="window.location.href = '/index'">
+                Oversigtskort
+            </button>
+            <button type="button" class="btn btn-primary btn-lg novifont noviyellow startbutton mb-5 sidebox btn-block" onclick="window.location.href = '/privacy'">
+                Parkering
+            </button>
+            <button type="button" class="btn btn-primary btn-lg novifont noviyellow startbutton mb-5 sidebox btn-block" onclick="window.location.href = '/privacy'">
+                Faq
+            </button>
+        </div>
+
+        <div class="col-10">
             <div class="row">
-                <div class="col-md-2">
-
-                    <button type="button" class="btn btn-success">
-                        Button
-                    </button>
-                    <button type="button" class="btn btn-success">
-                        Button
-                    </button>
-                    <button type="button" class="btn btn-success">
-                        Button
-                    </button>
-                </div>
-                <div class="col-md-8">
-                    <ul>
-                        <li class="list-item">
-                            Lorem ipsum dolor sit amet
-                        </li>
-                        <li class="list-item">
-                            Consectetur adipiscing elit
-                        </li>
-                        <li class="list-item">
-                            Integer molestie lorem at massa
-                        </li>
-                        <li class="list-item">
-                            Facilisis in pretium nisl aliquet
-                        </li>
-                        <li class="list-item">
-                            Nulla volutpat aliquam velit
-                        </li>
-                        <li class="list-item">
-                            Faucibus porta lacus fringilla vel
-                        </li>
-                        <li class="list-item">
-                            Aenean sit amet erat nunc
-                        </li>
-                        <li class="list-item">
-                            Eget porttitor lorem
-                        </li>
-                    </ul>
-                    <p>
-                        Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Aliquam eget sapien sapien. Curabitur in metus urna. In hac habitasse platea dictumst. Phasellus eu sem sapien, sed vestibulum velit. Nam purus nibh, lacinia non faucibus et, pharetra in dolor. Sed iaculis posuere diam ut cursus. <em>Morbi commodo sodales nisi id sodales. Proin consectetur, nisi id commodo imperdiet, metus nunc consequat lectus, id bibendum diam velit et dui.</em> Proin massa magna, vulputate nec bibendum nec, posuere nec lacus. <small>Aliquam mi erat, aliquam vel luctus eu, pharetra quis elit. Nulla euismod ultrices massa, et feugiat ipsum consequat eu.</small>
+                <div class="col-6">
+                    <p class="normaltext novifont">
+                        Navn: Jen Jenssen<br />
+                        Lokale: 0.1.95<br />
+                        tlf: 99887766
                     </p>
                 </div>
-                <div class="col-md-2">
-                    <img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" />
+                <div class="col-6 mb-5 mt-5">
+                    <img alt="Novi Logo" src="/Pictures/novi.png" class="float-right" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 findsomethingbox mt-4 mb-5">
+                    <p class="findsomethingboxheader novifont">
+                        Sådan finder du Jens Jensen
+                    </p><p class="normaltext novifont">
+                        1. Gå til venstre ved kantinen
+                        <br>
+                        2. Følg trappen op til anden sal
+                    </p>
                 </div>
             </div>
         </div>
     </div>
-</div>
--->
+    </div>
+</body>
+

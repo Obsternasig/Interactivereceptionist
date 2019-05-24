@@ -1,0 +1,14 @@
+﻿@page
+@model LogoutModel
+@{
+    ViewData["Title"] = "Log out";
+}
+
+    <header>
+        <h1>@ViewData["Title"]</h1>
+        <p>Du er nu logget ud af systemet.</p>
+        <button type="button" class="startbutton novifont noviyellow"
+                onclick="window.location.href = '/Index'">
+            Klik her for at komme tilbage til homepage
+        </button>
+    </header>

@@ -1,0 +1,234 @@
+﻿::placeholder { /* Firefox, Chrome, Opera */
+    color: white;
+}
+    
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #E6E9ED;
+}
+
+.novifont {
+    font-family: Oswald;
+    color: #8d9092;
+}
+
+
+.indextext {
+    margin-top: 15%;
+    margin-left: 3%;
+}
+
+.novigreen {
+    background-color: rgb(162,215,100);
+    color: white;
+}
+
+.novilgrey {
+    background-color: rgb(141,144,146);
+    color: white;
+}
+
+.novidgrey {
+    background-color: rgb(102,109,119);
+    border-color: rgb(102,109,119);
+    color: white;
+}
+
+.noviyellow {
+    background-color: rgb(243,180,27);
+    color: white;
+}
+
+.sidebox {
+    display: block;
+    border-radius: 15%;
+    box-shadow: 7px 7px 5px grey;
+    font-size: 100%;
+    padding: 3vh;
+    height: 95px;
+    border-style: none;
+}
+
+.companybox {
+    display: block;
+    border-radius: 20%;
+    box-shadow: 7px 7px 5px grey;
+    font-size: 100%;
+    padding: 3vh;
+    text-align: center;
+    border-style: none;
+}
+
+
+.searchbar {
+    background: none;
+    outline: none;
+    width: 100%;
+    margin: 0% 0% 0% 0.5%;
+    border-style: solid;
+    border-radius: 10px;
+    background-color: #8D9092;
+    border-color: #8D9092;
+    color: white;
+}
+
+button:hover {
+    color: white;
+    background-color: rgb(141,144,146);
+}
+
+.headline {
+    font-size: 380%;
+    color: #8d9092;
+}
+
+.homeicon {
+    width: 50px;
+    height: 50px;
+    margin: 9% 0% 0% 40%;
+}
+
+.backbutton {
+    width: 50px;
+    height: 50px;
+    margin: 9% 0% 1% 2%
+}
+
+.forwardbutton {
+    width: 50px;
+    height: 50px;
+    margin: 9% 0% 1% -45%
+}
+
+.orangeline {
+    border-top: 5px solid #F3BB1B;
+    margin: 1% 0% 0% 0%;
+}
+
+.col1 {
+    width: 90%;
+    height: 100%;
+    border: solid 4px;
+    border-bottom: none;
+    border-color: #f3bb1b;
+}
+
+.col2 {
+    width: 90%;
+    height: 100%;
+    border: solid 4px;
+    border-top: none;
+    border-bottom: none;
+    border-color: #f3bb1b;
+}
+
+.col3 {
+    width: 90%;
+    height: 100%;
+    border: solid 4px;
+    border-top: none;
+    border-bottom: none;
+    border-color: #f3bb1b;
+}
+
+.col4 {
+    width: 90%;
+    height: 400%;
+    border: solid 4px;
+    border-top: none;
+    border-color: #f3bb1b;
+}
+
+.faqquestions {
+    margin-top: 1%;
+    margin-left: 3%;
+    font-size: 120%;
+}
+
+.parkingfont {
+    font-size: 17px;
+    text-align: center;
+    margin-top: 7%
+}
+
+.parkinginput {
+    width: 80%;
+    text-align: center;
+    border-style: solid;
+    margin-left: 33%;
+    padding: 1% 1% 1% 1%;
+}
+
+.parkingbutton {
+    box-shadow: 7px 7px 5px grey;
+    border-radius: 15%;
+    width: 18%;
+    height: 35%;
+    margin-left: 39%;
+    margin-top: -10%;
+    border-style: none;
+    }
+
+.novi {
+    height: 10%;
+    width: 10%;
+}
+
+.noviperson {
+    height: 5vh;
+    width: 5vh;
+}
+
+.startbutton {
+    border-style: none;
+    padding: 2vh 2vh 2vh 2vh;
+    display: inline-block;
+}
+
+.findsomethingbox {
+    border-color: orange;
+    display: block;
+    border-style: solid;
+    margin-top: -150px;
+    font-size: 120%;
+}
+
+.findsomethingboxheader {
+    font-weight: bold;
+    font-size: 140%;
+}
+
+.normaltext {
+    font-size: 140%;
+    margin-right: 20px;
+}
+
+.logo1 {
+    margin-top: 8%;
+    padding-left: 40%;
+    width: 80%;
+    height: 35%;
+}
+
+.logo2 {
+    display: block;
+    height: 100%;
+    border-color: orange;
+    width: 15%;
+    margin-top: 5%;
+}
+
+.map {
+    margin-top: 15%;
+    margin-left: 38%;
+}
+
+.logo3 {
+    margin-top: 8vh;
+    margin-bottom: 10vh;
+
+}
