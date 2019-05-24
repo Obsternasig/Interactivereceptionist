@@ -1,0 +1,30 @@
+﻿<Properties StartupConfiguration="{B9AF9293-74A3-4D79-BF6D-76E5E7957A8A}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Hjemmesidetemplate/Hjemmesidetemplate/Startside.cs">
+    <Files>
+      <File FileName="Hjemmesidetemplate/Hjemmesidetemplate/Startside.cs" Line="10" Column="6" />
+      <File FileName="Hjemmesidetemplate/Pages/_ViewStart.cshtml" Line="1" Column="1" />
+      <File FileName="Hjemmesidetemplate/Pages/_ViewImports.cshtml" Line="1" Column="1" />
+      <File FileName="Hjemmesidetemplate/Pages/Index.cshtml" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Hjemmesidetemplate" expanded="True" selected="True">
+            <Node name="Hjemmesidetemplate" expanded="True">
+              <Node name="Hjemmesidetemplate" expanded="True" />
+              <Node name="Pages" expanded="True" />
+              <Node name="Properties" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Hjemmesidetemplate PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
