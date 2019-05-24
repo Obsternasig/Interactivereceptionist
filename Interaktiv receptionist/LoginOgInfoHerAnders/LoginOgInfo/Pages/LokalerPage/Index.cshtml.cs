@@ -36,9 +36,8 @@ namespace LoginOgInfo.Pages.LokalerPage
             if (!string.IsNullOrEmpty(SearchString))
             {
                 LokalerPage = LokalerPage.Where(s => s.Lokalenummer.Contains(SearchString));
-                
             }
-            // LokalerInfo = await LokalerInfo.ToListAsync();
+            
             LokalerInfo = await LokalerPage.ToListAsync();
             
         }

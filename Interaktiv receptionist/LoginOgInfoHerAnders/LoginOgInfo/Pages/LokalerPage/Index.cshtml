@@ -1,4 +1,4 @@
-﻿@page "{searchstring?}"
+﻿@page
 @model LoginOgInfo.Pages.LokalerPage.IndexModel
 
 @{
@@ -13,10 +13,9 @@
 
 <form>
     <p>
-        <select asp-for="LokalerInfoLokalenummer" asp-items="Model.Lokalenummer">
-            <option value="">All</option>
-        </select>
-        Title: <input type="text" asp-for="SearchString" />
+        Søg efter nummeret på et lokale:
+        <br />
+        <input type="text" asp-for="SearchString" />
         <input type="submit" value="Filter" />
     </p>
 </form>
