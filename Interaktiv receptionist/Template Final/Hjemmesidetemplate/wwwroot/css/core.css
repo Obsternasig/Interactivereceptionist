@@ -7,10 +7,14 @@
     border-radius: 10px;
 }
 
-button:hover {
-    background-color: rgb(141, 144, 146);
-    color: white;
+.button-lg {
+    padding: 2.5rem 5rem;
 }
+
+/* btn-primary:hover {
+    background-color: rgb(243, 180, 27);
+    color: white;
+} */
 
 body {
     background-color: rgb(230, 233, 237);
@@ -41,7 +45,6 @@ body {
     border-style: solid;
     display: block;
     font-size: 120%;
-    padding-bottom: 30vh;
 }
 
 
