@@ -1,19 +1,19 @@
 ﻿@page
 @model Hjemmesidetemplate.Pages.IndexModel
 @{
+    ViewData["Title"] = "Startside";
 }
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="~/css/core.css" />
-    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-    <title>Startside</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" />
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
-
-    <div class="container-fluid">
+<div class="container-fluid">
         <div class="row">
             <div class="col float-left logo3">
                 <img src="\Pictures/novi.png" />
@@ -22,22 +22,24 @@
 
         <div class="row">
             <div class="col mx-auto">
-                <p class="headline novifont text-center">
-                    Velkommen til Novi </p>
-                <p class=" headline novifont text-center">
-                    Mangler du hjælp til noget? </p>
+                <div class="headline novifont text-center">
+                    <p>
+                        Velkommen til Novi
+                    </p>
+                    <p>
+                        Mangler du hjælp til noget?
+                    </p>
+                </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-12 mt-5 text-center">
-                <button type="button" class="btn btn-primary btn-lg novifont noviyellow startbutton text-center"
+                <button type="button" class="btn btn-primary btn-lg novifont noviyellow button text-center"
                         onclick="window.location.href = '/personinfo'">
                     Tryk her
-                    </button>
+                </button>
             </div>
-
         </div>
     </div>
-
 </body>
