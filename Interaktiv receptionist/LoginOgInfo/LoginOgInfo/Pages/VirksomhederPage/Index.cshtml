@@ -10,6 +10,14 @@
 @inject UserManager<IdentityUser> UserManager
 
 <h1>Index</h1>
+<form>
+    <p>
+        Søg efter navnet på en virksomhed:
+        <br />
+        <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 @if (SignInManager.IsSignedIn(User))
 {
     <p>

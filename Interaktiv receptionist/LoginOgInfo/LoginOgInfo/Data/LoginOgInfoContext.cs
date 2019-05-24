@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using LoginOgInfo.Lokaler;
 using LoginOgInfo.Medarbejdere;
 using LoginOgInfo.Virksomheder;
+using LoginOgInfo.BrugerParkering;
 
 namespace LoginOgInfo.Models
 {
@@ -21,5 +22,7 @@ namespace LoginOgInfo.Models
         public DbSet<LoginOgInfo.Medarbejdere.MedarbejderInfo> MedarbejderInfo { get; set; }
 
         public DbSet<LoginOgInfo.Virksomheder.VirksomhederInfo> VirksomhederInfo { get; set; }
+
+        public DbSet<LoginOgInfo.BrugerParkering.ParkeringsInfo> ParkeringsInfo { get; set; }
     }
 }

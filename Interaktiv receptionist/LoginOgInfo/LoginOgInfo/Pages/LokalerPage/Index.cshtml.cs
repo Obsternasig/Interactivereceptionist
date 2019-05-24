@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using LoginOgInfo.Lokaler;
 using LoginOgInfo.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace LoginOgInfo.Pages.LokalerPage
 {
@@ -19,11 +20,26 @@ namespace LoginOgInfo.Pages.LokalerPage
             _context = context;
         }
 
-        public IList<LokalerInfo> LokalerInfo { get;set; }
+        public IList<LokalerInfo> LokalerInfo { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string SearchString { get; set; }
+        // Requires using Microsoft.AspNetCore.Mvc.Rendering;
+        public SelectList Lokalenummer { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string LokalerInfoLokalenummer { get; set; }
+
 
         public async Task OnGetAsync()
         {
-            LokalerInfo = await _context.LokalerInfo.ToListAsync();
+            var LokalerPage = from m in _context.LokalerInfo
+                select m;
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                LokalerPage = LokalerPage.Where(s => s.Lokalenummer.Contains(SearchString));
+            }
+
+            LokalerInfo = await LokalerPage.ToListAsync();
+
         }
     }
 }

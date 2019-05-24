@@ -10,23 +10,34 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+<form>
+    <p>
+        Søg efter nummeret på et lokale:
+        <br />
+        <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.LokalerInfo[0].Lokalenummer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LokalerInfo[0].Lejer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LokalerInfo[0].Medarbejderantal)
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LokalerInfo[0].Lokalenummer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LokalerInfo[0].Lejer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LokalerInfo[0].Medarbejderantal)
+        </th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.LokalerInfo) {
+    @foreach (var item in Model.LokalerInfo)
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Lokalenummer)
@@ -43,6 +54,6 @@
                 <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>

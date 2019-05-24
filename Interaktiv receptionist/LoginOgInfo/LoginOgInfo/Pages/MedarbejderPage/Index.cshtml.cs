@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using LoginOgInfo.Medarbejdere;
 using LoginOgInfo.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace LoginOgInfo.Pages.MedarbejderPage
 {
@@ -19,11 +20,26 @@ namespace LoginOgInfo.Pages.MedarbejderPage
             _context = context;
         }
 
-        public IList<MedarbejderInfo> MedarbejderInfo { get;set; }
+        public IList<MedarbejderInfo> MedarbejderInfo { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string SearchString { get; set; }
+        // Requires using Microsoft.AspNetCore.Mvc.Rendering;
+        public SelectList Navn { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string MedarbejderInfoNavn { get; set; }
+
+
 
         public async Task OnGetAsync()
         {
-            MedarbejderInfo = await _context.MedarbejderInfo.ToListAsync();
+            var MedarbejderPage = from m in _context.MedarbejderInfo
+                select m;
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                MedarbejderPage = MedarbejderPage.Where(s => s.Navn.Contains(SearchString));
+            }
+
+            MedarbejderInfo = await MedarbejderPage.ToListAsync();
         }
     }
 }
