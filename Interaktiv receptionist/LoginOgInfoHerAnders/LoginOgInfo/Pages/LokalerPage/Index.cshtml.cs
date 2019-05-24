@@ -29,7 +29,6 @@ namespace LoginOgInfo.Pages.LokalerPage
         public string LokalerInfoLokalenummer { get; set; }
 
 
-
         public async Task OnGetAsync()
         {
             var LokalerPage = from m in _context.LokalerInfo
@@ -37,6 +36,7 @@ namespace LoginOgInfo.Pages.LokalerPage
             if (!string.IsNullOrEmpty(SearchString))
             {
                 LokalerPage = LokalerPage.Where(s => s.Lokalenummer.Contains(SearchString));
+                
             }
             // LokalerInfo = await LokalerInfo.ToListAsync();
             LokalerInfo = await LokalerPage.ToListAsync();

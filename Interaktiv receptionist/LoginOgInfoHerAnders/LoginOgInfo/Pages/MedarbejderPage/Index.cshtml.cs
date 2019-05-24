@@ -28,6 +28,8 @@ namespace LoginOgInfo.Pages.MedarbejderPage
         [BindProperty(SupportsGet = true)]
         public string MedarbejderInfoNavn { get; set; }
 
+
+
         public async Task OnGetAsync()
         {
             var MedarbejderPage = from m in _context.MedarbejderInfo
