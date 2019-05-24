@@ -1,8 +1,140 @@
 ﻿@page
 @model PrivacyModel
 @{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Home page";
 }
-<h1>@ViewData["Title"]</h1>
+    
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <title>Velkommen til</title>
+        <style>
 
-<p>Use this page to detail your site's privacy policy.</p>
+
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                background-color: #E6E9ED;
+            }
+            .FAQ {
+                background-color: yellow;
+                border-radius: 10%;
+                font-family: oswald;
+                height: 100px;
+                margin: 0% 0% 150% 20%;
+                text-align: center;
+
+             
+            }
+
+            .Sidebox {
+                background-color: #F3BB1B;
+                color: white;
+                display: block;                
+                border-radius: 20%;
+                box-shadow: 7px 7px 5px grey;
+                font-family: oswald;
+                font-size: 100%;
+                padding: 3vh;                
+            }
+
+            .SideboxFirma {
+                background-color: grey;
+                color: white;
+                display: block;                
+                border-radius: 20%;
+                box-shadow: 7px 7px 5px grey;
+                font-family: oswald;
+                font-size: 100%;
+                padding: 3vh;
+            }
+
+            .Sidetext {
+                font-family: oswald;
+                font-size: 100%;
+                text-align:center;                
+            }
+
+            .search_box {
+                font-family: oswald;
+                border-style: solid;
+                border-radius: 10px;
+                background-color: #666D77;
+                border-color: #666D77;
+                width: 100%;
+                height: 5%;
+                color: white;
+            }
+
+            .søgeknap {
+                border-style: none;
+                background: none;
+                outline: none;
+                color: white;
+                width: 100%;
+                margin: 0% 0% 0% 2%;
+            }
+            
+}
+
+        </style>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+<body>
+    <div class="container h-100">
+        <div>
+            <h1 class="col-8 offset-3" style="; font-family: oswald; font-size: 380%; color: #8D9092;">Hvad vil du gerne finde?</h1>
+        </div>
+
+        <div class="col-8 offset-3 mb-2 search_box">
+            <input type="text" placeholder="Search.." class="søgeknap">
+        </div>
+
+        <hr class="col-xs-12 mb-4" style="border-top: 5px solid #F3BB1B;" />
+
+        <div class="row align-items-center h-100">
+            <div class="col-2 mb-5 Sidebox">
+                <p class="my-auto text-center">Søg Efter <br /> Virksomhed</p>
+            </div>
+
+        
+
+
+        </div>
+
+        <div class="row align-items-center h-100">
+            <div class="col-2 mb-5 Sidebox">
+                <p class="my-auto text-center">Søg Efter <br /> lokale</p>
+            </div>
+
+
+        </div>
+
+        <div class="row align-items-center h-100">
+            <div class="col-2 mb-5 Sidebox">
+                <p class="my-auto text-center">Ofte stillede <br />spørgsmål</p>
+            </div>
+
+
+
+            
+            
+
+
+        </div>
+
+        <div class="align-items-center h-100">
+            <div class="FAQ"></div>
+            </div>
+
+
+
+    </div>
+</body>
+
+
+
