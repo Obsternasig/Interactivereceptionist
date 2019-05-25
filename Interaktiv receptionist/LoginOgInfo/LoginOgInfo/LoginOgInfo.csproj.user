@@ -10,5 +10,6 @@
     <WebStackScaffolding_IsReferencingScriptLibrariesSelected>True</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
     <WebStackScaffolding_DbContextTypeFullName>LoginOgInfo.Models.LoginOgInfoContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_LayoutPageFile />
+    <NameOfLastUsedPublishProfile>interaktivreceptionisttest - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>
