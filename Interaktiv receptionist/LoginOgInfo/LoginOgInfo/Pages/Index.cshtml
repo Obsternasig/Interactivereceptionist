@@ -17,80 +17,79 @@
 </head>
 
 <body>
-<ul class="navbar-nav">
-    @if (SignInManager.IsSignedIn(User))
-    {
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
-        </li>
-        <li class="nav-item">
-            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
-                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-            </form>
-        </li>
-            
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/AdminNavi">Rediger i Databasen</a>
-        </li>
-    }
-    else
-    {
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Opret ny adminkonto</a>
-        </li>
-    }
-</ul>
-<!--Dette er vores mailknap-->
+    <ul class="navbar-nav">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+            </li>
+            <li class="nav-item">
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                    <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                </form>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/AdminNavi">Rediger i Databasen</a>
+            </li>
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Opret ny adminkonto</a>
+            </li>
+        }
+    </ul>
+
 <textarea id="myText">
     Din aftale er ankommet
 </textarea>
-<button onclick="sendMail(); return false">Send</button>
+    <button onclick="sendMail(); return false">Send</button>
 
-<script>
-    function sendMail() {
-        var link = "mailto:Andreas.troldborg@gmail.com"
-                + "?cc=MarcusAndersen@live.dk"
-                + "&subject=" + escape("AftaleALARM")
-                + "&body=" + escape(document.getElementById('myText').value)
-            ;
 
-        window.location.href = link;
-    }
-</script>
-    <div class="container h-100">
+    <div class="container-fluid">
         <div class="row">
-            <div class="float-left col novi logo3">
+            <div class="col float-left logo3">
                 <img src="\Pictures/novi.png" />
             </div>
         </div>
 
-
-        <div class="row top-buffer">
-            <div class="col indextext headline novifont text-center">
-                <p>
-                    Velkommen til Novi 8
-                </p>
+        <div class="row">
+            <div class="col mx-auto">
+                <div class="headline novifont text-center">
+                    <p>
+                        Velkommen til Novi
+                    </p>
+                    <p>
+                        Mangler du hjælp til noget?
+                    </p>
+                </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="col headline novifont text-center">
-                <p>
-                    Mangler du hjælp til noget?
-                </p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-4 offset-4">
-                <button type="button" class="startbutton novifont noviyellow" 
-                        onclick="window.location.href = '/oversigt'">
+            <div class="col-12 mt-5 text-center">
+                <button type="button" class="btn btn-primary btn-lg novifont noviyellow button text-center"
+                        onclick="window.location.href = '/personinfo'">
                     Tryk her
                 </button>
             </div>
         </div>
     </div>
 </body>
+
+<!--Dette er vores mailknap-->
+<script>
+    function sendMail() {
+        var link = "mailto:Andreas.troldborg@gmail.com"
+            + "?cc=MarcusAndersen@live.dk"
+            + "&subject=" + escape("AftaleALARM")
+            + "&body=" + escape(document.getElementById('myText').value)
+            ;
+
+        window.location.href = link;
+    }
+</script>
