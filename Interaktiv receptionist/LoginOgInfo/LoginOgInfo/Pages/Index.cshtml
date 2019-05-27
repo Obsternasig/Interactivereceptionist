@@ -38,6 +38,28 @@
             </div>
         </div><br>
 
+        @if (SignInManager.IsSignedIn(User))
+        {
+        <div class="row">
+            <div class="col-12 mt-5 mb-5 text-center">
+                <button type="button" class="btn btn-primary btn-lg novifont noviyellow button text-center"
+                        onclick="window.location.href = '/Identity/Account/AdminNavi'">
+                    Tryk her
+                </button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 mt-5">
+                <button type="button" class="btn btn-primary btn-sm novifont noviyellow button text-center float-left"
+                        onclick="window.location.href = '/identity/account/AdminNavi'">
+                    Admin Panel
+                </button>
+            </div>
+        </div>
+        }
+        else
+        {
         <div class="row">
             <div class="col-12 mt-5 mb-5 text-center">
                 <button type="button" class="btn btn-primary btn-lg novifont noviyellow button text-center"
@@ -47,34 +69,22 @@
             </div>
         </div>
 
-        @if (SignInManager.IsSignedIn(User))
-        {
+
+
         <div class="row">
-        <div class="col-12 mt-5">
-            <button type="button" class="btn btn-primary btn-sm novifont noviyellow button text-center float-left"
-                    onclick="window.location.href = '/identity/account/AdminNavi'">
-                Admin Panel
-            </button>
+            <div class="col-12 mt-5">
+                <button type="button" class="btn btn-primary btn-sm novifont noviyellow button text-center float-left"
+                        onclick="window.location.href = '/identity/account/login'">
+                    Login
+                </button>
+            </div>
         </div>
+        }
     </div>
-    }
-    else
-    {
+</body>
 
-    <div class="row">
-        <div class="col-12 mt-5">
-            <button type="button" class="btn btn-primary btn-sm novifont noviyellow button text-center float-left"
-                    onclick="window.location.href = '/identity/account/login'">
-                Login
-            </button>
-        </div>
-    </div>
-    }
-        </div>
-    </body>
-
-    <!--Dette er vores mailknap-->
-    <script>
+<!--Dette er vores mailknap-->
+<script>
     function sendMail() {
         var link = "mailto:Andreas.troldborg@gmail.com"
             + "?cc=MarcusAndersen@live.dk"
@@ -84,4 +94,4 @@
 
         window.location.href = link;
     }
-    </script>
+</script>
