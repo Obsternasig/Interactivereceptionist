@@ -25,7 +25,7 @@ namespace LoginOgInfo.Medarbejdere
         [Required]
         public string Email { get; set; }
 
-        [StringLength(30, MinimumLength = 1)]
+        [StringLength(200, MinimumLength = 1)]
         [Required]
         public string Stilling { get; set; }
     }

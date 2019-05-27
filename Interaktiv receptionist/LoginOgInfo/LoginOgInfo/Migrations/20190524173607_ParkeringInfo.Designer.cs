@@ -71,7 +71,7 @@ namespace LoginOgInfo.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
-                    b.Property<string>("Stilling")
+                    b.Property<string>("FindVej")
                         .IsRequired()
                         .HasMaxLength(30);
 

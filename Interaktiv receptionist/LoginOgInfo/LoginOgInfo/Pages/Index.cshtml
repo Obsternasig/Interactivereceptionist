@@ -4,6 +4,7 @@
 
 }
 
+
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
@@ -82,17 +83,3 @@
         }
     </div>
 </body>
-
-<!--Dette er vores mailknap
-<script>
-    function sendMail() {
-        var link = "mailto:Andreas.troldborg@gmail.com"
-            + "?cc=MarcusAndersen@live.dk"
-            + "&subject=" + escape("AftaleALARM")
-            + "&body=" + escape(document.getElementById('myText').value)
-            ;
-
-        window.location.href = link;
-    }
-</script>
--->

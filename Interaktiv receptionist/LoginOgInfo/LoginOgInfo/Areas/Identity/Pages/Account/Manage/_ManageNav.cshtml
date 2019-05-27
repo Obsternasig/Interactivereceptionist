@@ -1,17 +1,1 @@
-﻿@inject SignInManager<IdentityUser> SignInManager
-@{
-    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
-}
-
-<div class="container">
-    <div class="row nav-item">
-            <a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext) btn btn-primary btn-block btn-lg novifont noviyellow button text-center mb-3" id="personal-data" asp-page="./Index">Personlig data</a>
-        
-            <a class="nav-link novifont noviyellow @ManageNavPages.ChangePasswordNavClass(ViewContext) btn btn-primary btn-block btn-lg novifont noviyellow button text-center mb-4" id="change-password" asp-page="./ChangePassword">Kodeord</a>
-    </div>
-</div>
-
-<button type="button" class="btn-primary btn-lg btn-block novifont noviyellow button shadow"
-                onclick="window.location.href = '/Identity/Account/AdminNavi'">
-            Tilbage til oversigt
-        </button>
+﻿

@@ -32,7 +32,7 @@ namespace LoginOgInfo.Migrations
                     Virksomhed = table.Column<string>(nullable: true),
                     Lokale = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
-                    Stilling = table.Column<string>(nullable: true)
+                    FindVej = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

@@ -170,7 +170,7 @@ else
 
                 @foreach(var item in Model.MedarbejderInfo.Take(3))
                 {
-                <div id="NavnID" class="col-4 collapse">
+                <div id="NavnID" class="col-4">
                     <a asp-page="./Details" class="btn btn-primary btn-lg novidgrey mb-4 btn-block button shadow button-lg" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Navn)</a>
                 </div>
                 }
@@ -178,7 +178,7 @@ else
             <div class="row">
                 @foreach(var item in Model.MedarbejderInfo.Skip(3).Take(3))
                 {
-                <div id="NavnID" class="col-4 collapse">
+                <div id="NavnID" class="col-4">
                     <a asp-page="./Details" class="btn btn-primary btn-lg novidgrey mb-4 btn-block button shadow button-lg" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Navn)</a>
                 </div>
                 }
@@ -186,7 +186,7 @@ else
             <div class="row">
                 @foreach(var item in Model.MedarbejderInfo.Skip(6).Take(3))
                 {
-                <div id="NavnID" class="col-4 collapse">
+                <div id="NavnID" class="col-4">
                     <a asp-page="./Details" class="btn btn-primary btn-lg novidgrey mb-4 btn-block button shadow button-lg" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Navn)</a>
                 </div>
                 }
@@ -194,7 +194,7 @@ else
             <div class="row">
                 @foreach(var item in Model.MedarbejderInfo.Skip(9).Take(3))
                 {
-                <div id="NavnID" class="col-4 collapse">
+                <div id="NavnID" class="col-4">
                     <a asp-page="./Details" class="btn btn-primary btn-lg novidgrey mb-4 btn-block button shadow button-lg" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Navn)</a>
                 </div>
                 }

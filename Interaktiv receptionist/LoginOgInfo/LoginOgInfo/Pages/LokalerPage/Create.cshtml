@@ -2,61 +2,75 @@
 @model LoginOgInfo.Pages.LokalerPage.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Opret nyt lokale";
 }
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-    <head>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="~/css/core.css" />
-        <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-        <title>Startside</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/core.css" />
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <title>Startside</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 
 @if (SignInManager.IsSignedIn(User))
 {
-
-    <h1>Create</h1>
-
-    <h4>LokalerInfo</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-4">
-            <form method="post">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="LokalerInfo.Lokalenummer" class="control-label"></label>
-                    <input asp-for="LokalerInfo.Lokalenummer" class="form-control" />
-                    <span asp-validation-for="LokalerInfo.Lokalenummer" class="text-danger"></span>
+    <body>
+        <div class="container-fluid">
+            <div class="row mt-5">
+                <div class="col-3">
+                    <img src="\Pictures/hus.png" onclick="window.location.href = '/index'" class="icons img-fluid mr-1" ;>
+                    <img src="\Pictures/venstre.png" onclick="javascript:history.go(-1)" class="icons img-fluid mr-1" />
+                    <img src="\Pictures/højre.png" onclick="javascript:history.go(+1)" class="icons img-fluid" />
                 </div>
-                <div class="form-group">
-                    <label asp-for="LokalerInfo.Lejer" class="control-label"></label>
-                    <input asp-for="LokalerInfo.Lejer" class="form-control" />
-                    <span asp-validation-for="LokalerInfo.Lejer" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="LokalerInfo.Medarbejderantal" class="control-label"></label>
-                    <input asp-for="LokalerInfo.Medarbejderantal" class="form-control" />
-                    <span asp-validation-for="LokalerInfo.Medarbejderantal" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
-                </div>
-            </form>
+            </div>
         </div>
-    </div>
-    <div>
-        <a asp-page="Index">Back to List</a>
-    </div>
+        <div class="row">
+            <div class="col-12">
+                <hr class="mb-4 orangeline noviyellow" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="novifont headline">
+                    Opret nyt Lokale
+                </p>
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="LokalerInfo.Lokalenummer" class="control-label"></label>
+                        <input asp-for="LokalerInfo.Lokalenummer" class="form-control" />
+                        <span asp-validation-for="LokalerInfo.Lokalenummer" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LokalerInfo.Lejer" class="control-label"></label>
+                        <input asp-for="LokalerInfo.Lejer" class="form-control" />
+                        <span asp-validation-for="LokalerInfo.Lejer" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LokalerInfo.Medarbejderantal" class="control-label"></label>
+                        <input asp-for="LokalerInfo.Medarbejderantal" class="form-control" />
+                        <span asp-validation-for="LokalerInfo.Medarbejderantal" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Opret Lokale" class="btn btn-primary btn-lg novifont noviyellow text-center create shadow" />
+                        <button type="button" class="btn btn-primary btn-lg novifont noviyellow text-center create shadow"
+                                onclick="window.location.href = '/Identity/Account/AdminNavi'">
+                            Tilbage til Admin Panel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
 }
-
 else
-
 {
+<body>
     <p class="novifont headline mt-3 mb-3">
         Du skal være logget ind for at redigere i databasen.
     </p>
@@ -66,7 +80,9 @@ else
     <button type="button" class="btn btn-primary btn-lg novifont noviyellow button shadow" onclick="window.location.href = '/index'">
         Klik her for at returnere til forsiden
     </button>
+</body>
 }
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -24,7 +24,9 @@ namespace LoginOgInfo.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Nummerplade");
+                    b.Property<string>("Nummerplade")
+                        .IsRequired()
+                        .HasMaxLength(7);
 
                     b.HasKey("ID");
 
@@ -59,7 +61,13 @@ namespace LoginOgInfo.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(60);
+
+                    b.Property<string>("FindVej")
+                        .IsRequired()
+                        .HasMaxLength(200);
 
                     b.Property<string>("Lokale")
                         .IsRequired()
@@ -68,10 +76,6 @@ namespace LoginOgInfo.Migrations
                     b.Property<string>("Navn")
                         .IsRequired()
                         .HasMaxLength(50);
-
-                    b.Property<string>("Stilling")
-                        .IsRequired()
-                        .HasMaxLength(30);
 
                     b.Property<string>("Virksomhed")
                         .IsRequired()

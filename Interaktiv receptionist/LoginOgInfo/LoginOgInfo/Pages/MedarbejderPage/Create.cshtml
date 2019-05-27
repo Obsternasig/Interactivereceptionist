@@ -2,7 +2,7 @@
 @model LoginOgInfo.Pages.MedarbejderPage.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Opret ny medarbejder";
 }
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
@@ -17,59 +17,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-
-
 @if (SignInManager.IsSignedIn(User))
 {
-
-    <h1>Create</h1>
-
-    <h4>MedarbejderInfo</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-4">
-            <form method="post">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="MedarbejderInfo.Navn" class="control-label"></label>
-                    <input asp-for="MedarbejderInfo.Navn" class="form-control" />
-                    <span asp-validation-for="MedarbejderInfo.Navn" class="text-danger"></span>
+    <body>
+        <div class="container-fluid">
+            <div class="row mt-5">
+                <div class="col-3">
+                    <img src="\Pictures/hus.png" onclick="window.location.href = '/index'" class="icons img-fluid mr-1" ;>
+                    <img src="\Pictures/venstre.png" onclick="javascript:history.go(-1)" class="icons img-fluid mr-1" />
+                    <img src="\Pictures/højre.png" onclick="javascript:history.go(+1)" class="icons img-fluid" />
                 </div>
-                <div class="form-group">
-                    <label asp-for="MedarbejderInfo.Virksomhed" class="control-label"></label>
-                    <input asp-for="MedarbejderInfo.Virksomhed" class="form-control" />
-                    <span asp-validation-for="MedarbejderInfo.Virksomhed" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="MedarbejderInfo.Lokale" class="control-label"></label>
-                    <input asp-for="MedarbejderInfo.Lokale" class="form-control" />
-                    <span asp-validation-for="MedarbejderInfo.Lokale" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="MedarbejderInfo.Email" class="control-label"></label>
-                    <input asp-for="MedarbejderInfo.Email" class="form-control" />
-                    <span asp-validation-for="MedarbejderInfo.Email" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="MedarbejderInfo.Stilling" class="control-label"></label>
-                    <input asp-for="MedarbejderInfo.Stilling" class="form-control" />
-                    <span asp-validation-for="MedarbejderInfo.Stilling" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
-                </div>
-            </form>
+            </div>
         </div>
-    </div>
-
-    <div>
-        <a asp-page="Index">Back to List</a>
-    </div>
+        <div class="row">
+            <div class="col-12">
+                <hr class="mb-4 orangeline noviyellow" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="novifont headline">
+                    Opret ny Medarbejder
+                </p>
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="MedarbejderInfo.Navn" class="control-label"></label>
+                        <input asp-for="MedarbejderInfo.Navn" class="form-control" />
+                        <span asp-validation-for="MedarbejderInfo.Navn" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MedarbejderInfo.Virksomhed" class="control-label"></label>
+                        <input asp-for="MedarbejderInfo.Virksomhed" class="form-control" />
+                        <span asp-validation-for="MedarbejderInfo.Virksomhed" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MedarbejderInfo.Lokale" class="control-label"></label>
+                        <input asp-for="MedarbejderInfo.Lokale" class="form-control" />
+                        <span asp-validation-for="MedarbejderInfo.Lokale" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MedarbejderInfo.Email" class="control-label"></label>
+                        <input asp-for="MedarbejderInfo.Email" class="form-control" />
+                        <span asp-validation-for="MedarbejderInfo.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MedarbejderInfo.Stilling" class="control-label"></label>
+                        <input asp-for="MedarbejderInfo.Stilling" class="form-control" />
+                        <span asp-validation-for="MedarbejderInfo.Stilling" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Opret Medarbejder" class="btn btn-primary btn-lg novifont noviyellow text-center create shadow" />
+                        <button type="button" class="btn btn-primary btn-lg novifont noviyellow text-center create shadow"
+                                onclick="window.location.href = '/Identity/Account/AdminNavi'">
+                            Tilbage til Admin Panel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
 }
 
 else
 
 {
+<body>
     <p class="novifont headline mt-3 mb-3">
         Du skal være logget ind for at redigere i databasen.
     </p>
@@ -79,6 +92,7 @@ else
     <button type="button" class="btn btn-primary btn-lg novifont noviyellow button shadow" onclick="window.location.href = '/index'">
         Klik her for at returnere til forsiden
     </button>
+</body>
 }
 
 @section Scripts {
