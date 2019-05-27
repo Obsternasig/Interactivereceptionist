@@ -165,7 +165,6 @@ else
                 type: "POST",
                 url: '@Url.Action("SendEmail", "MailSender")',
                 data: {
-                    Name: $("#name").val(),
                     Email: $("#email").val(),
                     Message: $("#message").val()
                 },
@@ -174,7 +173,6 @@ else
                 },
                 success: function (result) {
                     alert(result);
-                    $("#name").val("");
                     $("#email").val("");
                     $("#message").val("");
                 }

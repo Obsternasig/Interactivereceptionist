@@ -20,28 +20,8 @@
     padding: 20%;
 }
 
-.loginbutton {
-    margin-top: 10vh;
-}
-
-.companybox {
-    border-style: none;
-    border-radius: 20%;
-    box-shadow: 7px 7px 5px grey;
-    display: block;
-    font-size: 100%;
-    padding: 3vh;
-    text-align: center;
-}
-
 .create {
     border-color: rgb(243,180,27);
-}
-
-.faqquestions {
-    font-size: 120%;
-    margin-left: 3%;
-    margin-top: 1%;
 }
 
 .findsomethingbox {
@@ -74,29 +54,15 @@
     margin-top: 15%;
 }
 
-
 .logo1 {
-    height: 35%;
-    margin-top: 8%;
-    padding-left: 40%;
-    width: 80%;
+    margin-bottom: 6vh;
+    margin-top: 6vh;
 }
 
 .logo2 {
     margin-top: 4vh;
     margin-bottom: 6vh;
 }
-
-.logo3 {
-    margin-bottom: 6vh;
-    margin-top: 6vh;
-}
-
-.map {
-    margin-left: 38%;
-    margin-top: 15%;
-}
-
 
 .normaltext {
     font-size: 180%;
@@ -110,11 +76,6 @@
 .novifont {
     color: rgb(102, 109, 119);
     font-family: Oswald;
-}
-
-.novigreen {
-    background-color: rgb(162,215,100);
-    color: white;
 }
 
 .novilgrey {
@@ -147,16 +108,6 @@
 .oversigt {
     height: 100%;
     width: 100%;
-}
-
-.parkingbutton {
-    border-radius: 15%;
-    border-style: none;
-    box-shadow: 7px 7px 5px grey;
-    height: 35%;
-    margin-left: 39%;
-    margin-top: -10%;
-    width: 18%;
 }
 
 .parkingfont {
@@ -201,14 +152,6 @@
     border-style: none;
     font-size: 3vh;
     float: right;
-}
-
-.sidebox {
-    border-radius: 15%;
-    box-shadow: 7px 7px 5px grey;
-    border-style: none;
-    display: inline-block;
-    padding: 2vh 2vh 2vh 2vh;
 }
 
 ::-webkit-input-placeholder {
