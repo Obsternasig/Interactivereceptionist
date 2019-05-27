@@ -1,7 +1,12 @@
 ﻿@page
 @model LoginOgInfo.Pages.IndexModel
 @{
+
 }
+
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -13,14 +18,6 @@
 </head>
 
 <body>
-
-<!--
-<textarea id="myText">
-    Din aftale er ankommet
-</textarea>
-    <button onclick="sendMail(); return false">Send</button>
--->
-
     <div class="container-fluid">
         <div class="row">
             <div class="col float-left logo3">
@@ -42,21 +39,42 @@
         </div><br>
 
         <div class="row">
-            <div class="col-12 mt-5 text-center">
+            <div class="col-12 mt-5 mb-5 text-center">
                 <button type="button" class="btn btn-primary btn-lg novifont noviyellow button text-center"
                         onclick="window.location.href = '/VirksomhederPage'">
                     Tryk her
                 </button>
             </div>
         </div>
-        <li class="nav-item">
-            <a class="nav-link text-dark mt-5" asp-area="Identity" asp-page="/Account/Login">Login</a>
-        </li>
-    </div>
-</body>
 
-<!--Dette er vores mailknap-->
-<script>
+        @if (SignInManager.IsSignedIn(User))
+        {
+        <div class="row">
+        <div class="col-12 mt-5">
+            <button type="button" class="btn btn-primary btn-sm novifont noviyellow button text-center float-left"
+                    onclick="window.location.href = '/identity/account/AdminNavi'">
+                Admin Panel
+            </button>
+        </div>
+    </div>
+    }
+    else
+    {
+
+    <div class="row">
+        <div class="col-12 mt-5">
+            <button type="button" class="btn btn-primary btn-sm novifont noviyellow button text-center float-left"
+                    onclick="window.location.href = '/identity/account/login'">
+                Login
+            </button>
+        </div>
+    </div>
+    }
+        </div>
+    </body>
+
+    <!--Dette er vores mailknap-->
+    <script>
     function sendMail() {
         var link = "mailto:Andreas.troldborg@gmail.com"
             + "?cc=MarcusAndersen@live.dk"
@@ -66,4 +84,4 @@
 
         window.location.href = link;
     }
-</script>
+    </script>

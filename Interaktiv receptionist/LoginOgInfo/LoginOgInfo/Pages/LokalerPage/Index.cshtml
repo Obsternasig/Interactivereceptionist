@@ -2,7 +2,7 @@
 @model LoginOgInfo.Pages.LokalerPage.IndexModel
 
 @{
-    ViewData["Title"] = "Søg på lokaler!";
+    ViewData["Title"] = "Søg på lokaler";
 }
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
@@ -102,11 +102,15 @@ else
             </div>
 
             <div class="col-9">
-                <form class="searchbar1">
-                    <input type="text" placeholder="Søg efter lokalenummer" class="searchbar novidgrey novifont" asp-for="SearchString" />
-                    <!--<input type="submit" value="Filter" /> -->
-                    <button type="submit" class="searchbtn novidgrey float-right mt-1"><i class="fa fa-search"></i></button>
-                </form>
+                <div class="row">
+                    <div class="col-12">
+                        <form class="searchbox text-center">
+                            <input type="text" placeholder="Søg efter navnet på virksomheden" class=" searchbar novidgrey novifont" asp-for="SearchString" />
+                            <!--<input type="submit" value="Filter" /> -->
+                            <button type="submit" class="searchbtn novidgrey"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -119,10 +123,10 @@ else
 
     <div class="row">
         <div class="col-2 text-center novifont">
-            <button type="button" class="btn btn-primary btn-lg noviyellow mb-4 button btn-block shadow" onclick="window.location.href = '/faq'">
+            <button type="button" class="btn btn-primary btn-lg noviyellow mb-4 button btn-block shadow" onclick="window.location.href = '/search'">
                 Søg
             </button>
-            <button type="button" class="btn btn-primary btn-lg noviyellow mb-4 button btn-block shadow" onclick="window.location.href = '/index'">
+            <button type="button" class="btn btn-primary btn-lg noviyellow mb-4 button btn-block shadow" onclick="window.location.href = '/oversigtskort'">
                 Oversigtskort
             </button>
             <button type="button" class="btn btn-primary btn-lg noviyellow mb-4 button btn-block shadow" onclick="window.location.href = '/parkeringPage/create'">

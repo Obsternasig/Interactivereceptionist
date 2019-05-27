@@ -10,5 +10,6 @@
     <WebStackScaffolding_IsReferencingScriptLibrariesSelected>True</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
     <WebStackScaffolding_DbContextTypeFullName>LoginOgInfo.Models.LoginOgInfoContext</WebStackScaffolding_DbContextTypeFullName>
     <NameOfLastUsedPublishProfile>interaktivreceptionisttest - Web Deploy</NameOfLastUsedPublishProfile>
+    <WebStackScaffolding_UserClassDialogWidth>600</WebStackScaffolding_UserClassDialogWidth>
   </PropertyGroup>
 </Project>

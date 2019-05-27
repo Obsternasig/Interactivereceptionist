@@ -1,4 +1,8 @@
-﻿.button {
+﻿body {
+    background-color: rgb(230, 233, 237);
+}
+
+.button {
     border-style: none;
     display: inline-block;
     padding: 2vh 2vh 2vh 2vh;
@@ -11,8 +15,8 @@
     padding: 2.5rem 5rem;
 }
 
-body {
-    background-color: rgb(230, 233, 237);
+.loginbutton {
+    margin-top: 10vh;
 }
 
 .companybox {
@@ -151,47 +155,47 @@ body {
 }
 
 .parkingfont {
-    font-size: 17px;
+    font-size: 25px;
     margin-top: 7%;
     text-align: center;
 }
 
 .parkinginput {
     border-style: solid;
-    margin-left: 33%;
-    padding: 1% 1% 1% 1%;
+    padding: 5% 5% 5% 5%;
     text-align: center;
     width: 80%;
+    border-radius: 10px;
+    background-color: rgb(102, 109, 119);
+    border-color: rgb(102, 109, 119);
+    color: white;
+    font-size: 20px;
 }
 
-.searchbar1 {
+.searchbox {
     background: none;
     background-color: rgb(102, 109, 119);
     border-color: rgb(102, 109, 119);
     border-style: solid;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
     border-radius: 10px;
-    outline: none;
     color: white;
-    
+    width: 95%;
+    height: 110%;
 }
 
 .searchbar {
-    font-size: 150%;
-    width: 95vh;
-    outline: none;
+    width: 85%;
+    height: 100%;
+    border: solid;
     border-color: rgb(102, 109, 119);
-    border-style: solid;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
+    float: left;
 }
 
 .searchbtn {
     color: white;
     border-style: none;
     font-size: 3vh;
+    float: right;
 }
 
 .sidebox {
