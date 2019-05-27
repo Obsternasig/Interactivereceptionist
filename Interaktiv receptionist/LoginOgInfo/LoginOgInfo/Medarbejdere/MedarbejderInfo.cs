@@ -21,7 +21,8 @@ namespace LoginOgInfo.Medarbejdere
 
         //Behøver ikke required da valuetyper er det automatisk.
 
-        [DataType(DataType.EmailAddress)]
+        [StringLength(60, MinimumLength = 1)]
+        [Required]
         public string Email { get; set; }
 
         [StringLength(30, MinimumLength = 1)]

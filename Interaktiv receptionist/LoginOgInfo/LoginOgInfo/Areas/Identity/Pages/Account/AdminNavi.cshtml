@@ -32,27 +32,27 @@
 
             <button type="button" class="btn btn-primary btn-lg btn-block novifont noviyellow button shadow"
                     onclick="window.location.href = '/Identity/Account/Register'">
-                Register ny admin
+                Registrer ny admin
             </button>
 
             <button type="button" class="btn btn-primary btn-lg btn-block novifont noviyellow button shadow"
                     onclick="window.location.href = '/VirksomhederPage/Index'">
-                Administer virksomheder
+                Administrer virksomheder
             </button>
 
             <button type="button" class="btn btn-primary btn-lg btn-block novifont noviyellow button shadow"
                     onclick="window.location.href = '/MedarbejderPage/Index'">
-                Administer medarbejdere
+                Administrer medarbejdere
             </button>
 
             <button type="button" class="btn btn-primary btn-lg btn-block novifont noviyellow button shadow"
                     onclick="window.location.href = '/LokalerPage/Index'">
-                Administer lokaler
+                Administrer lokaler
             </button>
 
             <form class="text-center mt-2" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new {area = ""})" method="post">
                 <button type="submit" class="btn btn-primary btn-lg novifont noviyellow button shadow btn-block">
-                    Logout
+                    Log ud
                 </button>
             </form>
 
