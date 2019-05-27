@@ -17,33 +17,34 @@
     </head>
 
 @if (SignInManager.IsSignedIn(User))
-{
-    <h1>@ViewData["Title"]</h1>
+{   
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-12 text-center">
             <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-                <h4>Create a new account.</h4>
+                <h1 class="headline mt-5">Register ny admin</h1>
                 <hr />
                 <div asp-validation-summary="All" class="text-danger"></div>
-                <div class="form-group">
+                <div class="form-group text-center">
                     <label asp-for="Input.Email"></label>
                     <input asp-for="Input.Email" class="form-control" />
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Input.Password"></label>
+                <div class="form-group text-center">
+                    <label asp-for="Input.Password">Kodeord</label>
                     <input asp-for="Input.Password" class="form-control" />
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Input.ConfirmPassword"></label>
+                <div class="form-group text-center mb-4">
+                    <label asp-for="Input.ConfirmPassword">Bekræft kodeord</label>
                     <input asp-for="Input.ConfirmPassword" class="form-control" />
                     <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                 </div>
-                <button type="submit" class="btn btn-primary">Register</button>
+                <button type="submit" class="btn btn-primary btn-block btn-lg novifont noviyellow button text-center">Register</button>
             </form>
         </div>
     </div>
+</div>
 }
 
 else

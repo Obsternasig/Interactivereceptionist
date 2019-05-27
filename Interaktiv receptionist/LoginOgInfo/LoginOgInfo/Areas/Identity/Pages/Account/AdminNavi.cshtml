@@ -2,26 +2,71 @@
 @model LoginOgInfo.Areas.Identity.Pages.Account.AdminNaviModel
 @{
 }
-    <head>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="~/css/core.css" />
-        <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-        <title>Startside</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
 
-    <body>
-        <button type="button" class="startbutton novifont noviyellow"
-                onclick="window.location.href = '/VirksomhederPage/Index'">
-            Administer virksomheder 
-        </button>
-        <button type="button" class="startbutton novifont noviyellow"
-                onclick="window.location.href = '/MedarbejderPage/Index'">
-            Administer medarbejdere
-        </button>
-        <button type="button" class="startbutton novifont noviyellow"
-                onclick="window.location.href = '/LokalerPage/Index'">
-            Administer lokaler
-        </button>
-    </body>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/core.css" />
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <title>Startside</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+
+<body>
+    <div class="row">
+        <div class="col-12">
+            <ul class="navbar-nav text-center">
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <p class="novifont headline">Velkommen @User.Identity.Name. Du er nu logget ind, hvad vil du foretage dig?</p>
+                    <br>
+                    <li class="nav-item">
+                        <a class="btn btn-primary btn-lg novifont noviyellow button shadow btn-block" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Redigér din bruger</a>
+                    </li>
+                    <br>
+                    <li class="nav-item">
+                        <form class="btn btn-primary btn-lg novifont noviyellow button shadow btn-block text-center" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new {area = ""})" method="post">
+                            <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                        </form><br><br />
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Ny adminkonto</a>
+                    </li>
+                    <button type="button" class="btn btn-primary btn-lg novifont noviyellow button shadow"
+                            onclick="window.location.href = '/VirksomhederPage/Index'">
+                        Administer virksomheder
+                    </button>
+                    <br>
+                    <button type="button" class="btn btn-primary btn-lg novifont noviyellow button shadow"
+                            onclick="window.location.href = '/MedarbejderPage/Index'">
+                        Administer medarbejdere
+                    </button>
+                    <br>
+                    <button type="button" class="btn btn-primary btn-lg novifont noviyellow button shadow"
+                            onclick="window.location.href = '/LokalerPage/Index'">
+                        Administer lokaler
+                    </button>
+
+                }
+                else
+                {
+                    <p class="novifont headline">Du skal være logget ind for at redigere i databasen.</p>
+                    <br>
+                    <button type="button" class="btn btn-primary btn-lg novifont noviyellow button shadow" onclick="window.location.href = '/Identity/Account/login'">
+                        Klik her for at logge ind
+                    </button>
+                    <br>
+                    <br>
+                    <button type="button" class="btn btn-primary btn-lg novifont noviyellow button shadow" onclick="window.location.href = '/index'">
+                        Klik her for at returnere til forsiden
+                    </button>
+                }
+            </ul>
+        </div>
+    </div>
+</body>
