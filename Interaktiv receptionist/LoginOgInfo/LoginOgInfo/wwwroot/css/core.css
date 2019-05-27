@@ -2,6 +2,11 @@
     background-color: rgb(230, 233, 237);
 }
 
+.bell {
+    width: 6vh;
+    height: 6vh;
+}
+
 .button {
     border-style: none;
     display: inline-block;
@@ -139,7 +144,7 @@
     color: rgb(243, 180, 27);
 }
 
-.oversigt{
+.oversigt {
     height: 100%;
     width: 100%;
 }
