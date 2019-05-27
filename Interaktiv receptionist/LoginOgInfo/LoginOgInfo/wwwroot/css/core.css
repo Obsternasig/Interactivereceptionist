@@ -140,6 +140,11 @@ body {
     color: rgb(243, 180, 27);
 }
 
+.oversigt{
+    height: 100%;
+    width: 100%;
+}
+
 .parkingbutton {
     border-radius: 15%;
     border-style: none;
@@ -164,22 +169,35 @@ body {
     width: 80%;
 }
 
-
-.searchbar {
+.searchbar1 {
     background: none;
     background-color: rgb(102, 109, 119);
     border-color: rgb(102, 109, 119);
     border-style: solid;
-    outline: none;
-    width: 100%;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
-    padding: 1% 1% 1% 1%;
+    outline: none;
     color: white;
-    font-size: 150%;
+    
 }
 
+.searchbar {
+    font-size: 150%;
+    width: 55%;
+    outline: none;
+    border-color: rgb(102, 109, 119);
+    border-style: solid;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.searchbtn {
+    color: white;
+    border-style: none;
+    font-size: 3vh;
+}
 
 .sidebox {
     border-radius: 15%;
