@@ -22,20 +22,45 @@
 </head>
 
 
-@if (SignInManager.IsSignedIn(User))
-{
-    <form>
-        <p>
-            Søg efter navnet på en virksomhed:
-            <br />
-            <input type="text" asp-for="SearchString" />
-            <input type="submit" value="Filter" />
-        </p>
-    </form>
-    <p>
-        <a asp-page="Create">Create New</a>
-    </p>
-    <table class="table">
+@if (SignInManager.IsSignedIn(User)) {
+<body>
+    <div class="container-fluid">
+        <div class="row mt-5">
+            <div class="col-3">
+                <img src="\Pictures/hus.png" onclick="window.location.href = '/index'" class="icons img-fluid mr-1" ;>
+                <img src="\Pictures/venstre.png" onclick="javascript:history.go(-1)" class="icons img-fluid mr-1" />
+                <img src="\Pictures/højre.png" onclick="javascript:history.go(+1)" class="icons img-fluid" />
+            </div>
+            <div class="col-9">
+                <div class="row">
+                    <div class="col-12">
+                        <form class="searchbox text-center">
+                            <input type="text" placeholder="Søg efter navnet på Virksomheder" class=" searchbar novidgrey novifont" asp-for="SearchString" />
+                            <button type="submit" class="searchbtn novidgrey"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <hr class="mb-4 orangeline noviyellow" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 mb-3">
+            <button type="button" class="btn btn-primary btn-lg novifont noviyellow text-center create shadow"
+                    onclick="window.location.href = '/VirksomhederPage/Create'">
+                Opret ny Virksomhed
+            </button>
+            <button type="button" class="btn btn-primary btn-lg novifont noviyellow text-center create shadow"
+                    onclick="window.location.href = '/Identity/Account/AdminNavi'">
+                Tilbage til Admin Panel
+            </button>
+        </div>
+    </div>
+    <table class="table novifont">
         <thead>
             <tr>
                 <th>
@@ -60,130 +85,133 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.VirksomhederInfo)
+            @foreach(var item in Model.VirksomhederInfo)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Navn)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CVR)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Medarbejdere)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Lokale)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Findvej)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ID)
-                    </td>
-                    <td>
-                        <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                        <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                        <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Navn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CVR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Medarbejdere)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lokale)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Findvej)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    <a class="noviyellow btn float-right" asp-page="./Edit" asp-route-id="@item.ID">Edit</a>
+                    <a class="noviyellow btn float-right mr-1" asp-page="./Details" asp-route-id="@item.ID">Details</a>
+                    <a class="noviyellow btn float-right mr-1" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
             }
         </tbody>
     </table>
+</body>
+
+
 }
 
 else
 
 {
-    <body>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col">
-                    <p class="headline novifont text-center">
-                        @ViewData["Title"]
-                    </p>
-                </div>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <p class="headline novifont text-center">
+                    @ViewData["Title"]
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3">
+                <img src="\Pictures/hus.png" onclick="window.location.href = '/index'" class="icons img-fluid mr-1" ;>
+                <img src="\Pictures/venstre.png" onclick="javascript:history.go(-1)" class="icons img-fluid mr-1" />
+                <img src="\Pictures/højre.png" onclick="javascript:history.go(+1)" class="icons img-fluid" />
             </div>
 
-            <div class="row">
-                <div class="col-3">
-                    <img src="\Pictures/hus.png" onclick="window.location.href = '/index'" class="icons img-fluid mr-1" ;>
-                    <img src="\Pictures/venstre.png" onclick="javascript:history.go(-1)" class="icons img-fluid mr-1" />
-                    <img src="\Pictures/højre.png" onclick="javascript:history.go(+1)" class="icons img-fluid" />
-                </div>
-
-                <div class="col-9">
-                    <div class="row">
-                        <div class="col-12">
-                            <form class="searchbox text-center">
-                                <input type="text" placeholder="Søg efter navnet på virksomheden" class=" searchbar novidgrey novifont" asp-for="SearchString" />
-                                <!--<input type="submit" value="Filter" /> -->
-                                <button type="submit" class="searchbtn novidgrey"><i class="fa fa-search"></i></button>
-                            </form>
-                        </div>
+            <div class="col-9">
+                <div class="row">
+                    <div class="col-12">
+                        <form class="searchbox text-center">
+                            <input type="text" placeholder="Søg efter navnet på virksomheder" class=" searchbar novidgrey novifont" asp-for="SearchString" />
+                            <!--<input type="submit" value="Filter" /> -->
+                            <button type="submit" class="searchbtn novidgrey"><i class="fa fa-search"></i></button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="col-12">
-                <hr class="mb-4 orangeline noviyellow" />
-            </div>
+    <div class="row">
+        <div class="col-12">
+            <hr class="mb-4 orangeline noviyellow" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2 text-center novifont">
+            <button type="button" class="btn btn-primary btn-lg noviyellow mb-4 button btn-block shadow" onclick="window.location.href = '/search'">
+                Søg
+            </button>
+            <button type="button" class="btn btn-primary btn-lg noviyellow mb-4 button btn-block shadow" onclick="window.location.href = '/oversigtskort'">
+                Oversigtskort
+            </button>
+            <button type="button" class="btn btn-primary btn-lg noviyellow mb-4 button btn-block shadow" onclick="window.location.href = '/parkeringPage/create'">
+                Parkering
+            </button>
+            <button type="button" class="btn btn-primary btn-lg noviyellow mb-4 button btn-block shadow" onclick="window.location.href = '/faq'">
+                Faq
+            </button>
         </div>
 
-        <div class="row">
-            <div class="col-2 text-center novifont">
-                <button type="button" class="btn btn-primary btn-lg noviyellow mb-4 button btn-block shadow" onclick="window.location.href = '/search'">
-                    Søg
-                </button>
-                <button type="button" class="btn btn-primary btn-lg noviyellow mb-4 button btn-block shadow" onclick="window.location.href = '/oversigtskort'">
-                    Oversigtskort
-                </button>
-                <button type="button" class="btn btn-primary btn-lg noviyellow mb-4 button btn-block shadow" onclick="window.location.href = '/parkeringPage/create'">
-                    Parkering
-                </button>
-                <button type="button" class="btn btn-primary btn-lg noviyellow mb-4 button btn-block shadow" onclick="window.location.href = '/faq'">
-                    Faq
-                </button>
+        <div class="col-10 novifont">
+            <div class="row text-center">
+                @foreach (var item in Model.VirksomhederInfo.Take(3))
+                {
+                <div class="col-4">
+                    <a asp-page="./Details" class="btn btn-primary btn-lg novidgrey mb-4 btn-block button shadow button-lg" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Navn)</a>
+                </div>
+                }
             </div>
-
-            <div class="col-10 novifont">
-                <div class="row text-center">
-                    @foreach (var item in Model.VirksomhederInfo.Take(3))
-                    {
-                        <div class="col-4">
-                            <a asp-page="./Details" class="btn btn-primary btn-lg novidgrey mb-4 btn-block button shadow button-lg" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Navn)</a>
-                        </div>
-                    }
+            <div class="row">
+                @foreach (var item in Model.VirksomhederInfo.Skip(3).Take(3))
+                {
+                <div class="col-4">
+                    <a asp-page="./Details" class="btn btn-primary btn-lg novidgrey mb-4 btn-block button shadow button-lg" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Navn)</a>
                 </div>
-                <div class="row">
-                    @foreach (var item in Model.VirksomhederInfo.Skip(3).Take(3))
-                    {
-                        <div class="col-4">
-                            <a asp-page="./Details" class="btn btn-primary btn-lg novidgrey mb-4 btn-block button shadow button-lg" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Navn)</a>
-                        </div>
-                    }
+                }
+            </div>
+            <div class="row">
+                @foreach (var item in Model.VirksomhederInfo.Skip(6).Take(3))
+                {
+                <div class="col-4">
+                    <a asp-page="./Details" class="btn btn-primary btn-lg novidgrey mb-4 btn-block button shadow button-lg" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Navn)</a>
                 </div>
-                <div class="row">
-                    @foreach (var item in Model.VirksomhederInfo.Skip(6).Take(3))
-                    {
-                        <div class="col-4">
-                            <a asp-page="./Details" class="btn btn-primary btn-lg novidgrey mb-4 btn-block button shadow button-lg" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Navn)</a>
-                        </div>
-                    }
+                }
+            </div>
+            <div class="row">
+                @foreach (var item in Model.VirksomhederInfo.Skip(9).Take(3))
+                {
+                <div class="col-4">
+                    <a asp-page="./Details" class="btn btn-primary btn-lg novidgrey mb-4 btn-block button shadow button-lg" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Navn)</a>
                 </div>
-                <div class="row">
-                    @foreach (var item in Model.VirksomhederInfo.Skip(9).Take(3))
-                    {
-                        <div class="col-4">
-                            <a asp-page="./Details" class="btn btn-primary btn-lg novidgrey mb-4 btn-block button shadow button-lg" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Navn)</a>
-                        </div>
-                    }
-                </div>
+                }
             </div>
         </div>
-    </body>
+    </div>
+</body>
 }
 
 

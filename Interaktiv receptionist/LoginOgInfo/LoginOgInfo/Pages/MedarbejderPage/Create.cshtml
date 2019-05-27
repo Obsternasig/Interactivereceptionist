@@ -4,50 +4,82 @@
 @{
     ViewData["Title"] = "Create";
 }
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
-<h1>Create</h1>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/core.css" />
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <title>Startside</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 
-<h4>MedarbejderInfo</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="MedarbejderInfo.Navn" class="control-label"></label>
-                <input asp-for="MedarbejderInfo.Navn" class="form-control" />
-                <span asp-validation-for="MedarbejderInfo.Navn" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MedarbejderInfo.Virksomhed" class="control-label"></label>
-                <input asp-for="MedarbejderInfo.Virksomhed" class="form-control" />
-                <span asp-validation-for="MedarbejderInfo.Virksomhed" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MedarbejderInfo.Lokale" class="control-label"></label>
-                <input asp-for="MedarbejderInfo.Lokale" class="form-control" />
-                <span asp-validation-for="MedarbejderInfo.Lokale" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MedarbejderInfo.Email" class="control-label"></label>
-                <input asp-for="MedarbejderInfo.Email" class="form-control" />
-                <span asp-validation-for="MedarbejderInfo.Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MedarbejderInfo.Stilling" class="control-label"></label>
-                <input asp-for="MedarbejderInfo.Stilling" class="form-control" />
-                <span asp-validation-for="MedarbejderInfo.Stilling" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+
+    <h1>Create</h1>
+
+    <h4>MedarbejderInfo</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="MedarbejderInfo.Navn" class="control-label"></label>
+                    <input asp-for="MedarbejderInfo.Navn" class="form-control" />
+                    <span asp-validation-for="MedarbejderInfo.Navn" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MedarbejderInfo.Virksomhed" class="control-label"></label>
+                    <input asp-for="MedarbejderInfo.Virksomhed" class="form-control" />
+                    <span asp-validation-for="MedarbejderInfo.Virksomhed" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MedarbejderInfo.Lokale" class="control-label"></label>
+                    <input asp-for="MedarbejderInfo.Lokale" class="form-control" />
+                    <span asp-validation-for="MedarbejderInfo.Lokale" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MedarbejderInfo.Email" class="control-label"></label>
+                    <input asp-for="MedarbejderInfo.Email" class="form-control" />
+                    <span asp-validation-for="MedarbejderInfo.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MedarbejderInfo.Stilling" class="control-label"></label>
+                    <input asp-for="MedarbejderInfo.Stilling" class="form-control" />
+                    <span asp-validation-for="MedarbejderInfo.Stilling" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-page="Index">Back to List</a>
-</div>
+    <div>
+        <a asp-page="Index">Back to List</a>
+    </div>
+}
+
+else
+
+{
+    <p class="novifont headline mt-3 mb-3">
+        Du skal være logget ind for at redigere i databasen.
+    </p>
+    <button type="button" class="btn btn-primary btn-lg novifont noviyellow button shadow mr-4" onclick="window.location.href = '/Identity/Account/login'">
+        Klik her for at logge ind
+    </button>
+    <button type="button" class="btn btn-primary btn-lg novifont noviyellow button shadow" onclick="window.location.href = '/index'">
+        Klik her for at returnere til forsiden
+    </button>
+}
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

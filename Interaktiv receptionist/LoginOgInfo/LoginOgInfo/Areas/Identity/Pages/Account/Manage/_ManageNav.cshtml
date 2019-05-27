@@ -4,19 +4,14 @@
 }
 
 <div class="container">
-    <div class="row">
-        <div class="nav-item btn btn-primary btn-block btn-lg novifont noviyellow button text-center mb-3">
-            <a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext) novifont noviyellow" id="personal-data" asp-page="./Index">Personlig data</a>
-        </div>
-        <div class="nav-item btn btn-primary btn-block btn-lg novifont noviyellow button text-center mb-3">
-            <a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)  novifont noviyellow text-center mb-3" id="change-password" asp-page="./ChangePassword">Kodeord</a>
-        </div>
+    <div class="row nav-item">
+            <a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext) btn btn-primary btn-block btn-lg novifont noviyellow button text-center mb-3" id="personal-data" asp-page="./Index">Personlig data</a>
+        
+            <a class="nav-link novifont noviyellow @ManageNavPages.ChangePasswordNavClass(ViewContext) btn btn-primary btn-block btn-lg novifont noviyellow button text-center mb-4" id="change-password" asp-page="./ChangePassword">Kodeord</a>
     </div>
 </div>
 
-
-
-<button type="button" class="btn btn-primary btn-lg btn-block novifont noviyellow button shadow"
+<button type="button" class="btn-primary btn-lg btn-block novifont noviyellow button shadow"
                 onclick="window.location.href = '/Identity/Account/AdminNavi'">
-            Administer virksomheder
+            Tilbage til oversigt
         </button>
