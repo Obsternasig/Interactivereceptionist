@@ -37,7 +37,7 @@ namespace LoginOgInfo.Pages.ParkeringPage
             _context.ParkeringsInfo.Add(ParkeringsInfo);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Index");
         }
     }
 }

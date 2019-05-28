@@ -4,67 +4,202 @@
 @{
     ViewData["Title"] = "Index";
 }
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
-<h1>Index</h1>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="\css/core.css" />
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
+    <title>@ViewData["title"]</title>
 
-<form>
-    <p>
-        Søg efter navnet på en medarbejder: 
-        <br />
-        <input type="text" asp-for="SearchString" />
-        <input type="submit" value="Filter" />
-    </p>
-</form>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 
-<table class="table">
-    <thead>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.MedarbejderInfo[0].Navn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MedarbejderInfo[0].Virksomhed)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MedarbejderInfo[0].Lokale)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MedarbejderInfo[0].Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MedarbejderInfo[0].Stilling)
-        </th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var item in Model.MedarbejderInfo) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Navn)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Virksomhed)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Lokale)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Stilling)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-    }
-    </tbody>
-</table>
+
+@if (SignInManager.IsSignedIn(User))
+{
+<body>
+
+    <div class="container-fluid">
+        <div class="row mt-5">
+            <div class="col-3">
+                <img src="\Pictures/hus.png" onclick="window.location.href = '/index'" class="icons img-fluid mr-1" ;>
+                <img src="\Pictures/venstre.png" onclick="javascript:history.go(-1)" class="icons img-fluid mr-1" />
+                <img src="\Pictures/højre.png" onclick="javascript:history.go(+1)" class="icons img-fluid" />
+            </div>
+            <div class="col-9">
+                <div class="row">
+                    <div class="col-12">
+                        <form class="searchbox text-center">
+                            <input type="text" placeholder="Søg efter navnet på en Medarbejder" class=" searchbar novidgrey novifont" asp-for="SearchString" />
+                            <button type="submit" class="searchbtn novidgrey"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <hr class="mb-4 orangeline noviyellow" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 mb-3">
+            <button type="button" class="btn btn-primary btn-lg novifont noviyellow text-center create shadow"
+                    onclick="window.location.href = '/MedarbejderPage/Create'">
+                Opret ny Medarbejder
+            </button>
+            <button type="button" class="btn btn-primary btn-lg novifont noviyellow text-center create shadow"
+                    onclick="window.location.href = '/Identity/Account/AdminNavi'">
+                Tilbage til Admin Panel
+            </button>
+        </div>
+    </div>
+    <table class="table novifont">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.MedarbejderInfo[0].Navn)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MedarbejderInfo[0].Virksomhed)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MedarbejderInfo[0].Lokale)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MedarbejderInfo[0].Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MedarbejderInfo[0].Stilling)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model.MedarbejderInfo)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Navn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Virksomhed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lokale)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stilling)
+                </td>
+                <td>
+                    <a class="noviyellow btn float-right" asp-page="./Edit" asp-route-id="@item.ID">Edit</a>
+                    <a class="noviyellow btn float-right mr-1" asp-page="./Details" asp-route-id="@item.ID">Details</a>
+                    <a class="noviyellow btn float-right mr-1" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</body>
+}
+else
+{
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <p class="headline novifont text-center">
+                    @ViewData["Title"]
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3">
+                <img src="\Pictures/hus.png" onclick="window.location.href = '/index'" class="icons img-fluid mr-1" ;>
+                <img src="\Pictures/venstre.png" onclick="javascript:history.go(-1)" class="icons img-fluid mr-1" />
+                <img src="\Pictures/højre.png" onclick="javascript:history.go(+1)" class="icons img-fluid" />
+            </div>
+
+            <div class="col-9">
+                <div class="row">
+                    <div class="col-12">
+                        <form class="searchbox text-center">
+                            <input type="text" placeholder="Søg efter navnet på en medarbejder" class="searchbar novidgrey novifont" asp-for="SearchString" />
+                            <button type="submit" class="searchbtn novidgrey" data-toggle="collapse" data-target="#NavnID" aria-expanded="true" aria-controls="collapse1"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <hr class="mb-4 orangeline noviyellow" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2 text-center novifont">
+            <button type="button" class="btn btn-primary btn-lg noviyellow mb-4 button btn-block shadow" onclick="window.location.href = '/search'">
+                Søg
+            </button>
+            <button type="button" class="btn btn-primary btn-lg noviyellow mb-4 button btn-block shadow" onclick="window.location.href = '/oversigtskort'">
+                Oversigtskort
+            </button>
+            <button type="button" class="btn btn-primary btn-lg noviyellow mb-4 button btn-block shadow" onclick="window.location.href = '/parkeringPage/create'">
+                Parkering
+            </button>
+            <button type="button" class="btn btn-primary btn-lg noviyellow mb-4 button btn-block shadow" onclick="window.location.href = '/faq'">
+                Faq
+            </button>
+        </div>
+
+        <div class="col-10 novifont">
+            <div class="row text-center">
+
+                @foreach(var item in Model.MedarbejderInfo.Take(3))
+                {
+                <div id="NavnID" class="col-4">
+                    <a asp-page="./Details" class="btn btn-primary btn-lg novidgrey mb-4 btn-block button shadow button-lg" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Navn)</a>
+                </div>
+                }
+            </div>
+            <div class="row">
+                @foreach(var item in Model.MedarbejderInfo.Skip(3).Take(3))
+                {
+                <div id="NavnID" class="col-4">
+                    <a asp-page="./Details" class="btn btn-primary btn-lg novidgrey mb-4 btn-block button shadow button-lg" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Navn)</a>
+                </div>
+                }
+            </div>
+            <div class="row">
+                @foreach(var item in Model.MedarbejderInfo.Skip(6).Take(3))
+                {
+                <div id="NavnID" class="col-4">
+                    <a asp-page="./Details" class="btn btn-primary btn-lg novidgrey mb-4 btn-block button shadow button-lg" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Navn)</a>
+                </div>
+                }
+            </div>
+            <div class="row">
+                @foreach(var item in Model.MedarbejderInfo.Skip(9).Take(3))
+                {
+                <div id="NavnID" class="col-4">
+                    <a asp-page="./Details" class="btn btn-primary btn-lg novidgrey mb-4 btn-block button shadow button-lg" asp-route-id="@item.ID">@Html.DisplayFor(modelItem => item.Navn)</a>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+}

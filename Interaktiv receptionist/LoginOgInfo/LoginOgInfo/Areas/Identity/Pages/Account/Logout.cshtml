@@ -3,12 +3,28 @@
 @{
     ViewData["Title"] = "Log out";
 }
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="\css/core.css" />
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 
-    <header>
-        <h1>@ViewData["Title"]</h1>
-        <p>Du er nu logget ud af systemet.</p>
-        <button type="button" class="startbutton novifont noviyellow"
-                onclick="window.location.href = '/Index'">
-            Klik her for at komme tilbage til homepage
-        </button>
-    </header>
+    <title>@ViewData["title"]</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center">
+                <br><br>
+                <p class="novifont headline">Du er nu logget ud af systemet.</p><br>
+                <button type="button" class="btn btn-primary btn-lg novifont noviyellow button shadow" onclick="window.location.href = '/Index'">
+                    Klik her for at komme tilbage til homepage
+                </button>
+            </div>
+        </div>
+    </div>
+</body>

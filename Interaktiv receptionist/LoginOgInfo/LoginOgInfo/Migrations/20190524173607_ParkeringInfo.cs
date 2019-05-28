@@ -56,7 +56,7 @@ namespace LoginOgInfo.Migrations
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
-                name: "Stilling",
+                name: "FindVej",
                 table: "MedarbejderInfo",
                 maxLength: 30,
                 nullable: false,
@@ -164,7 +164,7 @@ namespace LoginOgInfo.Migrations
                 oldMaxLength: 60);
 
             migrationBuilder.AlterColumn<string>(
-                name: "Stilling",
+                name: "FindVej",
                 table: "MedarbejderInfo",
                 nullable: true,
                 oldClrType: typeof(string),

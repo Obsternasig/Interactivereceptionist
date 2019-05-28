@@ -49,7 +49,7 @@ namespace LoginOgInfo.Migrations
 
                     b.Property<string>("Navn");
 
-                    b.Property<string>("Stilling");
+                    b.Property<string>("FindVej");
 
                     b.Property<string>("Virksomhed");
 

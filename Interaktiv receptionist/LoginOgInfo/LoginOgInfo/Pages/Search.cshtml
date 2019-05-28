@@ -1,0 +1,83 @@
+﻿@page
+@model LoginOgInfo.Pages.SearchModel
+@{
+}
+@{
+    ViewData["Title"] = "Hvad skal du bruge hjælp til?";
+}
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="\css/core.css" />
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col">
+                <p class="headline novifont text-center">
+                    @ViewData["Title"]
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3">
+                <img src="\Pictures/hus.png" onclick="window.location.href = '/index'" class="icons img-fluid mr-1" ;>
+                <img src="\Pictures/venstre.png" onclick="javascript:history.go(-1)" class="icons img-fluid mr-1" />
+                <img src="\Pictures/højre.png" onclick="javascript:history.go(+1)" class="icons img-fluid" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <hr class="mb-4 orangeline noviyellow" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2 text-center novifont">
+            <button type="button" class="btn btn-primary btn-lg noviyellow mb-4 button btn-block shadow" onclick="window.location.href = '/search'">
+                Søg
+            </button>
+            <button type="button" class="btn btn-primary btn-lg noviyellow mb-4 button btn-block shadow" onclick="window.location.href = '/oversigtskort'">
+                Oversigtskort
+            </button>
+            <button type="button" class="btn btn-primary btn-lg noviyellow mb-4 button btn-block shadow" onclick="window.location.href = '/parkeringPage/create'">
+                Parkering
+            </button>
+            <button type="button" class="btn btn-primary btn-lg noviyellow mb-4 button btn-block shadow" onclick="window.location.href = '/faq'">
+                Faq
+            </button>
+        </div>
+
+        <div class="col-10">
+            <div class="row">
+                <div class="col-4">
+                    <button type="button" class="btn btn-primary btn-lg novidgrey mb-4 btn-block button shadow button-lg text-center" onclick="window.location.href = '/VirksomhederPage'">
+                        Søg  efter virksomheder
+                    </button>
+                </div>
+                <div class="col-4">
+                    <button type="button" class="btn btn-primary btn-lg novidgrey mb-4 btn-block button shadow button-lg text-center" onclick="window.location.href = '/Medarbejderpage'">
+                        Søg efter medarbejdere
+                    </button>
+                </div>
+                <div class="col-4">
+                    <button type="button" class="btn btn-primary btn-lg novidgrey mb-4 btn-block button shadow button-lg text-center" onclick="window.location.href = '/Lokalerpage'">
+                        Søg efter lokaler
+                    </button>
+                </div>
+            </div>
+        </div>
+            </div>
+
+</body>
+
+

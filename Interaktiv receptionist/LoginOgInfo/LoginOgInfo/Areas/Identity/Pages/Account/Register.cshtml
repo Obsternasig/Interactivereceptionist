@@ -1,0 +1,107 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Opret Bruger";
+}
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/core.css" />
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <title>Startside</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12 text-center">
+                @if (SignInManager.IsSignedIn(User))
+                {
+                <p class="headline novifont text-center">
+                    Opret ny Administrator
+                </p>
+                }
+                else
+                {
+                <p class="headline text-center novifont">
+                    Du skal være logget ind for at oprette bruger
+                </p>
+                }
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3">
+                <img src="\Pictures/hus.png" onclick="window.location.href = '/index'" class="icons img-fluid mr-1" ;>
+                <img src="\Pictures/venstre.png" onclick="javascript:history.go(-1);" class="icons img-fluid mr-1" />
+                <img src="\Pictures/højre.png" onclick="javascript:history.go(+1);" class="icons img-fluid" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <hr class="mb-4 orangeline noviyellow" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 text-center">
+
+            @if (SignInManager.IsSignedIn(User))
+            {
+
+            <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group text-center">
+                    <label asp-for="Input.Email"></label>
+                    <input asp-for="Input.Email" class="form-control" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group text-center">
+                    <label asp-for="Input.Password">Kodeord</label>
+                    <input asp-for="Input.Password" class="form-control" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group text-center mb-4">
+                    <label asp-for="Input.ConfirmPassword">Bekræft kodeord</label>
+                    <input asp-for="Input.ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block btn-lg novifont noviyellow button text-center">Register</button>
+            </form>
+            }
+            else
+            {
+            <div class="row">
+                <div class="col-12 mt-5">
+                    <button type="button" class="btn btn-primary btn-sm btn-block novifont noviyellow button text-center"
+                            onclick="window.location.href = '/identity/account/login'">
+                        Login
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm btn-block novifont noviyellow button text-center"
+                            onclick="window.location.href = '/index'">
+                        Returner til forsiden
+                    </button>
+                </div>
+            </div>
+            }
+
+        </div>
+    </div>
+</body>
+
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

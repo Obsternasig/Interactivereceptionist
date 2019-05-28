@@ -2,41 +2,44 @@
 @model LoginModel
 
 @{
-    ViewData["Title"] = "Log in";
+    ViewData["Title"] = "Log ind";
 }
 
-<style>
-    body {
-        background-color: #E6E9ED;
-    }
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/core.css" />
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <title>Startside</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 
-    .orangeline {
-        border-top: 5px solid #F3BB1B;
-        margin: 1% 0% 0% 0%;
-    }
+<div class="container-fluid">
 
-    .Loginkasse {
-        margin-left: 23%
-    }
+    <div class="row">
+        <div class="col-12 text-center">
+            <p class="headline">Log In</p>
+        </div>
+    </div>
 
-        .Container input {
-            background-color: #8D9092;
-            border-color: #8D9092;
-            color: white;
-        }
-
-    .Loginknap {
-        background-color: #f3bb1b;
-        border-color: #f3bb1b;
-        border-radius: 5PX;
-    }
-</style>
+    <div class="row">
+        <div class="col-3">
+            <img src="\Pictures/hus.png" onclick="window.location.href = '/index'" class="icons img-fluid mr-1" ;>
+            <img src="\Pictures/venstre.png" onclick="javascript:history.go(-1);" class="icons img-fluid mr-1" />
+            <img src="\Pictures/højre.png" onclick="javascript:history.go(+1);" class="icons img-fluid" />
+        </div>
+    </div>
+</div>
 
 <div class="row">
-    <div class="col-mb-4 offset-3">
-        <br><br>
-        <section class="Loginkasse">
-            <h1>@ViewData["Title"]</h1>
+    <div class="col-12">
+        <hr class="mb-4 orangeline noviyellow" />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 text-center">
+        <section>
             <form id="account" method="post">
                 <hr />
                 <div asp-validation-summary="All" class="text-danger"></div>
@@ -51,14 +54,12 @@
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div><br>
                 <div class="form-group">
-                    <button type="submit" class="Loginknap btn-block">Log in</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-lg novifont noviyellow button text-center shadow">Log in</button>
                 </div>
             </form>
         </section>
     </div>
-
 </div>
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }

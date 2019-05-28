@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace LoginOgInfo.Virksomheder
@@ -26,5 +27,10 @@ namespace LoginOgInfo.Virksomheder
         [StringLength(1000, MinimumLength = 1)]
         [Required]
         public string Findvej { get; set; }
+
+        public static implicit operator VirksomhederInfo(List<VirksomhederInfo> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

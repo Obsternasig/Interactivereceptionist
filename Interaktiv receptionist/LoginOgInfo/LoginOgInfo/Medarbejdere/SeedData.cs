@@ -23,38 +23,38 @@ namespace LoginOgInfo.Medarbejdere
                 context.MedarbejderInfo.AddRange(
                     new MedarbejderInfo
                     {
-                        Navn = "Jens",
-                        Virksomhed = "Novi",
-                        Lokale = "0.12",
-                        Email = "Hans@Nu",
-                        Stilling = "Chefen"
-                    },
-
-                    new MedarbejderInfo
-                    {
                         Navn = "Jens Hansen",
                         Virksomhed = "Novi",
+                        Lokale = "0.12.1",
+                        Email = "Hans@Nu.dk",
+                        Stilling = "Gå til højre"
+                    },
+
+                    new MedarbejderInfo
+                    {
+                        Navn = "Jens Karlsen",
+                        Virksomhed = "Hjem-Is",
                         Lokale = "0.22",
-                        Email = "Hans@Nunu",
-                        Stilling = "Chefeen"
+                        Email = "Karl@Hjemis.dk",
+                        Stilling = "Første dør på venstre hånd"
                     },
 
                     new MedarbejderInfo
                     {
-                        Navn = "Jens Hanseen",
-                        Virksomhed = "Novi",
-                        Lokale = "0.23",
-                        Email = "Hans@Nununu",
-                        Stilling = "Chefeeen"
+                        Navn = "Jens Jensen",
+                        Virksomhed = "Stofa",
+                        Lokale = "S-A1",
+                        Email = "jens12@stofa.dk",
+                        Stilling = "Gå ned af gangen og tag første dør på venstre hånd"
                     },
 
                     new MedarbejderInfo
                     {
-                        Navn = "Jeens Hanseeen",
-                        Virksomhed = "Novi",
+                        Navn = "Karl Jensen",
+                        Virksomhed = "Mozilla",
                         Lokale = "0.24",
-                        Email = "Hans@Denbedste",
-                        Stilling = "MaxiChefen"
+                        Email = "Hans@Mozilla.dk",
+                        Stilling = "Gå ned af gangen og tag anden dør på højre hånd"
                     }
                 );
                 context.SaveChanges();
