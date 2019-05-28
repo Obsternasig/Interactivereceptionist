@@ -21,46 +21,63 @@
 </head>
 @if (SignInManager.IsSignedIn(User))
 {
-    <div>
-        <h4>MedarbejderInfo</h4>
-        <hr />
-        <dl class="row">
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.MedarbejderInfo.Navn)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.MedarbejderInfo.Navn)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.MedarbejderInfo.Virksomhed)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.MedarbejderInfo.Virksomhed)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.MedarbejderInfo.Lokale)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.MedarbejderInfo.Lokale)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.MedarbejderInfo.Email)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.MedarbejderInfo.Email)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.MedarbejderInfo.Stilling)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.MedarbejderInfo.Stilling)
-            </dd>
-        </dl>
-    </div>
-  <div>
-    <a class="btn btn-primary btn-lg novifont noviyellow text-center create shadow" asp-page="./Edit" asp-route-id="@Model.MedarbejderInfo.ID">Edit</a>
-    <a class="btn btn-primary btn-lg novifont noviyellow text-center create shadow" asp-page="./Index">Back to List</a>
-</div>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                    <div class="col-3 mt-5">
+                        <img src="\Pictures/hus.png" onclick="window.location.href = '/index'" class="icons img-fluid mr-1" ;>
+                        <img src="\Pictures/venstre.png" onclick="javascript:history.go(-1)" class="icons img-fluid mr-1" />
+                        <img src="\Pictures/højre.png" onclick="javascript:history.go(+1)" class="icons img-fluid" />
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-12">
+                        <hr class="mb-4 orangeline noviyellow" />
+                    </div>
+                </div>
+
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.MedarbejderInfo.Navn)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.MedarbejderInfo.Navn)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.MedarbejderInfo.Virksomhed)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.MedarbejderInfo.Virksomhed)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.MedarbejderInfo.Lokale)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.MedarbejderInfo.Lokale)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.MedarbejderInfo.Email)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.MedarbejderInfo.Email)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.MedarbejderInfo.Stilling)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.MedarbejderInfo.Stilling)
+                    </dd>
+                </dl>
+
+            
+            <div>
+                <a class="btn btn-primary btn-lg novifont noviyellow text-center create shadow" asp-page="./Edit" asp-route-id="@Model.MedarbejderInfo.ID">Edit</a>
+                <a class="btn btn-primary btn-lg novifont noviyellow text-center create shadow" asp-page="./Index">Back to List</a>
+            </div>
+        </div>
+    </body>
 }
 else
 {
@@ -69,7 +86,7 @@ else
         <div class="container-fluid">
 
             <div class="row">
-                <div class="col">
+                <div class="col-12">
                     <p class="headline novifont text-center">
                         @ViewData["Title"]
                     </p>
@@ -120,7 +137,7 @@ else
                         <div class="row">
                             <div class="1">
                                 <input class="collapse" type="text" id="name" value="Gæst">
-                                <input class="collapse" type="text" value="@Html.DisplayFor(model => model.MedarbejderInfo.Email)" id="email"/>
+                                <input class="collapse" type="text" value="@Html.DisplayFor(model => model.MedarbejderInfo.Email)" id="email" />
                                 <textarea class="collapse" id="message">Du har en gæst der er ankommet ved hovedindgangen</textarea>
                             </div>
                             <div class="col-11">
